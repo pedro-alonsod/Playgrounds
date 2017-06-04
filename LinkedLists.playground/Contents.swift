@@ -1,0 +1,238 @@
+import UIKit
+
+public class Node<T> {
+    var data: T
+    var next: Node<T>?
+    
+    public init(data: T) {
+        self.data = data
+    }
+}
+
+public class LinkedList<T> {
+    var head: Node<T>?
+    
+    public func appendToTail(data: T) {
+        let node: Node<T> = Node<T>(data: data)
+        
+        if head == nil {
+            head = node
+        } else {
+            var current = head
+            
+            while current?.next != nil {
+                current = current?.next
+            }
+            current?.next = node
+        }
+    }
+}
+
+extension Node: CustomStringConvertible {
+    public var description: String {
+        var desc = "\(data)"
+        
+        return desc
+    }
+}
+
+extension LinkedList: CustomStringConvertible {
+    public var description: String {
+        var desc = "["
+        var current = self.head
+        
+        while current != nil {
+            desc += "\(current!.description)-->"
+            current = current?.next
+        }
+        desc += "nil]"
+        
+        return desc
+    }
+}
+
+var dict: [Int:Node<Int>] = [5:Node<Int>(data: 1),4:Node<Int>(data: 2),3:Node<Int>(data: 3)]
+
+print(dict)
+print(dict.values.first!)
+
+var lLTest = LinkedList<Int>()
+lLTest.appendToTail(data: 1)
+lLTest.appendToTail(data: 2)
+lLTest.appendToTail(data: 3)
+lLTest.appendToTail(data: 5)
+print(lLTest)
+lLTest.appendToTail(data: 3)
+lLTest.appendToTail(data: 1)
+print(lLTest)
+
+for (key, value) in dict {
+    print(" \(key) \(value)")
+}
+
+func removeDups(linkedList: LinkedList<Int>) {
+    var dupsSearch: [Int:Node<Int>] = [:]
+    var current = linkedList.head
+    var previous: Node<Int>? = nil
+    
+    while current != nil {
+        if dupsSearch[current!.data] == nil {
+            dupsSearch[current!.data] = current
+            previous = current
+        } else {
+            previous?.next = current?.next
+        }
+        current = current?.next
+
+        print(dupsSearch)
+    }
+    print(linkedList)
+}
+
+removeDups(linkedList: lLTest)
+print(lLTest)
+
+func returnKth(k: Int, linkedList: LinkedList<Int>) -> Node<Int> {
+    var current = linkedList.head
+    var i = 1
+    
+    for _ in i..<k {
+        current = current?.next
+    }
+    
+    return current!
+}
+
+returnKth(k: 4, linkedList: lLTest)
+
+func deleteMiddle(linkedList: LinkedList<Int>) {
+    var current = linkedList.head
+    var fast = linkedList.head
+    var prev: Node<Int>? = nil
+    
+    while fast != nil  {
+        prev = current
+        
+        current = current?.next
+        print(current?.data)
+        fast = fast?.next?.next
+        
+    }
+    prev?.next = current?.next
+    current?.next = nil
+    print(prev)
+    print(linkedList)
+}
+
+deleteMiddle(linkedList: lLTest)
+lLTest.appendToTail(data: 2)
+lLTest.appendToTail(data: 1)
+lLTest.appendToTail(data: 6)
+lLTest.appendToTail(data: 4)
+lLTest.appendToTail(data: 7)
+lLTest.appendToTail(data: 8)
+lLTest.appendToTail(data: 5)
+print(lLTest)
+func partition(pivot: Int, linkedList: LinkedList<Int>) -> LinkedList<Int>{
+    var current = linkedList.head
+    var lessLL = LinkedList<Int>()
+    var moreLL = LinkedList<Int>()
+    
+    while current != nil {
+        if current!.data < pivot {
+            lessLL.appendToTail(data: current!.data)
+        } else {
+            moreLL.appendToTail(data: current!.data)
+        }
+        current = current?.next
+    }
+    print("less: \(lessLL)")
+    print("moreLL: \(moreLL)")
+    current = lessLL.head
+    while current?.next != nil {
+        current = current?.next
+    }
+    
+    current?.next = moreLL.head
+    return lessLL
+}
+
+print(partition(pivot: 5, linkedList: lLTest))
+
+func sumLists(lL1: LinkedList<Int>, lL2: LinkedList<Int>) -> LinkedList<Int> {
+    
+    var num1: String = ""
+    var num2: String = ""
+    var forward1 = ""
+    var forward2 = ""
+    var current1 = lL1.head
+    var current2 = lL2.head
+    var sumList: LinkedList<Int> = LinkedList<Int>()
+    
+    while current1 != nil {
+        num1.append("\(current1!.data)")
+        forward1 = "\(current1!.data)" + forward1
+        current1 = current1?.next
+    }
+    
+    while current2 != nil {
+        num2.append("\(current2!.data)")
+        forward2 = "\(current2!.data)" + forward2
+        current2 = current2?.next
+    }
+    var res: Int = Int(num1)! + Int(num2)!
+    Int(String(forward1.characters.reversed()))! + Int(String(forward2.characters.reversed()))!
+    
+    while res != 0 {
+        sumList.appendToTail(data: res % 10)
+        res /= 10
+    }
+    return sumList
+}
+var lL1 = LinkedList<Int>()
+var lL2 = LinkedList<Int>()
+
+lL1.appendToTail(data: 6)
+lL1.appendToTail(data: 1)
+lL1.appendToTail(data: 7)
+
+lL2.appendToTail(data: 2)
+lL2.appendToTail(data: 9)
+lL2.appendToTail(data: 5)
+
+sumLists(lL1: lL1, lL2: lL2)
+var arr: [Int] = [1, 2, 3]
+arr.removeLast()
+
+func palindrome(lLPalindrome: LinkedList<String>) -> Bool {
+    var stack: [String] = []
+    var current = lLPalindrome.head
+    while current != nil {
+        stack.append(current!.data); current = current?.next
+    }
+    current = lLPalindrome.head
+    while current != nil {
+        if stack.removeLast() == current!.data {
+            
+        } else {
+            return false
+        }
+        current = current?.next
+    }
+    
+    return true
+}
+
+var listPalindrome: LinkedList<String> = LinkedList<String>()
+listPalindrome.appendToTail(data: "a")
+listPalindrome.appendToTail(data: "b")
+listPalindrome.appendToTail(data: "c")
+listPalindrome.appendToTail(data: "b")
+listPalindrome.appendToTail(data: "a")
+
+var listNoPalidrome: LinkedList<String> = LinkedList<String>()
+listNoPalidrome.appendToTail(data: "a")
+listNoPalidrome.appendToTail(data: "b")
+listNoPalidrome.appendToTail(data: "c")
+palindrome(lLPalindrome: listPalindrome)
+palindrome(lLPalindrome: listNoPalidrome)
