@@ -236,3 +236,133 @@ listNoPalidrome.appendToTail(data: "b")
 listNoPalidrome.appendToTail(data: "c")
 palindrome(lLPalindrome: listPalindrome)
 palindrome(lLPalindrome: listNoPalidrome)
+
+class NodeL<T: Comparable> {
+    var data: T
+    var next: NodeL<T>?
+    
+    init(data: T) {
+        self.data = data
+    }
+}
+
+class LinkedList3rd<T: Comparable> {
+    var head: NodeL<T>?
+    var tail: NodeL<T>?
+    
+    func insert(data: T) {
+        let item: NodeL<T> = NodeL<T>(data: data)
+        
+        if head == nil {
+            head = item
+            tail = item
+        } else {
+            var current = head
+            item.next = head
+            head = item
+            while current?.next != nil {
+                current = current?.next
+            }
+            
+            tail = current
+        }
+    }
+    
+    func delete(data: T) -> Bool {
+        var current = head
+        var prev: NodeL<T>? = current
+        
+        if head == nil {
+            return false
+        } else {
+            if head!.data == data {
+                head = current?.next
+                current?.next = nil
+                return true
+            }
+            while current != nil {
+                if current!.data == data {
+                    if current?.next == nil {
+                        prev?.next = nil
+                        tail = prev
+                        return true
+                    }
+                    if current!.data == data {
+                        prev?.next = current?.next
+                        current?.next = nil
+                    }
+                    prev = current
+                    current = current?.next
+                }
+            }
+        }
+        return false
+    }
+    
+    func inserAfter(node: NodeL<T>?, data: T) -> Bool {
+        let nodeA: NodeL<T> = NodeL<T>(data: data)
+        var current = head
+        var pre: NodeL<T>? = current
+        if head == nil {
+            return false
+        } else {
+            if node == nil {
+                nodeA.next = head
+                head = nodeA
+                return true
+            }
+            while current != nil {
+                if current!.data == data {
+                    if current?.next == nil {
+                        current?.next = nodeA
+                        tail = nodeA
+                        return true
+                    } else {
+                        nodeA.next = current?.next
+                        current?.next = nodeA
+                        return true
+                    }
+                }
+                pre = current
+                current = current?.next
+            }
+            
+            return false
+        }
+    }
+}
+
+extension NodeL: CustomStringConvertible {
+    var description: String {
+        var desc = "\(self.data) "
+        return desc
+    }
+}
+
+extension LinkedList3rd: CustomStringConvertible {
+    var description: String {
+        var desc: String = "[ "
+        var current = head
+        while current != nil {
+            desc += "\(current!.data) "
+            current = current?.next
+        }
+        desc += "] [\(String(describing: self.tail?.data))]--> nil"
+        return desc
+    }
+}
+
+var ll3rd: LinkedList3rd<Int> = LinkedList3rd<Int>()
+
+ll3rd.insert(data: 1)
+ll3rd.insert(data: 2)
+ll3rd.insert(data: 3)
+
+print(ll3rd)
+
+//ll3rd.inserAfter(node: NodeL<Int>(data: 2), data: 4)
+//print(ll3rd)
+//
+//ll3rd.delete(data: 2)
+//print(ll3rd)
+
