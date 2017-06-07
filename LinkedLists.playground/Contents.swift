@@ -301,6 +301,32 @@ class LinkedList3rd<T: Comparable> {
     
     func inserAfter(node: T?, data: T) -> Bool {
     
+        let nodeA: NodeL<T> = NodeL<T>(data: data)
+        var current = head
+        var prev: NodeL<T>?
+        
+        if node == nil {
+            nodeA.next = head
+            head = nodeA
+            return true
+        } else {
+            while current != nil {
+                if current?.next == nil && current!.data == node! {
+                    current?.next = nodeA
+                    tail = nodeA
+                    return true
+                }
+                if current!.data == node! {
+                    nodeA.next = current?.next
+                    current?.next = nodeA
+                    return true
+                }
+                prev = current
+                current = current?.next
+            }
+        }
+        
+        return false
     }
 }
 
@@ -332,9 +358,13 @@ ll3rd.insert(data: 3)
 
 print(ll3rd)
 
-//ll3rd.inserAfter(node: NodeL<Int>(data: 2), data: 4)
-//print(ll3rd)
-//
+ll3rd.inserAfter(node: 2, data: 4)
+print(ll3rd)
+ll3rd.inserAfter(node: nil, data: 5)
+print(ll3rd)
+ll3rd.inserAfter(node: 1, data: 6)
+
+
 ll3rd.delete(data: 2)
 print(ll3rd)
 ll3rd.delete(data: nil)
