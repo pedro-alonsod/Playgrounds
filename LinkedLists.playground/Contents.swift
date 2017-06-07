@@ -249,6 +249,19 @@ class NodeL<T: Comparable> {
 class LinkedList3rd<T: Comparable> {
     var head: NodeL<T>?
     var tail: NodeL<T>?
+    var count: Int {
+        var c = 0
+        if head == nil {
+            return c
+        } else {
+            var current = head
+            while current != nil {
+                c += 1
+                current = current?.next
+            }
+            return c
+        }
+    }
     
     func insert(data: T) {
         let item: NodeL<T> = NodeL<T>(data: data)
@@ -328,6 +341,44 @@ class LinkedList3rd<T: Comparable> {
         
         return false
     }
+    
+    func mthToLast(m: Int) -> NodeL<T>? {
+        var idx = count - 1
+        guard head != nil else { return nil }
+        guard m < count else { return nil }
+        var current = head
+        while current != nil {
+            if idx == m {
+                return current
+            }
+            idx -= 1
+            current = current?.next
+        }
+        
+        return nil
+    }
+    
+    func cycles() -> Bool {
+        guard head != nil else { return false }
+        var slow = head
+        var fast = head?.next
+        
+        while slow != nil {
+            if slow === fast {
+                return true
+            }
+            
+            if fast == nil || fast?.next == nil {
+                return false
+            }
+            print(fast!.data)
+            print(slow!.data)
+            fast = fast?.next?.next
+            slow = slow?.next
+        }
+        
+        return false
+    }
 }
 
 extension NodeL: CustomStringConvertible {
@@ -355,6 +406,18 @@ var ll3rd: LinkedList3rd<Int> = LinkedList3rd<Int>()
 ll3rd.insert(data: 1)
 ll3rd.insert(data: 2)
 ll3rd.insert(data: 3)
+ll3rd.insert(data: 1)
+ll3rd.insert(data: 2)
+ll3rd.insert(data: 3)
+ll3rd.insert(data: 1)
+ll3rd.insert(data: 2)
+ll3rd.insert(data: 3)
+ll3rd.insert(data: 1)
+ll3rd.insert(data: 2)
+ll3rd.insert(data: 3)
+ll3rd.insert(data: 1)
+ll3rd.insert(data: 2)
+ll3rd.insert(data: 3)
 
 print(ll3rd)
 
@@ -369,4 +432,14 @@ ll3rd.delete(data: 2)
 print(ll3rd)
 ll3rd.delete(data: nil)
 print(ll3rd)
+ll3rd.count
+
+var check = ll3rd.mthToLast(m: 2)
+while check != nil {
+    print(check!)
+    check = check?.next
+}
+
+print("cycles")
+ll3rd.cycles()
 
