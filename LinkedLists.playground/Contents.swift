@@ -268,67 +268,39 @@ class LinkedList3rd<T: Comparable> {
         }
     }
     
-    func delete(data: T) -> Bool {
-        var current = head
-        var prev: NodeL<T>? = current
+    func delete(data: T?) -> Bool {
+        guard head != nil else { return false }
         
-        if head == nil {
-            return false
-        } else {
-            if head!.data == data {
-                head = current?.next
-                current?.next = nil
-                return true
-            }
-            while current != nil {
-                if current!.data == data {
-                    if current?.next == nil {
-                        prev?.next = nil
-                        tail = prev
-                        return true
-                    }
-                    if current!.data == data {
-                        prev?.next = current?.next
-                        current?.next = nil
-                    }
-                    prev = current
-                    current = current?.next
-                }
-            }
-        }
-        return false
-    }
-    
-    func inserAfter(node: NodeL<T>?, data: T) -> Bool {
-        let nodeA: NodeL<T> = NodeL<T>(data: data)
         var current = head
-        var pre: NodeL<T>? = current
-        if head == nil {
-            return false
+        var prev: NodeL<T>?
+        if data == nil {
+            head = current?.next
+            current?.next = nil
+            return true
         } else {
-            if node == nil {
-                nodeA.next = head
-                head = nodeA
-                return true
-            }
             while current != nil {
-                if current!.data == data {
-                    if current?.next == nil {
-                        current?.next = nodeA
-                        tail = nodeA
-                        return true
-                    } else {
-                        nodeA.next = current?.next
-                        current?.next = nodeA
-                        return true
-                    }
+                if current?.next == nil {
+                    prev?.next = nil
+                    tail = prev
+                    return true
                 }
-                pre = current
+                if current?.data == data! {
+                    prev?.next = current?.next
+                    current?.next = nil
+                    return true
+                }
+                
+                prev = current
                 current = current?.next
             }
             
             return false
         }
+        
+    }
+    
+    func inserAfter(node: T?, data: T) -> Bool {
+    
     }
 }
 
@@ -363,6 +335,8 @@ print(ll3rd)
 //ll3rd.inserAfter(node: NodeL<Int>(data: 2), data: 4)
 //print(ll3rd)
 //
-//ll3rd.delete(data: 2)
-//print(ll3rd)
+ll3rd.delete(data: 2)
+print(ll3rd)
+ll3rd.delete(data: nil)
+print(ll3rd)
 
