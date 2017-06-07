@@ -536,4 +536,74 @@ ar.enumerated().forEach({ offset,element in
         element * 1
     }
 })
-arr
+
+class TreeNodeBST<T: Comparable> {
+    var data: T
+    var left: TreeNodeBST<T>?
+    var right: TreeNodeBST<T>?
+    var parent: TreeNodeBST<T>?
+    
+    init(data: T) {
+        self.data = data
+    }
+}
+
+class BSTTree<T: Comparable> {
+    var root: TreeNodeBST<T>?
+    
+    func inserNode(data: T) {
+        let node = TreeNodeBST<T>(data: data)
+        var current = root
+        
+        if root == nil {
+            root = node
+            root?.left = nil
+            root?.right = nil
+        } else {
+            insert(node: root, data: data)
+        }
+    }
+    private func insert(node: TreeNodeBST<T>?, data: T) {
+        
+        if data < node!.data {
+            if node?.left != nil {
+                insert(node: node?.left, data: data)
+            } else {
+                var new = TreeNodeBST<T>(data: data)
+                new.left = nil
+                new.right = nil
+                new.parent = node
+                node?.left = new
+            }
+        } else if data > node!.data {
+            if node?.right != nil {
+                insert(node: node?.right, data: data)
+            } else {
+                let new = TreeNodeBST<T>(data: data)
+                new.left = nil
+                new.right = nil
+                new.parent = node
+                node?.right = new
+            }
+        }
+    }
+}
+
+extension TreeNodeBST: CustomStringConvertible {
+    var description: String {
+        let desc = "((\(String(describing: left)))<--\(data)-->\(String(describing: right)){P:\(String(describing: parent))}"
+        return desc
+    }
+}
+
+extension BSTTree: CustomStringConvertible {
+    var description: String {
+        return (root?.description)!
+    }
+}
+
+var bstreetest: BSTTree<Int> = BSTTree<Int>()
+bstreetest.inserNode(data: 5)
+bstreetest.inserNode(data: 3)
+bstreetest.inserNode(data: 6)
+print(bstreetest)
