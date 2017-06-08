@@ -325,3 +325,26 @@ func removeChars(str: String, rem: String) -> String {
 var battle = "Battle of the vowels: Hawaii vs Grozny"
 var rem = "aeiou"
 removeChars(str: battle, rem: rem)
+
+func reverse1(str: String) -> String {
+    var out: [String] = str.components(separatedBy: " ")
+    
+    return String(describing: Array(out.reversed()))
+}
+var s1 = "Do or do not, there is no try."
+reverse1(str: s1)
+
+func reverse2(str: String) -> String {
+    var out: [String] = str.components(separatedBy: " ")
+    var s = ""
+    
+    for elem in stride(from: out.count - 1 , to: 0, by: -1) {
+        s += out[elem] + " "
+    }
+    
+    return s
+}
+
+reverse2(str: s1)
+
+
