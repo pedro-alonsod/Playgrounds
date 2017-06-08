@@ -593,6 +593,29 @@ class BSTTree<T: Comparable> {
             }
         }
     }
+    
+    func getHeight(node: TreeNodeBST<T>?) -> Int {
+        if node == nil {
+            return 0
+        }
+        return 1 + max(getHeight(node: node?.left), getHeight(node: node?.right))
+    }
+    
+    func preOrder() {
+        if root == nil {
+            return
+        } else {
+            preOrderTraversal(root: root)
+        }
+    }
+    
+    private func preOrderTraversal(root: TreeNodeBST<T>?) {
+        if root != nil {
+            print("\(root!.data)")
+            preOrderTraversal(root: root?.left)
+            preOrderTraversal(root: root?.right)
+        }
+    }
 }
 
 extension TreeNodeBST: CustomStringConvertible {
@@ -633,3 +656,6 @@ ttest3rd.inserNode(data: 9)
 ttest3rd.inserNode(data: 4)
 ttest3rd.inserNode(data: 7)
 print(ttest3rd)
+
+ttest3rd.getHeight(node: ttest3rd.root)
+ttest3rd.preOrder()
