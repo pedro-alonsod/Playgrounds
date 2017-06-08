@@ -551,6 +551,10 @@ class TreeNodeBST<T: Comparable> {
 class BSTTree<T: Comparable> {
     var root: TreeNodeBST<T>?
     
+    init() {
+        self.root = nil
+    }
+    
     func inserNode(data: T) {
         let node = TreeNodeBST<T>(data: data)
         var current = root
@@ -573,6 +577,7 @@ class BSTTree<T: Comparable> {
                 new.left = nil
                 new.right = nil
                 new.parent = node
+                print(new.parent)
                 node?.left = new
             }
         } else if data > node!.data {
@@ -583,6 +588,7 @@ class BSTTree<T: Comparable> {
                 new.left = nil
                 new.right = nil
                 new.parent = node
+                print(new.parent)
                 node?.right = new
             }
         }
@@ -591,19 +597,39 @@ class BSTTree<T: Comparable> {
 
 extension TreeNodeBST: CustomStringConvertible {
     var description: String {
-        let desc = "((\(String(describing: left)))<--\(data)-->\(String(describing: right)){P:\(String(describing: parent))}"
+        var desc = ""
+        if let left = left {
+            desc += "(\(left.description))L<--"
+        }
+        if let parent = self.parent {
+            desc += "(\(self.data))(P:\(parent.data))"
+        } else {
+            desc += "(\(self.data))"
+        }
+        if let right = right {
+            desc += "-->R(\(right.description))"
+        }
+        
         return desc
     }
 }
 
 extension BSTTree: CustomStringConvertible {
     var description: String {
-        return (root?.description)!
+        if root == nil {
+            return ""
+        } else {
+            return (root?.description)!
+        }
+        
     }
 }
 
-var bstreetest: BSTTree<Int> = BSTTree<Int>()
-bstreetest.inserNode(data: 5)
-bstreetest.inserNode(data: 3)
-bstreetest.inserNode(data: 6)
-print(bstreetest)
+var ttest3rd = BSTTree<Int>()
+print(ttest3rd)
+ttest3rd.inserNode(data: 6)
+ttest3rd.inserNode(data: 3)
+ttest3rd.inserNode(data: 9)
+ttest3rd.inserNode(data: 4)
+ttest3rd.inserNode(data: 7)
+print(ttest3rd)
