@@ -284,3 +284,44 @@ func dfib(n: Int) -> Int {
 }
 
 dfib(n: 4)
+
+func findFirst(str: String) -> Character? {
+    var count: [Character:Int] = [:]
+    
+    for elem in str.characters {
+        if count[elem] == nil {
+            count[elem] = 1
+        } else {
+            count[elem]! += 1
+        }
+    }
+    
+    for elem in str.characters {
+        if count[elem]! == 1 {
+            return elem
+        }
+    }
+    
+    return nil
+}
+
+var tot = "total"
+findFirst(str: tot)
+var teeter = "teeter"
+findFirst(str: teeter)
+
+func removeChars(str: String, rem: String) -> String {
+    var out = ""
+    for elem in str.characters {
+        if !rem.contains(String(elem)) {
+            out.append(elem)
+        } else {
+            
+        }
+    }
+    return out
+}
+
+var battle = "Battle of the vowels: Hawaii vs Grozny"
+var rem = "aeiou"
+removeChars(str: battle, rem: rem)
