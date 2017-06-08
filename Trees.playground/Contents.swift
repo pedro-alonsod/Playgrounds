@@ -616,6 +616,21 @@ class BSTTree<T: Comparable> {
             preOrderTraversal(root: root?.right)
         }
     }
+    
+    func preOrderNoRecursion() {
+        var s = StackArray<TreeNodeBST<T>>()
+        s.push(data: root!)
+        while !s.stack.isEmpty {
+            var current = s.pop()
+            print(current!.data)
+            if let right = current?.right {
+                s.push(data: right)
+            }
+            if let left = current?.left {
+                s.push(data: left)
+            }
+        }
+    }
 }
 
 extension TreeNodeBST: CustomStringConvertible {
@@ -659,3 +674,5 @@ print(ttest3rd)
 
 ttest3rd.getHeight(node: ttest3rd.root)
 ttest3rd.preOrder()
+print("PreorderNoRec stack")
+ttest3rd.preOrderNoRecursion()
