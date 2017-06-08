@@ -631,6 +631,23 @@ class BSTTree<T: Comparable> {
             }
         }
     }
+    
+    func LCA(data: T, data2: T) -> TreeNodeBST<T>? {
+        var current = root
+        while current != nil {
+            //print("LCA: \(current!.data)")
+            if current!.data > data && current!.data > data2 {
+                current = current?.left
+            } else if current!.data < data && current!.data < data2 {
+                current = current?.right
+            } else {
+              //  print("LCA: \(current!.data)")
+                return current
+            }
+        }
+        
+        return nil
+    }
 }
 
 extension TreeNodeBST: CustomStringConvertible {
@@ -670,9 +687,14 @@ ttest3rd.inserNode(data: 3)
 ttest3rd.inserNode(data: 9)
 ttest3rd.inserNode(data: 4)
 ttest3rd.inserNode(data: 7)
+ttest3rd.inserNode(data: 2)
+ttest3rd.inserNode(data: 10)
 print(ttest3rd)
 
 ttest3rd.getHeight(node: ttest3rd.root)
 ttest3rd.preOrder()
 print("PreorderNoRec stack")
 ttest3rd.preOrderNoRecursion()
+print("LCA:")
+ttest3rd.LCA(data: 3, data2: 10)!.data
+ttest3rd.LCA(data: 2, data2: 4)!.data
