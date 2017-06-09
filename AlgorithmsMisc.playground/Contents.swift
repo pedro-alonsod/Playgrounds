@@ -1,4 +1,6 @@
 import UIKit
+import PlaygroundSupport
+
 
 var str: String = "lslsls lslsls lslsl".replacingOccurrences(of: " ", with: "%20")
 str.characters.indices
@@ -347,4 +349,29 @@ func reverse2(str: String) -> String {
 
 reverse2(str: s1)
 
+var a = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+func binarySearchWrapper(a: [Int], t: Int) -> (Bool,Int) {
+    var tuple: (Bool, Int) = (false, -1)
+    tuple = binarySearch(a: a, t: t, tup: &tuple)
+    return tuple
+}
+
+private func binarySearch(a:[Int], t: Int, tup: inout (Bool, Int)) -> (Bool, Int) {
+    
+    var mid = a.count / 2
+    print(a.count)
+    if a[mid] == t {
+        tup = (true, a[mid])
+    } else if a[mid] < t && a.count > 1 {
+        binarySearch(a: Array(a[mid..<a.count]), t: t, tup: &tup)
+    } else if a[mid] > t && a.count > 1 {
+        binarySearch(a: Array(a[0..<mid]), t: t, tup: &tup)
+    } else {
+        tup = (false, -15)
+    }
+    
+    return tup
+}
+
+binarySearchWrapper(a: a, t: 30)
 
