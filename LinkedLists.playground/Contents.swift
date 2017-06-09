@@ -442,4 +442,49 @@ while check != nil {
 
 print("cycles")
 ll3rd.cycles()
+print("DSA Book")
+class NodeLL<T: Comparable> {
+    var value: T
+    var next: NodeLL<T>?
+    
+    init(value: T) {
+        self.value = value
+    }
+}
+
+class LList<T: Comparable> {
+    var head: NodeLL<T>?
+    var tail: NodeLL<T>?
+    
+    func add(value: T) {
+        let node = NodeLL<T>(value: value)
+        if head == nil {
+            head = node
+            tail = node
+        } else {
+            tail?.next = node
+            tail = node
+        }
+    }
+    
+    func contains(value: T) -> Bool {
+        var node = head
+        
+        while node != nil && node!.value != value {
+            node = node?.next
+        }
+        if node == nil {
+            return false
+        }
+        return true
+    }
+}
+
+var bookDSA: LList<Int> = LList<Int>()
+bookDSA.add(value: 1)
+bookDSA.add(value: 2)
+bookDSA.add(value: 3)
+print(bookDSA)
+
+bookDSA.contains(value: 3)
 
