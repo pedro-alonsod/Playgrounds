@@ -493,7 +493,7 @@ extension LList: CustomStringConvertible {
         var cur = head
         while cur != nil {
 //            print("\(cur!.value)-> "
-            desc += "\(cur!.value)-> "
+            desc += "\(cur!.value)->"
             cur = cur?.next
         }
         desc += "nil]"
