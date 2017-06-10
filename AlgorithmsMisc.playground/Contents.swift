@@ -28,7 +28,7 @@ func pperm(str: String) -> Bool {
     return odd % 2 > 1
 }
 
-pperm(str: "taco cat")
+pperm(str: "taco cato")
 
 func isUnique(str: String) -> Bool {
     var unique: [Character:Int] = [:]
