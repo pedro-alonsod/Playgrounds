@@ -480,6 +480,28 @@ class LList<T: Comparable> {
     }
 }
 
+extension NodeLL:CustomStringConvertible {
+    var description: String {
+        var desc = "[ \(value)"
+        return desc
+    }
+}
+
+extension LList: CustomStringConvertible {
+    var description: String {
+        var desc = "[ "
+        var cur = head
+        while cur != nil {
+//            print("\(cur!.value)-> "
+            desc += "\(cur!.value)-> "
+            cur = cur?.next
+        }
+        desc += "nil]"
+        return desc
+        
+    }
+}
+
 var bookDSA: LList<Int> = LList<Int>()
 bookDSA.add(value: 1)
 bookDSA.add(value: 2)
