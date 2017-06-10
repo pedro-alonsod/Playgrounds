@@ -1,4 +1,6 @@
 import UIKit
+import PlaygroundSupport
+
 
 var str: String = "lslsls lslsls lslsl".replacingOccurrences(of: " ", with: "%20")
 str.characters.indices
@@ -284,3 +286,95 @@ func dfib(n: Int) -> Int {
 }
 
 dfib(n: 4)
+<<<<<<< HEAD
+=======
+
+func findFirst(str: String) -> Character? {
+    var count: [Character:Int] = [:]
+    
+    for elem in str.characters {
+        if count[elem] == nil {
+            count[elem] = 1
+        } else {
+            count[elem]! += 1
+        }
+    }
+    
+    for elem in str.characters {
+        if count[elem]! == 1 {
+            return elem
+        }
+    }
+    
+    return nil
+}
+
+var tot = "total"
+findFirst(str: tot)
+var teeter = "teeter"
+findFirst(str: teeter)
+
+func removeChars(str: String, rem: String) -> String {
+    var out = ""
+    for elem in str.characters {
+        if !rem.contains(String(elem)) {
+            out.append(elem)
+        } else {
+            
+        }
+    }
+    return out
+}
+
+var battle = "Battle of the vowels: Hawaii vs Grozny"
+var rem = "aeiou"
+removeChars(str: battle, rem: rem)
+
+func reverse1(str: String) -> String {
+    var out: [String] = str.components(separatedBy: " ")
+    
+    return String(describing: Array(out.reversed()))
+}
+var s1 = "Do or do not, there is no try."
+reverse1(str: s1)
+
+func reverse2(str: String) -> String {
+    var out: [String] = str.components(separatedBy: " ")
+    var s = ""
+    
+    for elem in stride(from: out.count - 1 , to: 0, by: -1) {
+        s += out[elem] + " "
+    }
+    
+    return s
+}
+
+reverse2(str: s1)
+
+var a = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+func binarySearchWrapper(a: [Int], t: Int) -> (Bool,Int) {
+    var tuple: (Bool, Int) = (false, -1)
+    tuple = binarySearch(a: a, t: t, tup: &tuple)
+    return tuple
+}
+
+private func binarySearch(a:[Int], t: Int, tup: inout (Bool, Int)) -> (Bool, Int) {
+    
+    var mid = a.count / 2
+    print(a.count)
+    if a[mid] == t {
+        tup = (true, a[mid])
+    } else if a[mid] < t && a.count > 1 {
+        binarySearch(a: Array(a[mid..<a.count]), t: t, tup: &tup)
+    } else if a[mid] > t && a.count > 1 {
+        binarySearch(a: Array(a[0..<mid]), t: t, tup: &tup)
+    } else {
+        tup = (false, -15)
+    }
+    
+    return tup
+}
+
+binarySearchWrapper(a: a, t: 30)
+
+>>>>>>> 6b0f90a174a53d5669dc4f9dc80dc4e275c9f7d3
