@@ -478,8 +478,37 @@ class LList<T: Comparable> {
         }
         return true
     }
+    
+    func remove(value: T) -> Bool {
+        if head == nil {
+            return false
+        }
+        
+        var node = head
+        if node!.value == value {
+            if head === tail {
+                head = nil
+                tail = nil
+            } else {
+                head = head?.next
+            }
+            return true
+        }
+        while node?.next != nil && node?.next!.value != value {
+            node = node?.next
+        }
+        
+        if node?.next != nil {
+            if node?.next === tail {
+                tail = node
+        }
+            node?.next = node?.next?.next
+            return true
+    }
+        return false
+    
+    }
 }
-
 var bookDSA: LList<Int> = LList<Int>()
 bookDSA.add(value: 1)
 bookDSA.add(value: 2)
