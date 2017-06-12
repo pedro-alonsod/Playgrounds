@@ -698,3 +698,105 @@ ttest3rd.preOrderNoRecursion()
 print("LCA:")
 ttest3rd.LCA(data: 3, data2: 10)!.data
 ttest3rd.LCA(data: 2, data2: 4)!.data
+
+class NodeDSA<T: Comparable> {
+    var value: T
+    var left: NodeDSA?
+    var right: NodeDSA?
+    
+    init(value: T) {
+        self.value = value
+    }
+}
+
+class TreeDSA<T: Comparable> {
+    var root: NodeDSA<T>?
+    var count = 0
+    
+    func insert(value: T) {
+        var node = NodeDSA<T>(value: value)
+        if root == nil {
+            root = node
+            count += 1
+        } else {
+            insertNode(cur: root, value: value)
+        }
+    }
+    
+    private func insertNode(cur: NodeDSA<T>?, value: T) {
+        var node = NodeDSA<T>(value: value)
+        
+        if value < cur!.value {
+            if cur?.left == nil {
+                cur?.left = node
+            } else {
+                insertNode(cur: cur?.left, value: value)
+            }
+        } else {
+            if cur?.right == nil {
+                cur?.right = node
+            } else {
+                insertNode(cur: cur?.right, value: value)
+            }
+        }
+        count += 1
+    }
+    
+    func contains(cur: NodeDSA<T>?, val: T) -> Bool {
+        if cur == nil {
+            return false
+        }
+        if cur!.value == val {
+            return true
+        } else if val < cur!.value {
+            return contains(cur: cur?.left, val: val)
+        } else {
+            return contains(cur: cur?.right, val: val)
+        }
+    }
+    
+    func remove(value: T) -> Bool {
+        var nodeToRemove = findNode(value: value)
+        
+        if nodeToRemove == nil {
+            return false
+        }
+        var parent = findParent(value: value)
+        if count == 1 {
+            root = nil
+        } else if nodeToRemove?.left == nil && nodeToRemove?.right == nil {
+            if nodeToRemove!.value < parent!.value {
+                parent?.left = nil
+            } else {
+                parent?.right = nil
+            }
+        } else if nodeToRemove?. left != nil && nodeToRemove?.right == nil {
+            if nodeToRemove!.value < parent!.value {
+                parent?.left = nodeToRemove
+            } else {
+                parent?.right = nodeToRemove
+            }
+        } else {
+            var largestValue = nodeToRemove?.left
+            
+            while largestValue?.right != nil {
+                largestValue = LargestValue?.right
+            }
+            
+            findParent(value: largestValue!.value).right = nil
+            nodeToRemove!.value = largestValue!.value
+        }
+        count += 1
+        return true
+    }
+    
+    func findParent(value: T) -> NodeDSA<T> {
+        if value == root!.value {
+            return nil
+        }
+        
+        if value < root!.value {
+            
+        }
+    }
+}

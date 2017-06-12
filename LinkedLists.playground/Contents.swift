@@ -508,6 +508,31 @@ class LList<T: Comparable> {
         return false
     
     }
+    
+    func traverse() {
+        var node = head
+        while node != nil {
+            print(node!.value)
+            node = node?.next
+        }
+    }
+    
+    func reversedTraversal() {
+        var cur : NodeLL<T>?
+        if tail != nil {
+            var prev: NodeLL<T>?
+            cur = tail
+            while cur!.value != head!.value {
+                prev = head
+                while prev!.next!.value != cur!.value {
+                    prev = prev?.next
+                }
+                print(cur!.value)
+                cur = prev
+            }
+             print(cur!.value)
+        }
+    }
 }
 
 extension NodeLL:CustomStringConvertible {
@@ -540,3 +565,8 @@ print(bookDSA)
 
 bookDSA.contains(value: 3)
 
+bookDSA.remove(value: 2)
+print(bookDSA)
+
+bookDSA.traverse()
+bookDSA.reversedTraversal()
