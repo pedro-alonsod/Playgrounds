@@ -509,8 +509,6 @@ class LList<T: Comparable> {
     
     }
 }
-<<<<<<< HEAD
-=======
 
 extension NodeLL:CustomStringConvertible {
     var description: String {
@@ -534,7 +532,6 @@ extension LList: CustomStringConvertible {
     }
 }
 
->>>>>>> 3811730daa1a1e648138464e61595e1b500ff489
 var bookDSA: LList<Int> = LList<Int>()
 bookDSA.add(value: 1)
 bookDSA.add(value: 2)
