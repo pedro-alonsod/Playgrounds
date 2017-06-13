@@ -110,3 +110,4 @@ sa.pop()
 sa.push(data: 4)
 sa.pop()
 print(sa.stack)
+

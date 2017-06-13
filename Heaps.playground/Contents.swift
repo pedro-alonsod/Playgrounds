@@ -152,9 +152,11 @@ class MinHeap {
             if heap[left] < heap[right] {
                 swap(&heap[left], &heap[right])
                 index = left
+//                heap[count] = -1
             } else {
                 swap(&heap[right], &heap[index])
                 index = right
+//                heap[count] = -1
             }
         }
         return true
@@ -174,5 +176,5 @@ minHeap.Add(value: 12)
 minHeap.Add(value: 7)
 minHeap.Add(value: 1)
 
-minHeap.delete(value: 3)
+minHeap.delete(value: 1)
 print(minHeap)

@@ -286,8 +286,7 @@ func dfib(n: Int) -> Int {
 }
 
 dfib(n: 4)
-<<<<<<< HEAD
-=======
+
 
 func findFirst(str: String) -> Character? {
     var count: [Character:Int] = [:]
@@ -376,5 +375,8 @@ private func binarySearch(a:[Int], t: Int, tup: inout (Bool, Int)) -> (Bool, Int
 }
 
 binarySearchWrapper(a: a, t: 30)
+var s: Set<Int> = [1, 2, 3]
+var b: Set<Int> = [6, 2, 9]
+s.union(b)
+s.intersection(b)
 
->>>>>>> 6b0f90a174a53d5669dc4f9dc80dc4e275c9f7d3
