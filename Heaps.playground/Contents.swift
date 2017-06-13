@@ -105,4 +105,74 @@ public struct Heap<T: Comparable> {
 }
 
 var heapTest: Heap<Int> = Heap<Int>(capacity: 10, heapType: 1)
-heapTest.insert(data: 10)
+//heapTest.insert(data: 10)
+//Wrong
+
+class MinHeap {
+    var count = 0
+    var heap = [Int](repeating: -1, count: 10)
+    
+    func Add(value: Int) {
+        heap[count] = value
+        count += 1
+        minHeapify()
+    }
+    
+    func minHeapify() {
+        var i = count - 1
+        while i > 0 && heap[i] < heap[(i-1)/2] {
+            swap(&heap[i], &heap[(i-1)/2])
+            i = (i - 1)/2
+        }
+    }
+    
+    func contains(value: Int) -> Int {
+        var i = 0
+        while i < count && heap[i] != value {
+            i += 1
+        }
+        if i < count {
+            return i
+        } else {
+            return -1
+        }
+    }
+    
+    func delete(value: Int) -> Bool {
+        var index = contains(value: value)
+        if index < 0 {
+            return false
+        }
+        count -= 1
+        heap[index] = heap[count]
+        
+        var left = (2*index) + 1
+        var right = (2*index) + 2
+        while left < count && heap[index] > heap[left] || heap[index] > heap[right] {
+            if heap[left] < heap[right] {
+                swap(&heap[left], &heap[right])
+                index = left
+            } else {
+                swap(&heap[right], &heap[index])
+                index = right
+            }
+        }
+        return true
+    }
+}
+
+extension MinHeap: CustomStringConvertible {
+    var description: String {
+        return "\(self.heap):[\(self.count)]"
+    }
+}
+
+var minHeap = MinHeap()
+minHeap.Add(value: 3)
+minHeap.Add(value: 9)
+minHeap.Add(value: 12)
+minHeap.Add(value: 7)
+minHeap.Add(value: 1)
+
+minHeap.delete(value: 3)
+print(minHeap)

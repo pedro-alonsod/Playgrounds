@@ -828,6 +828,66 @@ class TreeDSA<T: Comparable> {
         count += 1
         return true
     }
+    
+    func findMin(cur: NodeDSA<T>?) -> T {
+        if cur?.left == nil {
+            return cur!.value
+        }
+        return findMin(cur: cur?.left)
+    }
+    
+    func findMax(cur: NodeDSA<T>?) -> T {
+        if cur?.right == nil {
+            return cur!.value
+        }
+        return findMax(cur: cur?.right)
+    }
+    
+    // Travesals
+    func preOrder(cur: NodeDSA<T>?) {
+        if cur != nil {
+            print(cur!.value)
+            preOrder(cur: cur?.left)
+            preOrder(cur: cur?.right)
+        }
+    }
+    
+    func postOrder(cur: NodeDSA<T>?) {
+        if cur != nil {
+            postOrder(cur: cur?.left)
+            postOrder(cur: cur?.right)
+            print(cur!.value)
+        }
+    }
+    
+    func inOrder(cur: NodeDSA<T>?) {
+        if cur != nil {
+            inOrder(cur: cur?.left)
+            print(cur!.value)
+            inOrder(cur: cur?.right)
+        }
+    }
+    
+    func BFS(cur: NodeDSA<T>?) {
+        var q = QueueArray<NodeDSA<T>?>()
+        var node = cur
+        
+        while node != nil {
+            print(node!.value)
+            if node?.left != nil {
+                q.push(data: node?.left)
+            }
+            if node?.right != nil {
+                q.push(data: node?.right)
+            }
+            
+            if !q.queue.isEmpty {
+                node = q.pop()!
+            } else {
+                node = nil
+            }
+        }
+    }
 }
 
 var treeDSA = TreeDSA<Int>()
@@ -842,6 +902,17 @@ print(treeDSA)
 treeDSA.contains(cur: treeDSA.root, val: 3)
 treeDSA.remove(value: 3)
 print(treeDSA)
+
+treeDSA.findMax(cur: treeDSA.root)
+treeDSA.findMin(cur: treeDSA.root)
+print("PRE")
+treeDSA.preOrder(cur: treeDSA.root)
+print("POST")
+treeDSA.postOrder(cur: treeDSA.root)
+print("IN")
+treeDSA.inOrder(cur: treeDSA.root)
+print("BFS")
+treeDSA.BFS(cur: treeDSA.root)
 
 extension NodeDSA: CustomStringConvertible {
     var description: String {
