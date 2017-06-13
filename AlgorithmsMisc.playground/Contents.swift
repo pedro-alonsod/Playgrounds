@@ -427,4 +427,37 @@ func merge2(left: [Int], right: [Int]) -> [Int] {
 //mergeSortDSA(a: b) // error set are unordered can be this
 mergeSortDSA(a: a)
 
+func isPrime(n: Int) -> Bool {
+    
+    for i in 2...n {
+        for j in 1...Int(sqrt(Double(n))) {
+            if (i * j) == n {
+                return false
+            }
+        }
+    }
+    return true
+}
+isPrime(n: 11)
 
+func toBinary(n: inout Int) -> [Int] {
+    var out: [Int] = []
+    while n > 0 {
+        out.append(n%2)
+        n /= 2
+    }
+    
+    return out.reversed()
+}
+var bin = String(100, radix: 2)
+var n = 100
+toBinary(n: &n)
+
+func GCD(n: Int, m: Int) -> Int {
+    if n == 0 {
+        return m
+    }
+    return GCD(n: n, m: m % n)
+}
+
+GCD(n: 10, m: 31)
