@@ -350,7 +350,7 @@ func reverse2(str: String) -> String {
 
 reverse2(str: s1)
 
-var a = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+var a = [1, 2, 3, 34, 35, 36, 35, 35, 49, 15, 20, 50, 4, 5, 6, 7, 8, 9]
 func binarySearchWrapper(a: [Int], t: Int) -> (Bool,Int) {
     var tuple: (Bool, Int) = (false, -1)
     tuple = binarySearch(a: a, t: t, tup: &tuple)
@@ -379,4 +379,52 @@ var s: Set<Int> = [1, 2, 3]
 var b: Set<Int> = [6, 2, 9]
 s.union(b)
 s.intersection(b)
+
+
+func mergeSortDSA(a: [Int]) -> [Int] {
+    if a.count == 1 {
+        return a
+    }
+    var left = Array(a[0..<a.count/2])
+    var right = Array(a[a.count/2..<a.count])
+    return merge2(left: mergeSortDSA(a: left), right: mergeSortDSA(a: right))
+}
+
+func merge2(left: [Int], right: [Int]) -> [Int] {
+    var leftIdx = 0
+    var rightIdx = 0
+    var out = [Int]()
+    
+    while leftIdx < left.count && rightIdx < right.count {
+        
+        if left[leftIdx] < right[rightIdx] {
+            out.append(left[leftIdx])
+            leftIdx += 1
+        } else if left[leftIdx] > right[rightIdx] {
+            out.append(right[rightIdx])
+            rightIdx += 1
+        } else {
+            out.append(left[leftIdx])
+            leftIdx += 1
+            out.append(right[rightIdx])
+            rightIdx += 1
+        }
+    }
+    
+    while leftIdx < left.count {
+        out.append(left[leftIdx])
+        leftIdx += 1
+    }
+    
+    while rightIdx < right.count {
+        out.append(right[rightIdx])
+        rightIdx += 1
+    }
+    
+    return out
+}
+
+//mergeSortDSA(a: b) // error set are unordered can be this
+mergeSortDSA(a: a)
+
 
