@@ -755,13 +755,48 @@ class TreeDSA<T: Comparable> {
         }
     }
     
+    private func findParent(value: T, cur: NodeDSA<T>?) -> NodeDSA<T>? {
+        if value == root!.value {
+            return nil
+        }
+        if value < cur!.value {
+            if cur?.left == nil {
+                return nil
+            } else if cur!.left!.value == value {
+                return cur
+            } else {
+                return findParent(value: value, cur: cur?.left)
+            }
+        } else {
+            if cur?.right == nil {
+                return nil
+            } else if cur?.right!.value == value {
+                return cur
+            } else {
+                return findParent(value: value, cur: cur?.right)
+            }
+        }
+    }
+    
+    private func findNode(cur: NodeDSA<T>?, value: T) -> NodeDSA<T>? {
+        if root == nil {
+            return nil
+        }
+        if cur!.value == value {
+            return cur
+        } else if value < cur!.value {
+            return findNode(cur: cur?.left, value: value)
+        } else {
+            return findNode(cur: cur?.right, value: value)
+         }
+    }
+    
     func remove(value: T) -> Bool {
-        var nodeToRemove = findNode(value: value)
-        
+        var nodeToRemove = findNode(cur: root, value: value)
         if nodeToRemove == nil {
             return false
         }
-        var parent = findParent(value: value)
+        var parent = findParent(value: value, cur: root)
         if count == 1 {
             root = nil
         } else if nodeToRemove?.left == nil && nodeToRemove?.right == nil {
@@ -770,33 +805,68 @@ class TreeDSA<T: Comparable> {
             } else {
                 parent?.right = nil
             }
-        } else if nodeToRemove?. left != nil && nodeToRemove?.right == nil {
+        } else if nodeToRemove?.left == nil && nodeToRemove?.right != nil {
             if nodeToRemove!.value < parent!.value {
-                parent?.left = nodeToRemove
+                parent?.left = nodeToRemove?.right
             } else {
-                parent?.right = nodeToRemove
+                parent?.right = nodeToRemove?.right
+            }
+        } else if nodeToRemove?.left != nil && nodeToRemove?.right != nil {
+            if nodeToRemove!.value < parent!.value {
+                parent?.left = nodeToRemove?.left
+            } else {
+                parent?.right = nodeToRemove?.left
             }
         } else {
             var largestValue = nodeToRemove?.left
-            
             while largestValue?.right != nil {
-                largestValue = LargestValue?.right
+                largestValue = largestValue?.right
             }
-            
-            findParent(value: largestValue!.value).right = nil
+            findParent(value: largestValue!.value, cur: largestValue)?.right = nil
             nodeToRemove!.value = largestValue!.value
         }
         count += 1
         return true
     }
-    
-    func findParent(value: T) -> NodeDSA<T> {
-        if value == root!.value {
-            return nil
+}
+
+var treeDSA = TreeDSA<Int>()
+treeDSA.insert(value: 6)
+treeDSA.insert(value: 10)
+treeDSA.insert(value: 5)
+treeDSA.insert(value: 3)
+treeDSA.insert(value: 7)
+
+print(treeDSA)
+
+treeDSA.contains(cur: treeDSA.root, val: 3)
+treeDSA.remove(value: 3)
+print(treeDSA)
+
+extension NodeDSA: CustomStringConvertible {
+    var description: String {
+        var desc = ""
+        if let left = self.left {
+            desc += "(\(left.description))L<--"
         }
-        
-        if value < root!.value {
-            
+        desc += "(\(self.value))"
+        if let right = self.right {
+            desc += "-->R(\(right.description))"
         }
+        return desc
     }
 }
+
+extension TreeDSA: CustomStringConvertible {
+    var description: String {
+        var desc = ""
+        
+        if  root == nil {
+            desc += "[nil]"
+        } else {
+            desc += root!.description
+        }
+        return desc
+    }
+}
+
