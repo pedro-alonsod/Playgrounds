@@ -115,6 +115,8 @@ graph["jonny"] = []
 var q: Queue = Queue()
 q.enqueue(name: graph["you"]!)
 
+//need a funtion to enqueue them one by one not now but i need it
+print(q.queue)
 //while !q.queue.isEmpty {
 //    var person = q.dequeu()
 //    if person.contains("peggy") {
@@ -137,5 +139,3 @@ q.enqueue(name: graph["you"]!)
 //else:
 //search_queue += graph[person] searched.append(person)
 //return False
-
-
