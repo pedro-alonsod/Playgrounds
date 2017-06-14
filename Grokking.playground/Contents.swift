@@ -173,6 +173,9 @@ func LL(L: String, N: String) -> Bool {
     var dic: [Character:Int] = [:]
     
     for elem in N.characters {
+        if elem == " " {
+            continue
+        }
         if dic[elem] == nil {
             dic[elem] = 1
             print(dic)
@@ -180,9 +183,11 @@ func LL(L: String, N: String) -> Bool {
             dic[elem]! += 1
         }
     }
-    
+    print(dic)
     for letter in L.characters {
-    
+        if letter == " " {
+            continue
+        }
         print(letter)
         if dic[letter] == nil {
             print(dic.filter { $0.1 > 0 })
@@ -192,9 +197,9 @@ func LL(L: String, N: String) -> Bool {
         }
     }
     print(dic.filter { $0.1 > 0 })
-    return ((dic.filter { $0.1 == 0 }).count == 0) ? false:true
+    return ((dic.filter { $0.1 == 0 }).count <= 0) ? false:true
 }
 
-var N = "ppd"
-var L = "ppe"
+var N = "ppd  "
+var L = "pp  "
 LL(L: L, N: N)
