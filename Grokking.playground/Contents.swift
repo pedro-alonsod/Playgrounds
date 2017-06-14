@@ -81,16 +81,26 @@ func countRecursive(a: inout [Int]) -> Int {
 
 var nB = [1, 2, 3, 4, 5]
 
+func maxRecursive(a: inout [Int]) -> Int {
+    if a.count <= 2 {
+        return max(a[0], a[1])
+    }
+    return max(a.removeFirst(), maxRecursive(a: &a))
+}
+var aM: [Int] = [3, 4, 5, 6, 7, 8, 10, 11, 58, 39, 459, 382, 483, 2929, 8383]
+
+maxRecursive(a: &aM)
+
 countRecursive(a: &nB)
 
 func quickSort(a: inout [Int]) -> [Int] {
     if a.count < 2 {
         return a
     } else {
-        let pivot = a[0]
+        let pivot = a[a.count/2]
         var lesser = a.filter { $0 < pivot }
         var greater = a.filter { $0 > pivot }
-        
+        print(pivot)
         return quickSort(a: &lesser) + Array([pivot]) + quickSort(a: &greater)
     }
 }
@@ -98,6 +108,7 @@ func quickSort(a: inout [Int]) -> [Int] {
 var qS = [4, 6, 8, 10, 66, 40, 3, 1, 2]
 
 quickSort(a: &qS)
+
 
 //hash tables
 var hashT: [String:Int] = ["1":2,"2":1]
@@ -110,6 +121,12 @@ graph["anuj"] = []
 graph["peggy"] = []
 graph["thom"] = []
 graph["jonny"] = []
+
+//var graph2: [[String]:Int] // cant no hashable
+//var garph3: Set<(String, String, Int)> = [] // cant not hashable
+var bugsDict = [String : [String : [String : Int]]] () //this is doable
+bugsDict["ladybug"]?["spotted"]?["red"] // Prints 1 // remember otionals need to unwrapped them
+
 
 //BFS queue
 var q: Queue = Queue()
@@ -139,3 +156,45 @@ print(q.queue)
 //else:
 //search_queue += graph[person] searched.append(person)
 //return False
+
+
+
+//Find the lowest-cost node node =  nd_lowest_cost_node(costs)         that you haven’t processed yet.
+//while node is not None: If you’ve processed all the nodes, this while loop is done. cost = costs[node]
+//neighbors = graph[node]
+//for n in neighbors.keys():         Go through all the neighbors of this node.
+//new_cost = cost + neighbors[n] If it’s cheaper to get to this neighbor if costs[n] > new_cost:         by going through this node ...
+//costs[n] = new_cost               update the cost for this node.
+//parents[n] = node                 htis node becomes new parent of its neighbor
+//processed.append(node)         Mark the node as processed.
+//node =  nd_lowest_cost_node(costs) Find the next node to process, and loop.
+
+func LL(L: String, N: String) -> Bool {
+    var dic: [Character:Int] = [:]
+    
+    for elem in N.characters {
+        if dic[elem] == nil {
+            dic[elem] = 1
+            print(dic)
+        } else {
+            dic[elem]! += 1
+        }
+    }
+    
+    for letter in L.characters {
+    
+        print(letter)
+        if dic[letter] == nil {
+            print(dic.filter { $0.1 > 0 })
+            return false
+        } else {
+            dic[letter]! -= 1
+        }
+    }
+    print(dic.filter { $0.1 > 0 })
+    return ((dic.filter { $0.1 == 0 }).count == 0) ? false:true
+}
+
+var N = "ppd"
+var L = "ppe"
+LL(L: L, N: N)
