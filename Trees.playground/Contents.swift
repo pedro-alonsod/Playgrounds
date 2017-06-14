@@ -943,15 +943,15 @@ extension TreeDSA: CustomStringConvertible {
 
 class NodeP<T>{
     var cost: T
-    var children: [NodeP?] = []
+    var children: [NodeP]?
     
     init(cost: T) {
         self.cost = cost
     }
 }
 
-class TreeP<T> {
-    var root: NodeP<T>?
+class TreeP {
+    var root: NodeP<Int>?
     
     func createTreePramp() {
         var node1: NodeP<Int> = NodeP<Int>(cost: 0)
@@ -962,15 +962,15 @@ class TreeP<T> {
         var node2: NodeP<Int> = NodeP<Int>(cost: 2)
         var node0: NodeP<Int> = NodeP<Int>(cost: 0)
         var node11: NodeP<Int> = NodeP<Int>(cost: 1)
-        var node5: NodeP<Int> = NodeP<Int>(cost: 5)
+        var node15: NodeP<Int> = NodeP<Int>(cost: 5)
         var node111: NodeP<Int> = NodeP<Int>(cost: 1)
         var node10: NodeP<Int> = NodeP<Int>(cost: 10)
         var node1111: NodeP<Int> = NodeP<Int>(cost: 1)
         
         self.root = node1
-        self.root?.children.append(node5)
-        self.root?.children.append(node3)
-        self.root?.children.append(node6)
+        self.root?.children!.append(node5)
+        self.root?.children!.append(node3)
+        self.root?.children!.append(node6)
         
     }
 }
