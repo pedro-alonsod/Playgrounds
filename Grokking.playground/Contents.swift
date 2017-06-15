@@ -42,4 +42,18 @@ func selectionSort(a: inout [Int]) -> [Int] {
     return newA
 }
 
-selectionSort(a: &a)
+var newA = selectionSort(a: &a)
+
+var out = 1
+func sum(a: [Int]) -> Int {
+    print(a)
+    print(out)
+    if a.count < 2 {
+        return a[0]
+    } else {
+        print(out)
+        return sum(a: Array(a[0..<a.count - 1])) + out
+    }
+}
+print(a)
+sum(a: newA)
