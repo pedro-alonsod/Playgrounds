@@ -943,7 +943,7 @@ extension TreeDSA: CustomStringConvertible {
 
 class NodeP<T>{
     var cost: T
-    var children: [NodeP]?
+    var children: [NodeP]? = []
     
     init(cost: T) {
         self.cost = cost
@@ -968,17 +968,49 @@ class TreeP {
         var node1111: NodeP<Int> = NodeP<Int>(cost: 1)
         
         self.root = node1
-        self.root?.children!.append(node5)
-        self.root?.children!.append(node3)
-        self.root?.children!.append(node6)
+        self.root!.children!.append(node5)
+        self.root!.children!.append(node3)
+        self.root!.children!.append(node6)
         node5.children!.append(node4)
         node3.children!.append(node2)
-        node3.children?.append(node0)
+        node3.children!.append(node0)
         node6.children!.append(node11)
         node6.children!.append(node15)
         node2.children!.append(node111)
         node0.children!.append(node10)
-        node111.children?.append(node1111)
+        node111.children!.append(node1111)
         
     }
 }
+
+extension NodeP:CustomStringConvertible {
+    var description: String {
+        if children == nil {
+            var desc = "[\(self.cost))]"
+            return desc
+        } else {
+            var desc = "[(\(self.cost)))](C:\(children!))"
+            return desc
+        }
+        
+    }
+}
+extension TreeP:CustomStringConvertible {
+    var description: String {
+        var desc = ""
+        if root == nil {
+            return desc
+        } else {
+            desc += "\(root!)"
+            for node in root!.children! {
+                desc += "\(node.description)"
+            }
+            return desc
+            
+        }
+    }
+}
+
+var newTP: TreeP = TreeP()
+newTP.createTreePramp()
+print(newTP)
