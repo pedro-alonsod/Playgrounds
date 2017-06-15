@@ -971,6 +971,14 @@ class TreeP {
         self.root?.children!.append(node5)
         self.root?.children!.append(node3)
         self.root?.children!.append(node6)
+        node5.children!.append(node4)
+        node3.children!.append(node2)
+        node3.children?.append(node0)
+        node6.children!.append(node11)
+        node6.children!.append(node15)
+        node2.children!.append(node111)
+        node0.children!.append(node10)
+        node111.children?.append(node1111)
         
     }
 }
