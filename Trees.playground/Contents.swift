@@ -1014,3 +1014,74 @@ extension TreeP:CustomStringConvertible {
 var newTP: TreeP = TreeP()
 newTP.createTreePramp()
 print(newTP)
+
+for i in "abcdfeghijklmnopqrstuvwxyz".unicodeScalars {
+    print(i.value)
+}
+
+var sumOfE = [15, 30, 10,20, 5, 430, 45, 667, 60, 44, 60, 60, 493, 2993, 9495, 678]
+print(sumOfE.reduce(0) { $0 + $1 })
+
+func qSort(a: [Int]) -> [Int] {
+    if a.count == 0 {
+        return []
+    }
+    print("p:\(Int(arc4random_uniform(UInt32(a.count-1))))")
+    var pivot = a[Int(arc4random_uniform(UInt32(a.count-1)))]
+    var lesser = a.filter { $0 < pivot }
+    var greater = a.filter { $0 > pivot }
+    
+    return qSort(a: lesser) + Array([pivot]) + qSort(a: greater)
+}
+
+var resQsort = qSort(a: sumOfE)
+
+func binarySearch(a: [Int], target: Int) {
+    
+    if a.count == 0 {
+        print("Not found")
+        return
+    }
+    
+    var mid = a.count / 2
+    
+    if a[mid] == target {
+        print("Found: \(a[mid])")
+    } else if a[mid] > target {
+        binarySearch(a: Array(a[0..<mid]), target: target)
+    } else {
+        binarySearch(a: Array(a[mid..<a.count]), target: target)
+    }
+}
+
+
+binarySearch(a: resQsort, target: 3)
+
+func binarySearchInterative(a: [Int], target: Int) {
+    var lower = 0
+    var upper = a.count - 1
+    var mid: Int
+    
+    while true {
+        mid = (lower + upper) / 2
+        
+        if a[mid] == target {
+            print("Found \(mid)")
+            break
+        } else if lower > upper {
+            print("No dice")
+            print("l:\(lower) u:\(upper) m: \(mid)")
+            break
+        } else {
+            if a[mid] > target {
+                upper = mid - 1
+                print("l:\(lower) u:\(upper) m: \(mid)")
+            } else {
+                lower = mid + 1
+                print("l:\(lower) u:\(upper) m: \(mid)")
+            }
+        }
+    }
+}
+
+binarySearchInterative(a: resQsort, target: 5)
