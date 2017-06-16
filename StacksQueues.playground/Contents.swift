@@ -128,8 +128,23 @@ class PriorityQueue<T> {
     
     func push(num: Int, ob: T) {
         let item = (num, ob)
-        PQ.append(item)
-        self.PQ = qSort(pq: PQ)
+        //print(item)
+        self.PQ.append(item)
+        fixPQ()
+        
+    //    self.PQ = qSort(pq: PQ)
+    }
+    
+    private func fixPQ() {
+        for i in 0..<PQ.count {
+            for j in i..<PQ.count {
+                print("\(PQ[i]) < \(PQ[j])")
+                if PQ[i].0 > PQ[j].0 {
+                    print("less")
+                    swap(&PQ[i], &PQ[j])
+                }
+            }
+        }
     }
     
     func pop() -> (Int, T) {
@@ -149,6 +164,10 @@ extension PriorityQueue: CustomStringConvertible {
 var testQueue: PriorityQueue<Double> = PriorityQueue<Double>()
 
 testQueue.push(num: 3, ob: 90.0)
-testQueue.push(num: 4, ob: 2.8)
-testQueue.push(num: 3, ob: 3.8)
+testQueue.push(num: 2, ob: 2.8)
+testQueue.push(num: 5, ob: 3.8)
+testQueue.push(num: 6, ob: 80)
+testQueue.push(num: 7, ob: 60.0)
+testQueue.push(num: 2, ob: 50.0)
+
 print(testQueue)
