@@ -131,6 +131,7 @@ class PriorityQueue<T> {
         //print(item)
         self.PQ.append(item)
         fixPQ()
+        
 //      var temp = qSort(pq: PQ)
     //    self.PQ = qSort(pq: PQ)
     }
