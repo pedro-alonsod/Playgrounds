@@ -131,16 +131,16 @@ class PriorityQueue<T> {
         //print(item)
         self.PQ.append(item)
         fixPQ()
-        
+//      var temp = qSort(pq: PQ)
     //    self.PQ = qSort(pq: PQ)
     }
     
     private func fixPQ() {
         for i in 0..<PQ.count {
             for j in i..<PQ.count {
-                print("\(PQ[i]) < \(PQ[j])")
-                if PQ[i].0 > PQ[j].0 {
-                    print("less")
+//                print("\(PQ[i]) < \(PQ[j])")
+                if PQ[i].0 >  PQ[j].0 {
+                    //print("less")
                     swap(&PQ[i], &PQ[j])
                 }
             }
@@ -170,4 +170,10 @@ testQueue.push(num: 6, ob: 80)
 testQueue.push(num: 7, ob: 60.0)
 testQueue.push(num: 2, ob: 50.0)
 
+print(testQueue)
+
+testQueue.pop()
+testQueue.pop()
+print(testQueue)
+testQueue.push(num: 3, ob: 4.7)
 print(testQueue)
