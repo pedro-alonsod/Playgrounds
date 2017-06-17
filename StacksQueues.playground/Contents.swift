@@ -111,3 +111,69 @@ sa.push(data: 4)
 sa.pop()
 print(sa.stack)
 
+
+class PriorityQueue<T> {
+    var PQ: [(Int, T)] = []
+    
+    private func qSort(pq: [(Int, T)]) -> [(Int, T)] {
+        if pq.count == 0 {
+            return []
+        }
+        
+        var pivot = pq[Int(arc4random_uniform(UInt32(PQ.count - 1)))]
+        var lower = pq.filter { $0.0 < pivot.0 }
+        var slower = pq.filter { $0.0 > pivot.0 }
+        return qSort(pq: lower) + Array([pivot]) + qSort(pq: slower)
+    }
+    
+    func push(num: Int, ob: T) {
+        let item = (num, ob)
+        //print(item)
+        self.PQ.append(item)
+        fixPQ()
+//      var temp = qSort(pq: PQ)
+    //    self.PQ = qSort(pq: PQ)
+    }
+    
+    private func fixPQ() {
+        for i in 0..<PQ.count {
+            for j in i..<PQ.count {
+//                print("\(PQ[i]) < \(PQ[j])")
+                if PQ[i].0 >  PQ[j].0 {
+                    //print("less")
+                    swap(&PQ[i], &PQ[j])
+                }
+            }
+        }
+    }
+    
+    func pop() -> (Int, T) {
+        
+        return PQ.removeFirst()
+    }
+}
+
+
+extension PriorityQueue: CustomStringConvertible {
+    var description: String {
+        var desc = "\(self.PQ)"
+        return desc
+    }
+}
+
+var testQueue: PriorityQueue<Double> = PriorityQueue<Double>()
+
+testQueue.push(num: 3, ob: 90.0)
+testQueue.push(num: 2, ob: 2.8)
+testQueue.push(num: 5, ob: 3.8)
+testQueue.push(num: 6, ob: 80)
+testQueue.push(num: 7, ob: 60.0)
+testQueue.push(num: 2, ob: 50.0)
+
+print(testQueue)
+
+testQueue.pop()
+testQueue.pop()
+print(testQueue)
+testQueue.push(num: 3, ob: 4.7)
+print(testQueue)

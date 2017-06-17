@@ -453,6 +453,8 @@ var bin = String(100, radix: 2)
 var n = 100
 toBinary(n: &n)
 
+
+//not working
 func GCD(n: Int, m: Int) -> Int {
     if n == 0 {
         return m
@@ -460,4 +462,20 @@ func GCD(n: Int, m: Int) -> Int {
     return GCD(n: n, m: m % n)
 }
 
-GCD(n: 10, m: 31)
+//GCD(n: 40, m: 4)
+//----//
+func qSort(a: [Int]) -> [Int] {
+    
+    if a.count == 0 {
+        return []
+    }
+    
+    var pivot = a[Int(arc4random_uniform(UInt32(a.count-1)))]
+    var lesser = a.filter { $0 < pivot }
+    var greater = a.filter { $0 > pivot }
+    
+    return qSort(a: lesser) + Array([pivot]) + qSort(a: greater)
+}
+
+var qsortTest = [66,77,88,99,855,45,66,67,7,7,7,7,7,3,2,2,1,2,3,4,5,66,7,8,89,9,9,90,0,77,66,7]
+var resQ = qSort(a: qsortTest)
