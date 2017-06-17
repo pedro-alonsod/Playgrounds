@@ -129,9 +129,21 @@ class PriorityQueue<T> {
     func push(num: Int, ob: T) {
         let item = (num, ob)
         //print(item)
-        self.PQ.append(item)
-        fixPQ()
-        
+        if PQ.count <= 0 {
+            PQ.append(item)
+        } else {
+            print("item")
+            for i in 0..<PQ.count {
+                print("\(item.0) <= \(PQ[i].0)")
+                if item.0 <= PQ[i].0 {
+                    PQ.insert(item, at: i)
+                } else {
+                    PQ.append(item)
+                }
+            }
+        }
+        //        self.PQ.append(item)
+//        fixPQ()
 //      var temp = qSort(pq: PQ)
     //    self.PQ = qSort(pq: PQ)
     }
@@ -173,8 +185,26 @@ testQueue.push(num: 2, ob: 50.0)
 
 print(testQueue)
 
-testQueue.pop()
-testQueue.pop()
-print(testQueue)
-testQueue.push(num: 3, ob: 4.7)
-print(testQueue)
+//testQueue.pop()
+//testQueue.pop()
+//print(testQueue)
+//testQueue.push(num: 3, ob: 4.7)
+//print(testQueue)
+//func getCheapestCost(rootNode: Node) -> Int {
+//    let current = rootNode
+//    if current.children == nil {
+//        return current.data
+//    }
+//    
+//    var lowestCost = 100001
+//    
+//    for child in current.children! {
+//        if child != nil {
+//            let cost = getCheapestCost(rootNode: child!)
+//            lowestCost = min(cost, lowestCost)
+//        }
+//    }
+//    
+//    return lowestCost + current.data
+//}
+"ooaooaoaoaa slsosos. aiis.".components(separatedBy: CharacterSet(charactersIn: " ."))
