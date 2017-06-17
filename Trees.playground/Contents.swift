@@ -970,7 +970,7 @@ class TreeP {
         self.root = node1
         self.root!.children!.append(node5)
         self.root!.children!.append(node3)
-        self.root!.children!.append(node6)
+        root!.children!.append(node6)
         node5.children!.append(node4)
         node3.children!.append(node2)
         node3.children!.append(node0)
@@ -981,15 +981,36 @@ class TreeP {
         node111.children!.append(node1111)
         
     }
+    
+    func getMinCost(rootNode: NodeP<Int>) -> Int {
+        var n = root!.children?.count
+        print(rootNode)
+        if n == 0 {
+            return rootNode.cost
+        } else {
+            var minCost = 1000
+            
+            for i in 0..<rootNode.children!.count {
+         
+                var tempCost = getMinCost(rootNode: rootNode.children![i])
+                if tempCost < minCost {
+                    minCost = tempCost
+                }
+            }
+            
+            return minCost + rootNode.cost
+        }
+    
+    }
 }
 
 extension NodeP:CustomStringConvertible {
     var description: String {
         if children == nil {
-            var desc = "[\(self.cost))]"
+            var desc = "\(self.cost)"
             return desc
         } else {
-            var desc = "[(\(self.cost)))](C:\(children!))"
+            var desc = "\(self.cost)C:\(children!)"
             return desc
         }
         
@@ -1014,3 +1035,5 @@ extension TreeP:CustomStringConvertible {
 var newTP: TreeP = TreeP()
 newTP.createTreePramp()
 print(newTP)
+newTP.getMinCost(rootNode: newTP.root!)
+
