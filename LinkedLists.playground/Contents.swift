@@ -570,3 +570,20 @@ print(bookDSA)
 
 bookDSA.traverse()
 bookDSA.reversedTraversal()
+//void reverse() {
+//    // curNode traverses the list, first is reset to empty list.
+//    struct node *curNode = first, *nxtNode;
+//    first = NULL;
+//    
+//    // Until no more in list, insert current before first and advance.
+//    while (curNode != NULL) {
+//        // Need to save next node since we're changing the current.
+//        nxtNode = curNode->link;
+//        
+//        // Insert at start of new list.
+//        curNode->link = first;
+//        first = curNode;
+//        
+//        // Advance to next.
+//        curNode = nxtNode;
+//}
