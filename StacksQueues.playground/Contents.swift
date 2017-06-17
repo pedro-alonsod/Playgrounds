@@ -132,13 +132,15 @@ class PriorityQueue<T> {
         if PQ.count <= 0 {
             PQ.append(item)
         } else {
-            print("item")
+//            print("item")
             for i in 0..<PQ.count {
-                print("\(item.0) <= \(PQ[i].0)")
+                //print("\(item.0) <= \(PQ[i].0)")
                 if item.0 <= PQ[i].0 {
                     PQ.insert(item, at: i)
+                    break
                 } else {
                     PQ.append(item)
+                    break
                 }
             }
         }
