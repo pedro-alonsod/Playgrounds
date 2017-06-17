@@ -187,11 +187,11 @@ testQueue.push(num: 2, ob: 50.0)
 
 print(testQueue)
 
-//testQueue.pop()
-//testQueue.pop()
-//print(testQueue)
-//testQueue.push(num: 3, ob: 4.7)
-//print(testQueue)
+testQueue.pop()
+testQueue.pop()
+print(testQueue)
+testQueue.push(num: 3, ob: 4.7)
+print(testQueue)
 //func getCheapestCost(rootNode: Node) -> Int {
 //    let current = rootNode
 //    if current.children == nil {
