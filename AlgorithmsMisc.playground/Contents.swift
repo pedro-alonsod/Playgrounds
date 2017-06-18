@@ -3,7 +3,7 @@ import PlaygroundSupport
 
 
 var str: String = "lslsls lslsls lslsl".replacingOccurrences(of: " ", with: "%20")
-str.characters.indices
+var idxs = str.characters.indices
 
 func pperm(str: String) -> Bool {
     var table: [Character:Int] = [:]
@@ -479,3 +479,92 @@ func qSort(a: [Int]) -> [Int] {
 
 var qsortTest = [66,77,88,99,855,45,66,67,7,7,7,7,7,3,2,2,1,2,3,4,5,66,7,8,89,9,9,90,0,77,66,7]
 var resQ = qSort(a: qsortTest)
+
+func triangle(n: Int) -> Int {
+    if n == 1 {
+        return 1
+    }
+    return n + triangle(n: n-1)
+}
+triangle(n: 8)
+
+func factorial(n: Int) -> Int {
+    if n < 2 {
+        return 1
+    }
+    return n * factorial(n: n-1)
+}
+
+factorial(n: 4)
+
+func towersOfHanoi(topN: Int, source: String, inter: String, destination: String) -> () {
+    if topN == 1 {
+        print("first")
+    } else {
+        towersOfHanoi(topN: topN-1, source: source, inter: destination, destination: inter)
+        
+        print("second recursive")
+        
+        towersOfHanoi(topN: topN-1, source: inter, inter: source, destination: destination)
+    }
+}
+
+towersOfHanoi(topN: 4, source: "A", inter: "B", destination: "C")
+//void word::anagram(int newSize)
+//{
+//    if(newSize == 1)
+//    return;
+//    for(int j=0; j<newSize; j++)
+//    {
+//        anagram(newSize-1);
+//        if(newSize==2)
+//        displayWord();
+//        rotate(newSize);
+//    }
+//    //if too small,
+//    //go no further
+//    //for each position,
+//    //anagram remaining
+//    //if innermost,
+//    //   display it
+//    //rotate word
+//}
+//rotate left all chars from position to end
+//void word::rotate(int newSize)
+//{
+//    int j;
+//    int position = size - newSize;
+//    char temp = workStr[position];
+//    for(j=position+1; j<size; j++)
+//    workStr[j-1] = workStr[j];
+//    //save first letter
+//    //shift others left
+//    workStr[j-1] = temp;                 //put first on right
+
+func arrayOfArrayProducts(arr: [Int]) -> [Int] {
+    
+    var res: [Int] = []
+    var left: [Int] = [Int](repeating: 1, count: arr.count)
+    var right: [Int] = [Int](repeating: 1, count: arr.count)
+    
+    for i in 1..<arr.count {
+        left[i] = left[i-1] * arr[i-1]
+    }
+    
+    for j in stride(from: arr.count - 2, to: -1, by: -1) {
+        right[j] = right[j+1] * arr[j+1]
+    }
+    
+    for k in 0..<arr.count {
+        res.append(left[k] * right[k])
+    }
+    
+    return res
+}
+
+let test1 = [2, 7, 3, 4]
+//res = [7*3*4, 2*3*4, 2*7*4, 2*7*3]
+
+print(arrayOfArrayProducts(arr: test1))
+
+
