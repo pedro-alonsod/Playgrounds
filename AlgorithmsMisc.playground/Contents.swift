@@ -567,4 +567,28 @@ let test1 = [2, 7, 3, 4]
 
 print(arrayOfArrayProducts(arr: test1))
 
+func findArrayQuadruplet(arr: [Int], s: Int) -> [Int] {
+    
+    var out: [Int] = []
+    var outDict: [Int:Int] = [:]
+    
+    for i in 0..<arr.count {
+        outDict[arr[i]] = i //put val:index
+    }
+    
+    for i in 0..<arr.count {
+        for j in i+1..<arr.count {
+            for k in j+1..<arr.count {
+                for w in 0..<arr.count {
+                    print(arr[w])
+                }
+            }
+        }
+    }
+    
+    return out
+}
 
+let arr = [2, 7, 4, 0, 9, 5, 1, 3]
+let st: Set<Int> = Set<Int>(arr)
+findArrayQuadruplet(arr: arr, s: 20)
