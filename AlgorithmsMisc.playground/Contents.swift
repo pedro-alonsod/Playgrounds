@@ -565,14 +565,19 @@ func arrayOfArrayProducts(arr: [Int]) -> [Int] {
 let test1 = [2, 7, 3, 4]
 //res = [7*3*4, 2*3*4, 2*7*4, 2*7*3]
 
-print(arrayOfArrayProducts(arr: test1))
+var sumOf4 = [2, 7, 4, 0, 9, 5, 1, 3]
 
-func findArrayQuadruplet(arr: [Int], s: Int) -> [Int] {
-    
+//<<<<<<< HEAD
+//func findArrayQuadruplet(arr: [Int], s: Int) -> [Int] {
+//    
+//=======
+func sumO4Four(arr: [Int], s: Int) -> [Int] {
+//>>>>>>> 4c4a9cb4b3e02cc60a9c8cc607e37e1ea6dcd951
     var out: [Int] = []
     var outDict: [Int:Int] = [:]
     
     for i in 0..<arr.count {
+//<<<<<<< HEAD
         outDict[arr[i]] = i //put val:index
     }
     
@@ -591,4 +596,84 @@ func findArrayQuadruplet(arr: [Int], s: Int) -> [Int] {
 
 let arr = [2, 7, 4, 0, 9, 5, 1, 3]
 let st: Set<Int> = Set<Int>(arr)
-findArrayQuadruplet(arr: arr, s: 20)
+//findArrayQuadruplet(arr: arr, s: 20)
+//=======
+//        for j in i..<arr.count {
+//            for k in j..<arr.count {
+//                outDict[arr[i]] = s - (arr[i] + arr[j] + arr[k])
+//                if outDict[arr[i]] == 0 /*|| (arr[i] == s - (arr[i] + arr[j] + arr[k]))*/  {
+//                    out.append(arr[i])
+//                    out.append(arr[j])
+//                    out.append(arr[k])
+//                    out.append(outDict[arr[i]]!)
+//                    print(outDict)
+//                    return out
+//                }
+//            }
+//        }
+//        
+//    
+//    }
+//    
+//    print(outDict)
+//    
+//    //O(N`3) time
+//    //space O(N)
+//    return out
+//}
+
+//print(arrayOfArrayProducts(arr: test1))
+sumO4Four(arr: sumOf4, s: 20)
+
+sumOf4.sort()
+
+//function findArrayQuadruplet(arr, s):
+//n = arr.length
+//
+//# if there are fewer than 4 items in arr, by
+//# definition no quadruplet exists whose sum is s
+//if (n < 4):
+//return null
+//
+//# sort arr in an ascending order
+//arr.sort()
+//
+//for i from 0 to n - 4:
+//for j from i + 1 to n - 3:
+//# r stores the complementing sum
+//r = s - (arr[i] + arr[j])
+//
+//# check for sum r in subarray arr[j+1…n-1]
+//low = j + 1, high = n - 1;
+//
+//while (low < high):
+//if (arr[low] + arr[high] < r):
+//low++
+//
+//else if (arr[low] + arr[high] > r):
+//high--
+//
+//# quadruplet with given sum found
+//else:
+//return [arr[i], arr[j], arr[low], arr[high]]
+//
+//return []
+
+var maze: [[Character]] = [["#", "#", "#", "#", "#", "#", ],
+                            ["#", " ", "#", " ", "#", "#", ],
+                            ["#", " ", "#", " ", "#", "#", ],
+                            ["#", " ", " ", " ", "#", "#", ],
+                            ["#", " ", " ", " ", " ", "#", ],
+                            ["#", " ", "#", " ", " ", "#", ],
+                            ["#", " ", "#", "#", "F", "#", ]]
+
+func readMaze(maze: [[Character]], startX: Int, startY: Int) {
+    
+    
+}
+
+func findPath(startX: Int, stratY: Int) -> Bool {
+    
+    return false
+}
+//>>>>>>> 4c4a9cb4b3e02cc60a9c8cc607e37e1ea6dcd951
