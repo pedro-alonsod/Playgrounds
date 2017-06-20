@@ -644,9 +644,134 @@ var maze: [[Character]] = [["#", "#", "#", "#", "#", "#", ],
 func readMaze(maze: [[Character]], startX: Int, startY: Int) {
     
     
+    
 }
 
 func findPath(startX: Int, stratY: Int) -> Bool {
     
     return false
 }
+
+func digits(_ number: Int) -> [Int] {
+    
+    if number / 10 == 0 {
+        return Array([number])
+    }
+    
+    return digits(number / 10) + Array([number % 10])
+}
+
+digits(54321)
+
+func power(_ x: Int, _ n: Int) -> Int {
+    if n == 0 {
+        return 1
+    }
+    
+    if n == 1 {
+        return x
+    }
+    return x * power(x, n-1)
+}
+power(3, 3)
+
+
+func gcd(_ a: Int, _ b: Int) -> Int {
+    if b == 0 {
+        return a
+    } else {
+        if a > b {
+            return gcd(a-b, b)
+        } else {
+            return gcd(a, b-a)
+        }
+    }
+}
+gcd(2, 10)
+gcd(9, 6)
+gcd(30, 75)
+
+func binarySeacrh(_ arr: [Int], key: Int) -> Int {
+    var mid = arr.count / 2
+    
+    if arr[mid] == key {
+        return arr[mid]
+    } else if key < arr[mid] {
+        return binarySeacrh(Array(arr[0..<mid]), key: key)
+    } else if key > arr[mid] {
+        return binarySeacrh(Array(arr[mid..<arr.count]), key: key)
+    } else {
+        
+        return -1
+    }
+}
+
+binarySeacrh([1, 2, 4, 5 ,7, 9], key: 2)
+
+func hanoi(_ N: Int, from firstPeg: String = "A", to secondPeg: String = "B", using thirdPeg: String = "C") {
+    // your code here
+    if N == 1 {
+        print("move from A to B")
+        return
+    }
+    
+    hanoi(N-1, from: firstPeg, to: secondPeg, using: thirdPeg)
+    
+    print("Moving from \(firstPeg) start to  \(secondPeg) with \(thirdPeg) extra")
+    
+    hanoi(N-1, from: thirdPeg, to: secondPeg, using: firstPeg)
+    
+    print("moving from \(thirdPeg) extra to \(secondPeg) destination using \(firstPeg)")
+    
+}
+
+hanoi(3)
+
+func change(coins: [Int], amounts: [Int], highest: Int, sum: Int, goal: Int) {
+    
+    if sum == goal {
+        display(coins: coins, amounts: amounts)
+        print("here")
+        return
+    }
+    
+    if sum > goal {
+        return
+    }
+    
+    for value in amounts {
+        
+        if value >= highest {
+            var copy = Array(coins)
+            copy.append(value)
+//            print("goal\(goal)")
+            change(coins: copy, amounts: amounts, highest: highest, sum: sum + value, goal: goal)
+        }
+    }
+}
+
+func display(coins: [Int], amounts: [Int]) {
+    for amount in amounts {
+        
+        var count = 0
+        
+        for coin in coins {
+            if coin == amount {
+                count += 1
+            }
+        }
+        print("\(amount): \(count)")
+    }
+    print("")
+    
+    return
+}
+
+var coins: [Int] = []
+var amounts: [Int] = [1, 5, 10, 25, 50]
+// Start adding coins.
+change(coins: coins,
+       amounts: amounts,
+       highest: 0,
+       sum: 0,
+       goal: 51)
