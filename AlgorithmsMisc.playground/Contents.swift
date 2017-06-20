@@ -773,8 +773,13 @@ func change(coins: [Int], amounts: [Int], highest: Int, sum: Int, goal: Int) {
             copy.append(value)
 //            print("goal\(goal)")
             change(coins: copy, amounts: amounts, highest: highest, sum: sum + value, goal: goal)
+            
         }
+        
+        return
     }
+    
+    
 }
 
 func display(coins: [Int], amounts: [Int]) {
@@ -797,11 +802,34 @@ func display(coins: [Int], amounts: [Int]) {
 var coins: [Int] = []
 var amounts: [Int] = [1, 5, 10, 25, 50]
 // Start adding coins.
-change(coins: coins,
-       amounts: amounts,
-       highest: 0,
-       sum: 0,
-       goal: 51)
+change(coins: coins, amounts: amounts, highest: 0, sum: 0, goal: 51)
 //=======
 ////>>>>>>> 4c4a9cb4b3e02cc60a9c8cc607e37e1ea6dcd951
-//>>>>>>> 1db877e7c6b16e420abed6a0734b11b999833474
+//>>>>>>> 1db877e7c6b16e420abed6a0734b11b999833474 
+//Equatable
+
+func thisFunctionCallsItself(_ thisManyTimes: Int) {
+    var mySuffix = String()
+    let lastTwoDigits = thisManyTimes % 100
+    switch lastTwoDigits {
+    case 10...20:
+        mySuffix = "th"
+    default:
+        let lastDigit = thisManyTimes % 10
+        switch lastDigit {
+        case 1:
+            mySuffix = "st"
+        case 2:
+            mySuffix = "nd"
+        case 3:
+            mySuffix = "rd"
+        default:
+            mySuffix = "th"
+        }
+    }
+    if thisManyTimes != 0 {
+        thisFunctionCallsItself (thisManyTimes - 1)
+        print("This is the \(thisManyTimes)\(mySuffix) time that this function has called itself.")
+    }
+}
+thisFunctionCallsItself(10)
