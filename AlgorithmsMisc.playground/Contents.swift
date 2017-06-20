@@ -567,34 +567,60 @@ let test1 = [2, 7, 3, 4]
 
 var sumOf4 = [2, 7, 4, 0, 9, 5, 1, 3]
 
+//<<<<<<< HEAD
+//func findArrayQuadruplet(arr: [Int], s: Int) -> [Int] {
+//    
+//=======
 func sumO4Four(arr: [Int], s: Int) -> [Int] {
+//>>>>>>> 4c4a9cb4b3e02cc60a9c8cc607e37e1ea6dcd951
     var out: [Int] = []
     var outDict: [Int:Int] = [:]
     
     for i in 0..<arr.count {
-        for j in i..<arr.count {
-            for k in j..<arr.count {
-                outDict[arr[i]] = s - (arr[i] + arr[j] + arr[k])
-                if outDict[arr[i]] == 0 /*|| (arr[i] == s - (arr[i] + arr[j] + arr[k]))*/  {
-                    out.append(arr[i])
-                    out.append(arr[j])
-                    out.append(arr[k])
-                    out.append(outDict[arr[i]]!)
-                    print(outDict)
-                    return out
+//<<<<<<< HEAD
+        outDict[arr[i]] = i //put val:index
+    }
+    
+    for i in 0..<arr.count {
+        for j in i+1..<arr.count {
+            for k in j+1..<arr.count {
+                for w in 0..<arr.count {
+                    print(arr[w])
                 }
             }
         }
-        
-    
     }
     
-    print(outDict)
-    
-    //O(N`3) time
-    //space O(N)
     return out
 }
+
+let arr = [2, 7, 4, 0, 9, 5, 1, 3]
+let st: Set<Int> = Set<Int>(arr)
+//findArrayQuadruplet(arr: arr, s: 20)
+//=======
+//        for j in i..<arr.count {
+//            for k in j..<arr.count {
+//                outDict[arr[i]] = s - (arr[i] + arr[j] + arr[k])
+//                if outDict[arr[i]] == 0 /*|| (arr[i] == s - (arr[i] + arr[j] + arr[k]))*/  {
+//                    out.append(arr[i])
+//                    out.append(arr[j])
+//                    out.append(arr[k])
+//                    out.append(outDict[arr[i]]!)
+//                    print(outDict)
+//                    return out
+//                }
+//            }
+//        }
+//        
+//    
+//    }
+//    
+//    print(outDict)
+//    
+//    //O(N`3) time
+//    //space O(N)
+//    return out
+//}
 
 //print(arrayOfArrayProducts(arr: test1))
 sumO4Four(arr: sumOf4, s: 20)
@@ -651,6 +677,7 @@ func findPath(startX: Int, stratY: Int) -> Bool {
     
     return false
 }
+//<<<<<<< HEAD
 
 func digits(_ number: Int) -> [Int] {
     
@@ -775,3 +802,6 @@ change(coins: coins,
        highest: 0,
        sum: 0,
        goal: 51)
+//=======
+////>>>>>>> 4c4a9cb4b3e02cc60a9c8cc607e37e1ea6dcd951
+//>>>>>>> 1db877e7c6b16e420abed6a0734b11b999833474
