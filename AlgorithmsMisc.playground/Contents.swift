@@ -763,6 +763,7 @@ func change(coins: [Int], amounts: [Int], highest: Int, sum: Int, goal: Int) {
     }
     
     if sum > goal {
+        print("out")
         return
     }
     
@@ -776,7 +777,7 @@ func change(coins: [Int], amounts: [Int], highest: Int, sum: Int, goal: Int) {
             
         }
         
-        return
+        
     }
     
     
@@ -802,7 +803,7 @@ func display(coins: [Int], amounts: [Int]) {
 var coins: [Int] = []
 var amounts: [Int] = [1, 5, 10, 25, 50]
 // Start adding coins.
-change(coins: coins, amounts: amounts, highest: 0, sum: 0, goal: 51)
+//change(coins: coins, amounts: amounts, highest: 0, sum: 0, goal: 51)
 //=======
 ////>>>>>>> 4c4a9cb4b3e02cc60a9c8cc607e37e1ea6dcd951
 //>>>>>>> 1db877e7c6b16e420abed6a0734b11b999833474 

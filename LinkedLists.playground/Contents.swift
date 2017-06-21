@@ -533,6 +533,21 @@ class LList<T: Comparable> {
              print(cur!.value)
         }
     }
+    
+    func reverse() {
+        var prev: NodeLL<T>? = nil
+        var current = head
+        var next: NodeLL<T>?
+        
+        while current != nil {
+            next = current?.next
+            current?.next = prev
+            prev = current
+            current = next
+        }
+        
+        head = prev
+    }
 }
 
 extension NodeLL:CustomStringConvertible {
@@ -561,6 +576,9 @@ var bookDSA: LList<Int> = LList<Int>()
 bookDSA.add(value: 1)
 bookDSA.add(value: 2)
 bookDSA.add(value: 3)
+print(bookDSA)
+
+bookDSA.reverse()
 print(bookDSA)
 
 bookDSA.contains(value: 3)
