@@ -834,3 +834,155 @@ func thisFunctionCallsItself(_ thisManyTimes: Int) {
     }
 }
 thisFunctionCallsItself(10)
+
+func findMinN2(arr: [Int]) -> Int {
+    
+    var min = 100
+    for i in 0..<arr.count {
+        for j in i..<arr.count {
+            print("\(arr[i]) < \(arr[j]) min: \(min)")
+            if arr[i] < arr[j] {
+                if arr[i] < min {
+                     min = arr[i]
+                }
+            }
+        }
+    }
+    
+    return min
+}
+
+func findMinN(arr: [Int]) -> Int {
+    var min = 1000
+    for elem in arr {
+        if elem < min {
+            min = elem
+        }
+    }
+    return min
+}
+
+var arrTestMin = [5, 6, 7, 2 ,6 ,1, 6, 7, 0, 4]
+
+findMinN2(arr: arrTestMin)
+findMinN(arr: arrTestMin)
+
+func anagrams(str1: String, str2: String) -> Bool {
+    return str1.characters.sorted() == str2.characters.sorted()
+}
+
+func anaLinearN(str1: String, str2: String) -> Bool {
+    var out: [Character: Int] = [:]
+    for char in str1.characters {
+        if out[char] == nil {
+            out[char] = 1
+        } else {
+            out[char]! += 1
+        }
+    }
+        for char in str2.characters {
+            if out[char] == nil {
+                return false
+            }
+        }
+    return true
+}
+
+let testA = "abcd"
+let testA2 = "dcba"
+
+anagrams(str1: testA, str2: testA2)
+anaLinearN(str1: testA, str2: testA2)
+
+//func kSmallestLinear(){}
+
+func reverse(str: [Character]) -> String {
+    var mut = str
+    if str.count == 1 {
+        return String(describing: mut[0])
+    }
+    return reverse(str: Array(mut.dropFirst())) + String(describing: mut[0])
+}
+let hello = Array("hello".characters)
+
+reverse(str: hello)
+
+func palRecur(str: String) -> Bool {
+    var mut: [Character] = Array(str.characters)
+    
+    if mut.count == 0 || mut.count == 1 {
+        return true
+    }
+    if mut.removeFirst() != mut.removeLast() {
+        return false
+    }
+    return palRecur(str: String(mut.dropFirst().dropLast()))
+}
+
+
+let racecar = "racecar"
+palRecur(str: racecar)
+
+func insertionSort(a: inout [Int]) -> [Int] {
+    for index in 1..<a.count {
+        var currentValue = a[index]
+        var position = index
+        
+        while position > 0 && a[position - 1] > currentValue {
+            a[position] = a[position - 1]
+            position -= 1
+        }
+        
+        a[position] = currentValue
+    }
+    
+    return a
+}
+
+insertionSort(a: &arrTestMin)
+
+func binarySearchI(a: [Int], s: Int) -> Bool {
+    var first = 0
+    var last = a.count - 1
+    var found = false
+    
+    while first <= last && !found {
+        var mid = (first + last) / 2
+        if a[mid] == s {
+            found = true
+        } else {
+            if s < a[mid] {
+                last = mid - 1
+            } else {
+                first = mid + 1
+            }
+        }
+        
+    }
+    
+    return found
+}
+
+func binarySearchR(a: [Int], s: Int) -> Bool {
+    
+    var mid = a.count / 2
+    if a[mid] == s {
+        return true
+    }
+    if a.count <= 1 {
+        return false
+    }
+    if s < a[mid] {
+        return binarySearchR(a: Array(a[0..<mid]), s: s)
+    } else if s > a[mid] {
+        return binarySearchR(a: Array(a[mid..<a.count]), s: s)
+    } else {
+        return false
+    }
+}
+
+binarySearchI(a: arrTestMin, s: 4)
+binarySearchR(a: arrTestMin, s: 4)
+
+binarySearchI(a: arrTestMin, s: 9)
+binarySearchR(a: arrTestMin, s: 9)
