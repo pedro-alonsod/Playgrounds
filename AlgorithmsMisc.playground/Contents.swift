@@ -596,6 +596,7 @@ func sumO4Four(arr: [Int], s: Int) -> [Int] {
 
 let arr = [2, 7, 4, 0, 9, 5, 1, 3]
 let st: Set<Int> = Set<Int>(arr)
+var values: [String:AnyObject] = ["k":1 as AnyObject]
 //findArrayQuadruplet(arr: arr, s: 20)
 //=======
 //        for j in i..<arr.count {
@@ -677,3 +678,38 @@ func findPath(startX: Int, stratY: Int) -> Bool {
     return false
 }
 //>>>>>>> 4c4a9cb4b3e02cc60a9c8cc607e37e1ea6dcd951
+//import Foundation
+//
+//func spiralCopy(inputMatrix: [[Int]]) -> [Int] {
+//    
+//    var result: [Int] = []
+//    var i = inputMatrix.count - 1
+//    var j = 0
+//    
+//    var topRow = 0
+//    var leftColumn = 0
+//    var bottomRow = inputMatrix.count -1
+//    var rightColumn = inputMatrix[0].count -1
+//    
+//    while firstRow <= lastRow && firstColumn <= lastColumn {
+//        
+//        //traverse left to right top to bottom
+//    }
+//    
+//    while firstNorth < 4 {
+//        for a in 0..<inputMatrix[0].count {
+//            resutl.append(inputMatrix[firstNorth])
+//        }
+//    }
+//    
+//    for k in 0..<inputMatrix.count - 1 {
+//        while j < inputMatrix[0].count {
+//            result.append(inputMatrix[k][j])
+//            j += 1
+//        }
+//        
+//        j = 0
+//    }
+//    
+//    return []
+//}
