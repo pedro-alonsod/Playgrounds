@@ -671,15 +671,14 @@ var maze: [[Character]] = [["#", "#", "#", "#", "#", "#", ],
 func readMaze(maze: [[Character]], startX: Int, startY: Int) {
     
     
+    
 }
 
 func findPath(startX: Int, stratY: Int) -> Bool {
     
     return false
 }
-//>>>>>>> 4c4a9cb4b3e02cc60a9c8cc607e37e1ea6dcd951
-//import Foundation
-//
+
 //func spiralCopy(inputMatrix: [[Int]]) -> [Int] {
 //    
 //    var result: [Int] = []
@@ -713,3 +712,308 @@ func findPath(startX: Int, stratY: Int) -> Bool {
 //    
 //    return []
 //}
+func digits(_ number: Int) -> [Int] {
+    
+    if number / 10 == 0 {
+        return Array([number])
+    }
+    
+    return digits(number / 10) + Array([number % 10])
+}
+
+digits(54321)
+
+func power(_ x: Int, _ n: Int) -> Int {
+    if n == 0 {
+        return 1
+    }
+    
+    if n == 1 {
+        return x
+    }
+    return x * power(x, n-1)
+}
+power(3, 3)
+
+
+func gcd(_ a: Int, _ b: Int) -> Int {
+    if b == 0 {
+        return a
+    } else {
+        if a > b {
+            return gcd(a-b, b)
+        } else {
+            return gcd(a, b-a)
+        }
+    }
+}
+gcd(2, 10)
+gcd(9, 6)
+gcd(30, 75)
+
+func binarySeacrh(_ arr: [Int], key: Int) -> Int {
+    var mid = arr.count / 2
+    
+    if arr[mid] == key {
+        return arr[mid]
+    } else if key < arr[mid] {
+        return binarySeacrh(Array(arr[0..<mid]), key: key)
+    } else if key > arr[mid] {
+        return binarySeacrh(Array(arr[mid..<arr.count]), key: key)
+    } else {
+        
+        return -1
+    }
+}
+
+binarySeacrh([1, 2, 4, 5 ,7, 9], key: 2)
+
+func hanoi(_ N: Int, from firstPeg: String = "A", to secondPeg: String = "B", using thirdPeg: String = "C") {
+    // your code here
+    if N == 1 {
+        print("move from A to B")
+        return
+    }
+    
+    hanoi(N-1, from: firstPeg, to: secondPeg, using: thirdPeg)
+    
+    print("Moving from \(firstPeg) start to  \(secondPeg) with \(thirdPeg) extra")
+    
+    hanoi(N-1, from: thirdPeg, to: secondPeg, using: firstPeg)
+    
+    print("moving from \(thirdPeg) extra to \(secondPeg) destination using \(firstPeg)")
+    
+}
+
+hanoi(3)
+
+func change(coins: [Int], amounts: [Int], highest: Int, sum: Int, goal: Int) {
+    
+    if sum == goal {
+        display(coins: coins, amounts: amounts)
+        print("here")
+        return
+    }
+    
+    if sum > goal {
+        print("out")
+        return
+    }
+    
+    for value in amounts {
+        
+        if value >= highest {
+            var copy = Array(coins)
+            copy.append(value)
+//            print("goal\(goal)")
+            change(coins: copy, amounts: amounts, highest: highest, sum: sum + value, goal: goal)
+            
+        }
+        
+        
+    }
+    
+    
+}
+
+func display(coins: [Int], amounts: [Int]) {
+    for amount in amounts {
+        
+        var count = 0
+        
+        for coin in coins {
+            if coin == amount {
+                count += 1
+            }
+        }
+        print("\(amount): \(count)")
+    }
+    print("")
+    
+    return
+}
+
+var coins: [Int] = []
+var amounts: [Int] = [1, 5, 10, 25, 50]
+// Start adding coins.
+//change(coins: coins, amounts: amounts, highest: 0, sum: 0, goal: 51)
+//=======
+//Equatable
+
+func thisFunctionCallsItself(_ thisManyTimes: Int) {
+    var mySuffix = String()
+    let lastTwoDigits = thisManyTimes % 100
+    switch lastTwoDigits {
+    case 10...20:
+        mySuffix = "th"
+    default:
+        let lastDigit = thisManyTimes % 10
+        switch lastDigit {
+        case 1:
+            mySuffix = "st"
+        case 2:
+            mySuffix = "nd"
+        case 3:
+            mySuffix = "rd"
+        default:
+            mySuffix = "th"
+        }
+    }
+    if thisManyTimes != 0 {
+        thisFunctionCallsItself (thisManyTimes - 1)
+        print("This is the \(thisManyTimes)\(mySuffix) time that this function has called itself.")
+    }
+}
+thisFunctionCallsItself(10)
+
+func findMinN2(arr: [Int]) -> Int {
+    
+    var min = 100
+    for i in 0..<arr.count {
+        for j in i..<arr.count {
+            print("\(arr[i]) < \(arr[j]) min: \(min)")
+            if arr[i] < arr[j] {
+                if arr[i] < min {
+                     min = arr[i]
+                }
+            }
+        }
+    }
+    
+    return min
+}
+
+func findMinN(arr: [Int]) -> Int {
+    var min = 1000
+    for elem in arr {
+        if elem < min {
+            min = elem
+        }
+    }
+    return min
+}
+
+var arrTestMin = [5, 6, 7, 2 ,6 ,1, 6, 7, 0, 4]
+
+findMinN2(arr: arrTestMin)
+findMinN(arr: arrTestMin)
+
+func anagrams(str1: String, str2: String) -> Bool {
+    return str1.characters.sorted() == str2.characters.sorted()
+}
+
+func anaLinearN(str1: String, str2: String) -> Bool {
+    var out: [Character: Int] = [:]
+    for char in str1.characters {
+        if out[char] == nil {
+            out[char] = 1
+        } else {
+            out[char]! += 1
+        }
+    }
+        for char in str2.characters {
+            if out[char] == nil {
+                return false
+            }
+        }
+    return true
+}
+
+let testA = "abcd"
+let testA2 = "dcba"
+
+anagrams(str1: testA, str2: testA2)
+anaLinearN(str1: testA, str2: testA2)
+
+//func kSmallestLinear(){}
+
+func reverse(str: [Character]) -> String {
+    var mut = str
+    if str.count == 1 {
+        return String(describing: mut[0])
+    }
+    return reverse(str: Array(mut.dropFirst())) + String(describing: mut[0])
+}
+let hello = Array("hello".characters)
+
+reverse(str: hello)
+
+func palRecur(str: String) -> Bool {
+    var mut: [Character] = Array(str.characters)
+    
+    if mut.count == 0 || mut.count == 1 {
+        return true
+    }
+    if mut.removeFirst() != mut.removeLast() {
+        return false
+    }
+    return palRecur(str: String(mut.dropFirst().dropLast()))
+}
+
+
+let racecar = "racecar"
+palRecur(str: racecar)
+
+func insertionSort(a: inout [Int]) -> [Int] {
+    for index in 1..<a.count {
+        var currentValue = a[index]
+        var position = index
+        
+        while position > 0 && a[position - 1] > currentValue {
+            a[position] = a[position - 1]
+            position -= 1
+        }
+        
+        a[position] = currentValue
+    }
+    
+    return a
+}
+
+insertionSort(a: &arrTestMin)
+
+func binarySearchI(a: [Int], s: Int) -> Bool {
+    var first = 0
+    var last = a.count - 1
+    var found = false
+    
+    while first <= last && !found {
+        var mid = (first + last) / 2
+        if a[mid] == s {
+            found = true
+        } else {
+            if s < a[mid] {
+                last = mid - 1
+            } else {
+                first = mid + 1
+            }
+        }
+        
+    }
+    
+    return found
+}
+
+func binarySearchR(a: [Int], s: Int) -> Bool {
+    
+    var mid = a.count / 2
+    if a[mid] == s {
+        return true
+    }
+    if a.count <= 1 {
+        return false
+    }
+    if s < a[mid] {
+        return binarySearchR(a: Array(a[0..<mid]), s: s)
+    } else if s > a[mid] {
+        return binarySearchR(a: Array(a[mid..<a.count]), s: s)
+    } else {
+        return false
+    }
+}
+
+binarySearchI(a: arrTestMin, s: 4)
+binarySearchR(a: arrTestMin, s: 4)
+
+binarySearchI(a: arrTestMin, s: 9)
+binarySearchR(a: arrTestMin, s: 9)
