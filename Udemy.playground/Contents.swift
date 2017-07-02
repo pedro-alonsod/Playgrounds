@@ -195,3 +195,167 @@ func challenge26(n: Int, p: Int) -> Int {
 }
 
 challenge26(n: 5, p: 9)
+
+extension Collection where Iterator.Element == Int {
+    
+    func challenge37(count: Character) -> Int {
+        var total = 0
+        
+        for e in self {
+            let str = String(e)
+            
+            for c in str.characters {
+                if c == count {
+                    total += 1
+                }
+            }
+        }
+        return total
+    }
+}
+
+let arrInt = [3, 4, 5, 55, 5555, 6]
+arrInt.challenge37(count: "5")
+
+extension Collection where Iterator.Element: Comparable {
+    func nSmallest(n: Int) -> [Iterator.Element] {
+        let sorted = self.sorted()
+        
+        return Array(sorted.prefix(n))
+    }
+}
+
+arrInt.nSmallest(n: 3)
+
+extension Collection where Iterator.Element == String {
+    func challenge39() -> [Iterator.Element] {
+        
+        let sorted = self.sorted { $0 > $1 }
+        
+        return sorted
+    }
+}
+var arrStr = ["a", "ab", "abc"]
+arrStr.challenge39()
+
+func challenge40(i: [Int]) -> [Int] {
+    let correctA = Array(1...100)
+    let iSet = Set<Int>(i)
+    var mis: [Int] = []
+    
+    for n in correctA {
+        
+        if !iSet.contains(n) {
+            mis.append(n)
+        }
+    }
+    
+    return mis
+}
+
+extension Collection where Iterator.Element == Int {
+    func challenge41() -> Double? {
+        guard self.count != 0 else { return nil }
+        var sorted = self.sorted()
+        
+        var mid = sorted.count / 2
+        
+        if sorted.count % 2 == 0 {
+            return Double(sorted[mid] + sorted[mid - 1]) / 2
+        } else {
+            return Double(sorted[mid])
+        }
+    }
+}
+
+extension Collection where Iterator.Element: Equatable {
+    func chalenge42(indexOf search: Iterator.Element) -> Int? {
+        for (idx, item) in self.enumerated() {
+            if item == search {
+                return idx
+            }
+        }
+        return nil
+    }
+}
+
+class Node<T> {
+    var data: T
+    var next: Node<T>?
+    
+    init(data: T) {
+        self.data = data
+    }
+}
+class LinkedList<T> {
+    var head: Node<T>?
+    
+    func add(data: T) {
+        let newNode = Node<T>(data: data)
+        if self.head == nil {
+            self.head = newNode
+        } else {
+            newNode.next = head
+            head = newNode
+        }
+    }
+    
+    func printLL() {
+        var current = head
+        var out = ""
+        while current != nil {
+            out += "\(current!.data) "
+            current = current?.next
+        }
+        print(out)
+    }
+    
+    func printNodes() {
+        var current = head
+        
+        while current != nil {
+            print(current!.data, separator: " ", terminator: " ")
+            current = current?.next
+        }
+    }
+}
+
+var linked = LinkedList<String>()
+
+for letter in "abcdefghijklmnopqrstuvwxyz".characters {
+    linked.add(data: String(letter))
+}
+linked.printLL()
+
+var second = LinkedList<Character>()
+var prev: Node<Character>? = nil
+
+for letter in "abcdefghijklmnopqrstuvwxyz".characters {
+    let node = Node<Character>(data: letter)
+    if let pred = prev {
+        pred.next = node
+    } else {
+        second.head = node
+    }
+    prev = node
+}
+second.printNodes()
+
+extension LinkedList {
+    func midPoint() -> Node<T>? {
+        var current = head
+        var fast = head
+        
+        guard head != nil else { return nil }
+        
+        while fast != nil || fast?.next != nil {
+            current = current?.next
+            fast = fast?.next?.next
+        }
+        
+        return current
+    }
+}
+
+linked.midPoint()!.data
+second.midPoint()!.data
