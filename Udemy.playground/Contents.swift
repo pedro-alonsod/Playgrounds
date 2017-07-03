@@ -599,7 +599,25 @@ extension Array where Element: Comparable {
         
         return self
     }
+    
+    mutating func challenge56() {
+        // Insertion Sort
+        for index in 1..<self.count {
+            var cv = self[index]
+            var position = index
+            
+            while position > 0 && self[position - 1] > cv {
+                self[position] = self[position - 1]
+                position -= 1
+            }
+        self[position] = cv
+        }
+    }
 }
 
 var tastBub = [6, 8, 3, 2, 9, 1, 67, 10, 0]
 tastBub.challenge54()
+tastBub.challenge56()
+
+
+
