@@ -538,3 +538,68 @@ extension Double: Numeric {}
 func challenge52<T: Numeric>(a: [T]) -> T {
     return a.reduce(T(), +)
 }
+
+class BNode<T> {
+    var data: T
+    var left: BNode<T>?
+    var right: BNode<T>?
+    
+    init(data: T) {
+        self.data = data
+    }
+}
+
+class BTree<T: Comparable> {
+    var root: BNode<T>?
+    
+    init(array: [T]) {
+        
+    }
+//        for item in array {
+//            var placed = false
+//            
+//            if let rootNode = root {
+//                
+//                var tracker = rootNode
+//                
+//                while placed == false {
+//                    
+//                    if item <= tracker.data {
+//                        if tracker.left == nil {
+//                            
+//                            tracker.left = BNode(data: item)
+//                            
+//                            placed = true
+//                        }
+//                        tracker = tracker.left!
+//                    } else {
+//                        if tracker.right == nil {
+//                            tracker.right = BNode(data: item)
+//                            placed = true
+//                        }
+//                        tracker = tracker.right!
+//                    }
+//                } else {
+//                    root = BNode(data: item)
+//                }
+//            }
+//        }
+//    }
+}
+
+extension Array where Element: Comparable {
+    mutating func challenge54() -> [Element] {
+        for i in 0..<self.count {
+            for j in i..<self.count {
+                if self[i] > self[j] {
+                    swap(&self[i], &self[j])
+                }
+            }
+        }
+        
+        return self
+    }
+}
+
+var tastBub = [6, 8, 3, 2, 9, 1, 67, 10, 0]
+tastBub.challenge54()
