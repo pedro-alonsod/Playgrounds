@@ -372,6 +372,20 @@ class LinkedList<T> {
             current = current?.next
         }
     }
+    
+    func reverse() {
+        var current = head
+        var next = current?.next
+        var prev: Node<T>? = nil
+        
+        while current != nil {
+            next = current?.next
+            current?.next = prev
+            prev = current
+            current = next
+        }
+        head = prev
+    }
 }
 
 var linked = LinkedList<String>()
@@ -379,6 +393,9 @@ var linked = LinkedList<String>()
 for letter in "abcdefghijklmnopqrstuvwxyz".characters {
     linked.add(data: String(letter))
 }
+linked.printLL()
+linked.reverse()
+print("*****")
 linked.printLL()
 
 var second = LinkedList<Character>()
@@ -393,8 +410,11 @@ for letter in "abcdefghijklmnopqrstuvwxyz".characters {
     }
     prev = node
 }
+print("Second")
 second.printNodes()
-
+second.reverse()
+print("rev")
+second.printLL()
 extension LinkedList {
     func midPoint() -> Node<T>? {
         var current = head
@@ -505,4 +525,16 @@ func challenge49(numbers: Int...) -> Int {
         }
     }
     return sum
+}
+
+protocol Numeric {
+    init()
+    static func +(lhs: Self, rhs: Self) -> Self
+}
+extension Int: Numeric {}
+extension Float: Numeric {}
+extension Double: Numeric {}
+
+func challenge52<T: Numeric>(a: [T]) -> T {
+    return a.reduce(T(), +)
 }
