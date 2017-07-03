@@ -359,3 +359,96 @@ extension LinkedList {
 
 linked.midPoint()!.data
 second.midPoint()!.data
+
+//func traverse(_ body: Node<T> -> Void) {
+//    left?.traverse(body)
+//    body(self)
+//    right?.traverse(body)
+//}
+
+
+//extends all collections
+extension Collection {
+    func challenge46<T>(_ tranform: (Iterator.Element) throws -> T) rethrows -> [T] {
+        var returnValue = [T]()
+        
+        for item in self {
+            returnValue.append(try tranform(item))
+        }
+        return returnValue
+    }
+}
+
+var testMap = [1,2,3].challenge46 { String($0) }
+
+extension Collection where Iterator.Element: Comparable {
+    func challenge47a() -> Iterator.Element {
+        var lowest: Iterator.Element?
+        for item in self {
+            if let unwrappedLowest = lowest {
+                if item < unwrappedLowest {
+                    lowest = item
+                }
+            } else {
+                    lowest = item
+                }
+            }
+        
+        return lowest!
+    }
+    
+    func challenge47b() -> Iterator.Element? {
+        guard var lowest = self.first else {
+            return nil
+        }
+        
+        for item in self {
+            if item < lowest {
+                lowest = item
+            }
+        }
+        return lowest
+    }
+}
+
+var testMin = [1, 2, 3, 4].challenge47a()
+
+class dequeue<T> {
+    var dq: [T] = []
+    var count: Int {
+        return dq.count
+    }
+    
+    func pushFront(data: T) {
+        dq.insert(data, at: 0)
+    }
+    
+    func pushBack(data: T) {
+        dq.append(data)
+    }
+    
+    func popFront() -> T? {
+        if dq.isEmpty {
+            return nil
+        } else {
+            return dq.removeFirst()
+        }
+        
+    }
+    
+    func popBack() -> T? {
+        return dq.removeLast()
+    }
+}
+
+func challenge49(numbers: Int...) -> Int {
+    let countedSet = NSCountedSet(array: numbers)
+    var sum = 0
+    
+    for case let item as Int in countedSet {
+        if countedSet.count(for: item) % 2 == 0 {
+            sum += item
+        }
+    }
+    return sum
+}
