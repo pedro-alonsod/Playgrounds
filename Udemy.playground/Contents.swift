@@ -707,4 +707,37 @@ tastBub.challenge54()
 tastBub.challenge56()
 
 
+var set: Set<Character> = []
+set.insert("c").inserted
+set.insert("c")
 
+func unique(str: String) -> Bool {
+    var unique: Set<Character> = []
+    for char in str.characters {
+        let res = unique.insert(char)
+        if res.inserted == false {
+            return false
+        }
+    }
+    
+    return true
+}
+
+unique(str: "No duplicates")
+unique(str: "abcdefghijklmnopqrstuvwxyz")
+unique(str: "AaBbCc")
+
+func isPalindrome(str: String) -> Bool {
+    return Array(str.uppercased().characters) == Array(str.uppercased().characters.reversed())
+}
+
+isPalindrome(str: "rotator")
+isPalindrome(str: "Rats live on no evil star")
+
+func sameChars(st1: String, str2: String) -> Bool {
+    return Array(st1.characters).sorted() == Array(str2.characters).sorted()
+}
+
+sameChars(st1: "abca", str2: "abca")
+sameChars(st1: " a1 b2 ", str2: "b 1 a 2")
+sameChars(st1: "abc", str2: "abca")
