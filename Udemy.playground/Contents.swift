@@ -452,3 +452,77 @@ func challenge49(numbers: Int...) -> Int {
     }
     return sum
 }
+
+//
+//func getShortestUniqueSubstring(arr: [Character], str: String) -> String {
+//    
+//    var hash: [Character:Int] = [:]
+//    var tail = 0
+//    var unique = 0
+//    var result = ""
+//    
+//    for elem in arr {
+//        hash[elem] = 0
+//    }
+//    
+//    
+//    let strArray = Array(str.characters)
+//    
+//    for head in 0..<strArray.count {
+//        
+//        let headChar = str[head]
+//        
+//        if hash[headChar] == nil {
+//            continue
+//        }
+//        
+//        if hash[headChar] == 0 {
+//            unique += 1 //+1 2 3
+//        }
+//        
+//        hash[headChar] += 1 //x:+1 y:2 z:1
+//        
+//        while unique == arr.count {
+//            var tmpLength = head - tail + 1 //3 -0 + 1 =4
+//            
+//            var tmpStr = str.substring(with: (tail...head));
+//            if tmpLength == arr.count {
+//                return tmpStr
+//            }
+//            
+//            if result == "" || tmpStr.characters.count < result.characters.count {
+//                result = tmpStr //xyyz
+//            }
+//            
+//            let tailChar = str[tail] //x
+//            
+//            if hash[tailChar]! != nil {
+//                hash[tailChar] -= 1 //x:0
+//                
+//                if hash[tailChar] == 0 {
+//                    unique -= 1 //2
+//                }
+//                
+//                tail += 1 //1
+//            }
+//            
+//        }
+//    }
+//    
+//    return result
+//    
+//}
+//
+//getShortestUniqueSubstring(arr: ["x","y","z"], str: "xyyzyzyx")
+////arr = ['x','y','z'], 
+////str = "xyyzyzayx"
+//
+////output = "zayx"
+//
+////go tru the string checking the character if i find the one
+////in the string marked as seen and mover to the next
+//
+////uniqueCounter
+//
+////"x y y z y z y x"
+////wayne bishop 
