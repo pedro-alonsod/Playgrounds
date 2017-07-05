@@ -1017,3 +1017,6 @@ binarySearchR(a: arrTestMin, s: 4)
 
 binarySearchI(a: arrTestMin, s: 9)
 binarySearchR(a: arrTestMin, s: 9)
+
+var c: Character = "A"
+//String(c).unicodeScalars.filter { $0.isASCII }.map { print($0 + 1) }

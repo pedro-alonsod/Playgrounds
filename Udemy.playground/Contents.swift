@@ -1,5 +1,59 @@
 import UIKit
 
+func challenge2(s: String) -> Bool {
+    var c = Array(s.uppercased().characters)
+    //print(c.count)
+    while c.count >= 1 {
+        //print("\(c.first!) \(c.last!)")
+        if c.first! != c.last! {
+            return false
+        } else {
+            c = Array(c.dropLast().dropFirst())
+        }
+        
+    }
+    
+    return true
+}
+
+var str: String = "retot"
+challenge2(s: str)
+
+func challenge3(s: String, p: String) -> Bool {
+    return s.characters.sorted() == p.characters.sorted()
+}
+var s = "abca"
+var p = "cbahha"
+challenge3(s: s, p: p)
+p.range(of: s, options: .caseInsensitive, range: p.startIndex..<p.endIndex , locale: nil)
+
+var nor = "abcde"
+var rot = "eabcdff"
+func challenge8(s: String, r: String) -> Bool {
+    var check = s + s
+    return check.contains(r)
+}
+
+challenge8(s: nor, r: rot)
+
+func challenge10(s: String) -> (String, String) {
+    var vowels = "AEIOU"
+    var countV = 0
+    var countC = 0
+    
+    for c in s.uppercased().characters {
+        if vowels.contains(String(c)) {
+            countV += 1
+        } else {
+            countC += 1
+        }
+    }
+    
+    return ("\(countV) vowels", "\(countC) consonants")
+}
+
+var test10 = "Mississippi".commonPrefix(with: "sip ", options: .caseInsensitive)
+challenge10(s: test10)
 func challenge14(str: String, current: String) {
     let lenght = str.characters.count
     let strArr = Array(str.characters)
@@ -318,6 +372,20 @@ class LinkedList<T> {
             current = current?.next
         }
     }
+    
+    func reverse() {
+        var current = head
+        var next = current?.next
+        var prev: Node<T>? = nil
+        
+        while current != nil {
+            next = current?.next
+            current?.next = prev
+            prev = current
+            current = next
+        }
+        head = prev
+    }
 }
 
 var linked = LinkedList<String>()
@@ -325,6 +393,9 @@ var linked = LinkedList<String>()
 for letter in "abcdefghijklmnopqrstuvwxyz".characters {
     linked.add(data: String(letter))
 }
+linked.printLL()
+linked.reverse()
+print("*****")
 linked.printLL()
 
 var second = LinkedList<Character>()
@@ -339,8 +410,11 @@ for letter in "abcdefghijklmnopqrstuvwxyz".characters {
     }
     prev = node
 }
+print("Second")
 second.printNodes()
-
+second.reverse()
+print("rev")
+second.printLL()
 extension LinkedList {
     func midPoint() -> Node<T>? {
         var current = head
@@ -526,3 +600,97 @@ func challenge49(numbers: Int...) -> Int {
 //
 ////"x y y z y z y x"
 ////wayne bishop 
+protocol Numeric {
+    init()
+    static func +(lhs: Self, rhs: Self) -> Self
+}
+extension Int: Numeric {}
+extension Float: Numeric {}
+extension Double: Numeric {}
+
+func challenge52<T: Numeric>(a: [T]) -> T {
+    return a.reduce(T(), +)
+}
+
+class BNode<T> {
+    var data: T
+    var left: BNode<T>?
+    var right: BNode<T>?
+    
+    init(data: T) {
+        self.data = data
+    }
+}
+
+class BTree<T: Comparable> {
+    var root: BNode<T>?
+    
+    init(array: [T]) {
+        
+    }
+//        for item in array {
+//            var placed = false
+//            
+//            if let rootNode = root {
+//                
+//                var tracker = rootNode
+//                
+//                while placed == false {
+//                    
+//                    if item <= tracker.data {
+//                        if tracker.left == nil {
+//                            
+//                            tracker.left = BNode(data: item)
+//                            
+//                            placed = true
+//                        }
+//                        tracker = tracker.left!
+//                    } else {
+//                        if tracker.right == nil {
+//                            tracker.right = BNode(data: item)
+//                            placed = true
+//                        }
+//                        tracker = tracker.right!
+//                    }
+//                } else {
+//                    root = BNode(data: item)
+//                }
+//            }
+//        }
+//    }
+}
+
+extension Array where Element: Comparable {
+    mutating func challenge54() -> [Element] {
+        for i in 0..<self.count {
+            for j in i..<self.count {
+                if self[i] > self[j] {
+                    swap(&self[i], &self[j])
+                }
+            }
+        }
+        
+        return self
+    }
+    
+    mutating func challenge56() {
+        // Insertion Sort
+        for index in 1..<self.count {
+            var cv = self[index]
+            var position = index
+            
+            while position > 0 && self[position - 1] > cv {
+                self[position] = self[position - 1]
+                position -= 1
+            }
+        self[position] = cv
+        }
+    }
+}
+
+var tastBub = [6, 8, 3, 2, 9, 1, 67, 10, 0]
+tastBub.challenge54()
+tastBub.challenge56()
+
+
+
