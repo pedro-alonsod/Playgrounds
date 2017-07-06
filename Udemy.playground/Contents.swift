@@ -741,3 +741,48 @@ func sameChars(st1: String, str2: String) -> Bool {
 sameChars(st1: "abca", str2: "abca")
 sameChars(st1: " a1 b2 ", str2: "b 1 a 2")
 sameChars(st1: "abc", str2: "abca")
+
+"sssss".range(of: "ss") != nil
+
+extension String {
+    func fuzzyContains(str2: String) -> Bool {
+        return self.uppercased().range(of: str2.uppercased()) != nil
+    }
+}
+"Hello, world".fuzzyContains(str2: "Hello")
+"Hello, world".fuzzyContains(str2: "WORLD")
+"Hello, world".fuzzyContains(str2: "Bye")
+
+func countChar(str: String, char: Character) -> Int {
+    return Array(str.characters).filter { $0 == char }.count
+}
+
+countChar(str: "The rain in Spain", char: "a")
+countChar(str: "Mississippi", char: "i")
+countChar(str: "Hacking with swift", char: "i")
+
+
+func removeDups(str: String) -> String {
+    var hash: [Character:Int] = [:]
+    var res = ""
+    
+    for char in str.characters {
+        if hash[char] == nil {
+            hash[char] = 1
+            res += String(char)
+        }
+    }
+    return res
+}
+
+removeDups(str: "wombat")
+removeDups(str: "hello")
+removeDups(str: "Mississippi")
+
+func condense(str: String) -> String {
+    return str.replacingOccurrences(of: " +", with: " ", options: .regularExpression, range: nil)
+}
+
+condense(str: "     a")
+condense(str: "a     c")
+condense(str: "a     b    c   ")
