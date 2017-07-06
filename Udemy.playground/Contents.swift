@@ -786,3 +786,57 @@ func condense(str: String) -> String {
 condense(str: "     a")
 condense(str: "a     c")
 condense(str: "a     b    c   ")
+
+func rotate(str1: String, str2: String) -> Bool {
+    guard str1.characters.count == str2.characters.count else { return false }
+    var full = str1 + str2
+    return full.contains(str2)
+}
+
+func pangrams(str: String) -> Bool {
+    let abc = Set(str.lowercased().characters)
+    let letter = abc.filter { $0 >= "a" && $0 <= "z" }
+    return letter.count == 26
+}
+
+func vAndC(str: String) -> (v: Int, c: Int) {
+    let vowels = "aeiou"
+    var res = (v: 0, c: 0)
+    
+    for c in str.lowercased().characters {
+        if c >= "a" && c <= "z" {
+            if vowels.contains(String(c)) {
+                res.v += 1
+            } else {
+                res.c += 1
+            }
+        }
+    }
+    return res
+}
+
+vAndC(str: "Swift coding Challenges")
+vAndC(str: "Mississippi..")
+
+func threeLet(str1: String, str2: String) -> Bool {
+    guard str1.characters.count == str2.characters.count else { return false }
+    var str2Arr = Array(str2.characters)
+    var count = 0
+    
+    for (idx, c) in str1.characters.enumerated() {
+        
+        if c != str2Arr[idx] {
+            count += 1
+        }
+        if count > 3 {
+            return false
+        }
+    }
+    
+    return count < 4
+}
+
+threeLet(str1: "Clamp", str2: "Cramp")
+threeLet(str1: "Clamp", str2: "Crams")
+threeLet(str1: "Clamp", str2: "Grans")
+threeLet(str1: "clamp", str2: "maple")
