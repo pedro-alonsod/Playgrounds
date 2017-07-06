@@ -840,3 +840,32 @@ threeLet(str1: "Clamp", str2: "Cramp")
 threeLet(str1: "Clamp", str2: "Crams")
 threeLet(str1: "Clamp", str2: "Grans")
 threeLet(str1: "clamp", str2: "maple")
+
+"I am Robert".components(separatedBy: " ").reversed().joined(separator: " ")
+
+func findLargestPrefix(str: String) -> String {
+    var arr = str.components(separatedBy: " ")
+    let first = arr.first!
+    var bestPrefix = ""
+    var current = ""
+    var prex = true
+    
+    for c in first.characters {
+        current += String(c)
+        for elem in arr {
+            if !elem.hasPrefix(current) {
+                prex = false
+            }
+        }
+        if prex {
+            bestPrefix = current
+            prex = true
+        }
+    }
+    
+    return bestPrefix
+}
+
+findLargestPrefix(str: "swim swam sweff sweater")
+findLargestPrefix(str: "swift switch swill swim")
+findLargestPrefix(str: "flap flip flop")
