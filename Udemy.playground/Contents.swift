@@ -869,3 +869,108 @@ func findLargestPrefix(str: String) -> String {
 findLargestPrefix(str: "swim swam sweff sweater")
 findLargestPrefix(str: "swift switch swill swim")
 findLargestPrefix(str: "flap flip flop")
+
+func encoding(str: String) -> String {
+    var arr = Array(str.characters)
+    var res = ""
+    var first = arr.removeFirst()
+    var c = 1
+    
+    for i in 0..<arr.count {
+        if first == arr[i] {
+            c += 1
+        } else {
+            res += "\(first)\(c)"
+            first = arr[i]
+            c = 1
+        }
+    }
+    res += "\(first)\(c)"
+    
+    return res
+}
+
+encoding(str: "aabbcc")
+
+func permutation(str: String, c: String) {
+    let lenght = str.characters.count
+    let strArr = Array(str.characters)
+    
+    if lenght == 0 {
+        print(c)
+    } else {
+        for i in 0..<lenght {
+            let left = String(strArr[0..<i])
+            let right = String(strArr[i+1..<lenght])
+            permutation(str: left + right, c: c + String(strArr[i]))
+        }
+    }
+}
+
+permutation(str: "wombat", c: "")
+
+func reverseWords(str: String) -> String {
+    var arr = str.components(separatedBy: " ")
+    
+    for i in 0..<arr.count {
+        arr[i] = String(arr[i].characters.reversed())
+    }
+    
+    return String(arr.joined(separator: " "))
+}
+
+func reverseWords2(str: String) -> String {
+    var arr = str.components(separatedBy: " ")
+    var res = arr.map { String($0.characters.reversed()) }
+    
+    return String(res.joined(separator: " "))
+}
+
+reverseWords2(str: "Swift Coding challenges")
+reverseWords2(str: "the quick brown fox")
+
+func fizzBuzz() {
+    for i in 1...100 {
+        if i % 3 == 0 && i % 5 == 0 {
+            print("FizzBuzz")
+        } else if i % 3 == 0 {
+            print("Fizz")
+        } else if i % 5 == 0 {
+            print("Buzz")
+        } else {
+            print(i)
+        }
+    }
+}
+
+fizzBuzz()
+
+func random(min: Int, max: Int) -> Int {
+    
+    return Int(arc4random_uniform(UInt32(max - min + 1))) + min
+}
+
+random(min: 2, max: 5)
+random(min: 2, max: 5)
+random(min: 2, max: 5)
+random(min: 2, max: 5)
+random(min: 2, max: 5)
+
+func myPow(n: Int, k: Int) -> Int {
+    var res = n
+    for i in 2...k {
+        res *= n
+    }
+    return res
+}
+
+myPow(n: 4, k: 3)
+myPow(n: 2, k: 8)
+
+func swapTuples(a: inout Int, b: inout Int) -> (a: Int, b: Int) {
+    (b, a) = (a,b)
+    return (a,b)
+}
+var a = 4
+var b = 3
+swapTuples(a: &a, b: &b)
