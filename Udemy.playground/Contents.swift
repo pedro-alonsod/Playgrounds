@@ -689,8 +689,37 @@ extension Array where Element: Comparable {
 }
 
 var tastBub = [6, 8, 3, 2, 9, 1, 67, 10, 0]
+tastBub.remove(at: 2)
 tastBub.challenge54()
 tastBub.challenge56()
 
+func mostCommonName(arr: [String]) -> (name: String, count: Int) {
+    var names: [String: Int] = [:]
+    
+    for elem in arr {
+        if names[elem] == nil {
+            names[elem] = 1
+        } else {
+            names[elem]! += 1
+        }
+    }
+    
+    var res = names.sorted(by: { $0 < $1 })
+    
+    return (res[0].key, res[0].value)
+}
 
+let names = ["bob", "carly", "jane", "guy", "pit", "pit", "carly", "guy", "bob", "bob", ]
+mostCommonName(arr: names)
 
+func reverseEveryOtherWord(srt: String) -> String {
+    var arrStr = srt.components(separatedBy: " ")
+    
+    for i in stride(from: 0, to: arrStr.count, by: 2) {
+        arrStr[i] = String(arrStr[i].characters.reversed())
+    }
+    
+    return arrStr.joined(separator: " ")
+}
+ let strEvery = "lets start today by reversing every other word"
+print(reverseEveryOtherWord(srt: strEvery))
