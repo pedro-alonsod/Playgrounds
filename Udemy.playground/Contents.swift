@@ -686,10 +686,24 @@ extension Array where Element: Comparable {
         self[position] = cv
         }
     }
+    
+    mutating func challenge59(n: [Element]) -> [Element] {
+        if n.count == 1 {
+            return n
+        }
+        if n.count == 0 {
+            return []
+        }
+        let pivot = n[0]
+        var less = n.filter { $0 < pivot }
+        var more = n.filter { $0 > pivot }
+        return challenge59(n: less) + Array([pivot]) + challenge59(n: more)
+    }
 }
 
 var tastBub = [6, 8, 3, 2, 9, 1, 67, 10, 0]
 tastBub.remove(at: 2)
+tastBub.challenge59(n: tastBub)
 tastBub.challenge54()
 tastBub.challenge56()
 
