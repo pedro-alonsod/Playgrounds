@@ -737,3 +737,313 @@ func reverseEveryOtherWord(srt: String) -> String {
 }
  let strEvery = "lets start today by reversing every other word"
 print(reverseEveryOtherWord(srt: strEvery))
+var set: Set<Character> = []
+set.insert("c").inserted
+set.insert("c")
+
+func unique(str: String) -> Bool {
+    var unique: Set<Character> = []
+    for char in str.characters {
+        let res = unique.insert(char)
+        if res.inserted == false {
+            return false
+        }
+    }
+    
+    return true
+}
+
+unique(str: "No duplicates")
+unique(str: "abcdefghijklmnopqrstuvwxyz")
+unique(str: "AaBbCc")
+
+func isPalindrome(str: String) -> Bool {
+    return Array(str.uppercased().characters) == Array(str.uppercased().characters.reversed())
+}
+
+isPalindrome(str: "rotator")
+isPalindrome(str: "Rats live on no evil star")
+
+func sameChars(st1: String, str2: String) -> Bool {
+    return Array(st1.characters).sorted() == Array(str2.characters).sorted()
+}
+
+sameChars(st1: "abca", str2: "abca")
+sameChars(st1: " a1 b2 ", str2: "b 1 a 2")
+sameChars(st1: "abc", str2: "abca")
+
+"sssss".range(of: "ss") != nil
+
+extension String {
+    func fuzzyContains(str2: String) -> Bool {
+        return self.uppercased().range(of: str2.uppercased()) != nil
+    }
+}
+"Hello, world".fuzzyContains(str2: "Hello")
+"Hello, world".fuzzyContains(str2: "WORLD")
+"Hello, world".fuzzyContains(str2: "Bye")
+
+func countChar(str: String, char: Character) -> Int {
+    return Array(str.characters).filter { $0 == char }.count
+}
+
+countChar(str: "The rain in Spain", char: "a")
+countChar(str: "Mississippi", char: "i")
+countChar(str: "Hacking with swift", char: "i")
+
+
+func removeDups(str: String) -> String {
+    var hash: [Character:Int] = [:]
+    var res = ""
+    
+    for char in str.characters {
+        if hash[char] == nil {
+            hash[char] = 1
+            res += String(char)
+        }
+    }
+    return res
+}
+
+removeDups(str: "wombat")
+removeDups(str: "hello")
+removeDups(str: "Mississippi")
+
+func condense(str: String) -> String {
+    return str.replacingOccurrences(of: " +", with: " ", options: .regularExpression, range: nil)
+}
+
+condense(str: "     a")
+condense(str: "a     c")
+condense(str: "a     b    c   ")
+
+func rotate(str1: String, str2: String) -> Bool {
+    guard str1.characters.count == str2.characters.count else { return false }
+    var full = str1 + str2
+    return full.contains(str2)
+}
+
+func pangrams(str: String) -> Bool {
+    let abc = Set(str.lowercased().characters)
+    let letter = abc.filter { $0 >= "a" && $0 <= "z" }
+    return letter.count == 26
+}
+
+func vAndC(str: String) -> (v: Int, c: Int) {
+    let vowels = "aeiou"
+    var res = (v: 0, c: 0)
+    
+    for c in str.lowercased().characters {
+        if c >= "a" && c <= "z" {
+            if vowels.contains(String(c)) {
+                res.v += 1
+            } else {
+                res.c += 1
+            }
+        }
+    }
+    return res
+}
+
+vAndC(str: "Swift coding Challenges")
+vAndC(str: "Mississippi..")
+
+func threeLet(str1: String, str2: String) -> Bool {
+    guard str1.characters.count == str2.characters.count else { return false }
+    var str2Arr = Array(str2.characters)
+    var count = 0
+    
+    for (idx, c) in str1.characters.enumerated() {
+        
+        if c != str2Arr[idx] {
+            count += 1
+        }
+        if count > 3 {
+            return false
+        }
+    }
+    
+    return count < 4
+}
+
+threeLet(str1: "Clamp", str2: "Cramp")
+threeLet(str1: "Clamp", str2: "Crams")
+threeLet(str1: "Clamp", str2: "Grans")
+threeLet(str1: "clamp", str2: "maple")
+
+"I am Robert".components(separatedBy: " ").reversed().joined(separator: " ")
+
+func findLargestPrefix(str: String) -> String {
+    var arr = str.components(separatedBy: " ")
+    let first = arr.first!
+    var bestPrefix = ""
+    var current = ""
+    var prex = true
+    
+    for c in first.characters {
+        current += String(c)
+        for elem in arr {
+            if !elem.hasPrefix(current) {
+                prex = false
+            }
+        }
+        if prex {
+            bestPrefix = current
+            prex = true
+        }
+    }
+    
+    return bestPrefix
+}
+
+findLargestPrefix(str: "swim swam sweff sweater")
+findLargestPrefix(str: "swift switch swill swim")
+findLargestPrefix(str: "flap flip flop")
+
+func encoding(str: String) -> String {
+    var arr = Array(str.characters)
+    var res = ""
+    var first = arr.removeFirst()
+    var c = 1
+    
+    for i in 0..<arr.count {
+        if first == arr[i] {
+            c += 1
+        } else {
+            res += "\(first)\(c)"
+            first = arr[i]
+            c = 1
+        }
+    }
+    res += "\(first)\(c)"
+    
+    return res
+}
+
+encoding(str: "aabbcc")
+
+func permutation(str: String, c: String) {
+    let lenght = str.characters.count
+    let strArr = Array(str.characters)
+    
+    if lenght == 0 {
+        print(c)
+    } else {
+        for i in 0..<lenght {
+            let left = String(strArr[0..<i])
+            let right = String(strArr[i+1..<lenght])
+            permutation(str: left + right, c: c + String(strArr[i]))
+        }
+    }
+}
+
+permutation(str: "wombat", c: "")
+
+func reverseWords(str: String) -> String {
+    var arr = str.components(separatedBy: " ")
+    
+    for i in 0..<arr.count {
+        arr[i] = String(arr[i].characters.reversed())
+    }
+    
+    return String(arr.joined(separator: " "))
+}
+
+func reverseWords2(str: String) -> String {
+    var arr = str.components(separatedBy: " ")
+    var res = arr.map { String($0.characters.reversed()) }
+    
+    return String(res.joined(separator: " "))
+}
+
+reverseWords2(str: "Swift Coding challenges")
+reverseWords2(str: "the quick brown fox")
+
+func fizzBuzz() {
+    for i in 1...100 {
+        if i % 3 == 0 && i % 5 == 0 {
+            print("FizzBuzz")
+        } else if i % 3 == 0 {
+            print("Fizz")
+        } else if i % 5 == 0 {
+            print("Buzz")
+        } else {
+            print(i)
+        }
+    }
+}
+
+fizzBuzz()
+
+func random(min: Int, max: Int) -> Int {
+    
+    return Int(arc4random_uniform(UInt32(max - min + 1))) + min
+}
+
+random(min: 2, max: 5)
+random(min: 2, max: 5)
+random(min: 2, max: 5)
+random(min: 2, max: 5)
+random(min: 2, max: 5)
+
+func myPow(n: Int, k: Int) -> Int {
+    var res = n
+    for i in 2...k {
+        res *= n
+    }
+    return res
+}
+
+myPow(n: 4, k: 3)
+myPow(n: 2, k: 8)
+
+func swapTuples(a: inout Int, b: inout Int) -> (a: Int, b: Int) {
+    (b, a) = (a,b)
+    return (a,b)
+}
+var a = 4
+var b = 3
+swapTuples(a: &a, b: &b)
+
+import Foundation
+
+func calcDroneMinEnergy(route: [[Int]]) -> Int {
+    
+    var lastNumber = route[0][2]
+    var out = 0
+    
+    for i in 1..<route.count {
+        if lastNumber < route[i][2] {
+            
+            out -= route[i][2]
+            lastNumber = route[i][2]
+            print("less \(route[i][2])")
+        } else if lastNumber > route[i][2] {
+            print("greater \(route[i][2])")
+            out += route[i][2]
+            lastNumber = route[i][2]
+        }
+    }
+    
+    return abs(out)
+}
+//
+//// only need the z coordinate
+let route = [ [0,   2, 10],
+          [3,   5,  0],
+          [9,  20,  6],
+          [10, 12, 15],
+          [10, 10,  8] ]
+
+print(route[0][2])
+calcDroneMinEnergy(route: route)
+//out: 5
+//
+//10 - 5 energy
+//0 - +15
+//6 - (10 - 6) = 9
+//15 - 4 - 9 = 0 // so ok      (here you need 5)
+//8 = 7 down + -5 = 7
+//
+//
+//output : 5
