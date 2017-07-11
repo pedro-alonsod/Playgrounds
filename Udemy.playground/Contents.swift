@@ -974,3 +974,127 @@ func swapTuples(a: inout Int, b: inout Int) -> (a: Int, b: Int) {
 var a = 4
 var b = 3
 swapTuples(a: &a, b: &b)
+
+var tst = "0001"
+tst.insert("1", at: tst.startIndex)
+
+func isPrime(n: Int) -> Bool {
+    guard n >= 2 else { return false }
+    guard n != 2 else { return true  }
+    
+    let max = Int(ceil(sqrt(Double(n))))
+    
+    for i in 2...Int.max {
+        if n % i == 0 {
+            return false
+        }
+    }
+    return true
+}
+
+isPrime(n: 16777126)
+
+func bOnes(n: Int) -> (low: Int?, high: Int?) {
+    var str = String(n, radix: 2)
+    var nOnes = str.characters.filter { $0 == "1" }.count
+    var nH: Int?
+    var nL:Int?
+    for i in n+1...Int.max {
+        let cb = String(i, radix:2)
+        let co = cb.characters.filter { $0 == "1" }.count
+        if nOnes == co {
+            nH = i
+            break
+        }
+    }
+    
+    for i in stride(from: n-1, to: -1, by: -1) {
+        let cb = String(i, radix: 2)
+        let co = cb.characters.filter { $0 == "1" }.count
+        
+        if nOnes == co {
+            nL = i
+            break
+        }
+    }
+    return (nL, nH)
+}
+
+bOnes(n: 12)
+
+func binaryReverse(n: UInt) -> String {
+    var num = String(n, radix: 2)
+    
+    while num.characters.count < 8 {
+        num.insert("0", at: num.startIndex)
+    }
+    
+    return "\(UInt(String(num.characters.reversed()))!)"
+}
+
+binaryReverse(n: 10)
+
+func intAsString(str: String) -> Bool {
+    for c in str.characters {
+        if Int(String(c)) == nil {
+            return false
+        }
+    }
+    return true
+}
+
+intAsString(str: "01010101")
+intAsString(str: "10.1")
+intAsString(str: "9223727218192202093734")
+
+func sumNumStr(str: String) -> Int {
+    var letter = ""
+    var res = 0
+    var arr = Array(str.characters)
+    
+    for c in arr {
+        if Int(String(c)) != nil {
+            letter += "\(c)"
+        } else {
+            res += Int(letter) ?? 0
+            letter = ""
+        }
+    }
+    
+    res += Int(letter) ?? 0
+    
+    return res
+}
+
+let a1b2c3 = "a10b20c30"
+sumNumStr(str: a1b2c3)
+
+func sqroot(n: Int) -> Int {
+    var min = 0
+    var max = n/2
+    var res = 0
+    
+    while min < max {
+        var app = (max + min)/2
+        if app * app == n {
+            return app
+        } else if app * app > n {
+            max = app
+        } else {
+            min = app + 1
+        }
+        res = app
+    }
+    return res
+}
+sqroot(n: 9)
+sqroot(n: 16777216)
+sqroot(n: 15)
+sqroot(n: 16)
+
+func minus(n: Int, k: Int) -> Int {
+    return (n + (-k))
+}
+
+minus(n: 9, k: 4)
+minus(n: 10, k: 20)
