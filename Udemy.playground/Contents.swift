@@ -702,11 +702,41 @@ extension Array where Element: Comparable {
 }
 
 var tastBub = [6, 8, 3, 2, 9, 1, 67, 10, 0]
+tastBub.remove(at: 2)
 tastBub.challenge59(n: tastBub)
 tastBub.challenge54()
 tastBub.challenge56()
 
+func mostCommonName(arr: [String]) -> (name: String, count: Int) {
+    var names: [String: Int] = [:]
+    
+    for elem in arr {
+        if names[elem] == nil {
+            names[elem] = 1
+        } else {
+            names[elem]! += 1
+        }
+    }
+    
+    var res = names.sorted(by: { $0 < $1 })
+    
+    return (res[0].key, res[0].value)
+}
 
+let names = ["bob", "carly", "jane", "guy", "pit", "pit", "carly", "guy", "bob", "bob", ]
+mostCommonName(arr: names)
+
+func reverseEveryOtherWord(srt: String) -> String {
+    var arrStr = srt.components(separatedBy: " ")
+    
+    for i in stride(from: 0, to: arrStr.count, by: 2) {
+        arrStr[i] = String(arrStr[i].characters.reversed())
+    }
+    
+    return arrStr.joined(separator: " ")
+}
+ let strEvery = "lets start today by reversing every other word"
+print(reverseEveryOtherWord(srt: strEvery))
 var set: Set<Character> = []
 set.insert("c").inserted
 set.insert("c")
@@ -1098,3 +1128,44 @@ func minus(n: Int, k: Int) -> Int {
 
 minus(n: 9, k: 4)
 minus(n: 10, k: 20)
+
+func calcDroneMinEnergy(route: [[Int]]) -> Int {
+    
+    var lastNumber = route[0][2]
+    var out = 0
+    
+    for i in 1..<route.count {
+        if lastNumber < route[i][2] {
+            
+            out -= route[i][2]
+            lastNumber = route[i][2]
+            print("less \(route[i][2])")
+        } else if lastNumber > route[i][2] {
+            print("greater \(route[i][2])")
+            out += route[i][2]
+            lastNumber = route[i][2]
+        }
+    }
+    
+    return abs(out)
+}
+//
+//// only need the z coordinate
+let route = [ [0,   2, 10],
+          [3,   5,  0],
+          [9,  20,  6],
+          [10, 12, 15],
+          [10, 10,  8] ]
+
+print(route[0][2])
+calcDroneMinEnergy(route: route)
+//out: 5
+//
+//10 - 5 energy
+//0 - +15
+//6 - (10 - 6) = 9
+//15 - 4 - 9 = 0 // so ok      (here you need 5)
+//8 = 7 down + -5 = 7
+//
+//
+//output : 5
