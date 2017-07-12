@@ -1200,3 +1200,23 @@ extension Collection where Iterator.Element == String {
 
 ["a", "ab", "ac"].sLenght()
 ["paul", "taylor", "adele"].sLenght()
+
+//private static int countAtKDiff(int[] array, int arraySize, int k) {
+//    
+//    int count = 0; // initialize the counter
+//    
+//    for (int i = 0, j = 1; i < arraySize && j < arraySize;) {
+//        if (array[j] - array[i] == k) { // found a pair
+//            count++;
+//            i++;
+//            j++;
+//        } else if (array[j] - array[i] < k) { // difference is less than wanted so increment right pointer
+//            j++;
+//        } else { // difference is more than wanted so increment the left pointer
+//            i++;
+//        }
+//    }
+//    
+//    return count;
+//}
+
