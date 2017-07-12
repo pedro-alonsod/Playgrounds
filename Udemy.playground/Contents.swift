@@ -1205,7 +1205,7 @@ func countKDiff(numbers: [Int], k: Int) -> Int {
     var count = 0
     var i = 0
     var j = 0
-    for var i in i..<numbers.count {
+    for l in 0..<numbers.count {
         if numbers[i] - numbers[j] == k {
             count += 1
             i += 1
@@ -1216,6 +1216,8 @@ func countKDiff(numbers: [Int], k: Int) -> Int {
             i += 1
         }
     }
+    
+    return count
 }
 
 var diffT = [1,1,2,2,3,3]
