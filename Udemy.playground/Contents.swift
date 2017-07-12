@@ -1170,3 +1170,33 @@ calcDroneMinEnergy(route: route)
 //
 //output : 5
 
+extension Array {
+    func countDigits(c: String) -> Int {
+        var count = 0
+        for elem in self {
+            var str = String(describing: elem)
+            count += str.characters.filter { $0 == Character(c) }.count
+        }
+        return count
+    }
+}
+[55, 15, 5, 515].countDigits(c: "5")
+[55555].countDigits(c: "1")
+[55555].countDigits(c: "5")
+
+extension Collection where Iterator.Element: Comparable {
+    func nSmallest(c: Int) -> [Iterator.Element] {
+        let sorted = self.sorted()
+        
+        return Array(sorted.prefix(c))
+    }
+}
+
+extension Collection where Iterator.Element == String {
+    func sLenght() -> [Iterator.Element] {
+        return self.sorted { $0 > $1 }
+    }
+}
+
+["a", "ab", "ac"].sLenght()
+["paul", "taylor", "adele"].sLenght()
