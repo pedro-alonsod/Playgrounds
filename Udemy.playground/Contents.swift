@@ -1201,6 +1201,26 @@ extension Collection where Iterator.Element == String {
 ["a", "ab", "ac"].sLenght()
 ["paul", "taylor", "adele"].sLenght()
 
+func countKDiff(numbers: [Int], k: Int) -> Int {
+    var count = 0
+    var i = 0
+    var j = 0
+    for var i in i..<numbers.count {
+        if numbers[i] - numbers[j] == k {
+            count += 1
+            i += 1
+            j += 1
+        } else if numbers[i] - numbers[j] < k {
+            j += 1
+        } else {
+            i += 1
+        }
+    }
+}
+
+var diffT = [1,1,2,2,3,3]
+countKDiff(numbers: diffT, k: 1)
+
 //private static int countAtKDiff(int[] array, int arraySize, int k) {
 //    
 //    int count = 0; // initialize the counter
