@@ -1203,15 +1203,18 @@ extension Collection where Iterator.Element == String {
 
 func countKDiff(numbers: [Int], k: Int) -> Int {
     var count = 0
-    var i = 0
     var j = 0
-    for l in 0..<numbers.count {
+    for var i in 0..<numbers.count {
+        print("\(numbers[i]) \(numbers[j]) == \(numbers[i] - numbers[j]) = \(k) | \(i) \(j)")
         if numbers[i] - numbers[j] == k {
             count += 1
             i += 1
             j += 1
         } else if numbers[i] - numbers[j] < k {
             j += 1
+            i -= 1
+        } else if numbers[i] - numbers[j] > k  {
+            i += 1
         } else {
             i += 1
         }
@@ -1241,4 +1244,54 @@ countKDiff(numbers: diffT, k: 1)
 //    
 //    return count;
 //}
+func missingNum(arr: [Int]) -> [Int] {
+        let s: Set<Int> = Set(arr)
+        let t = Set<Int>(1...100)
+        
+        return Array(t.subtracting(s))
+}
+var h = "hello".data(using: .utf8)!.base64EncodedData()
+var d = Data(base64Encoded: h)
+var dd = String(bytes: d!, encoding: .utf8)
+var sty: String? = nil
 
+var testPP = [1, 5, 3, 4, 2]
+func twoPointers(arr: [Int], k: Int) {
+    var srtd = arr.sorted()
+    var i = 0
+    var j = 1
+    
+    print(srtd)
+    while i < srtd.count && j < srtd.count {
+        var diff = srtd[j] - srtd[i]
+        print("\(srtd[j]) - \(srtd[i]) = \(srtd[j] - srtd[i])")
+        print("j: \(j) i: \(i)")
+        if diff == k {
+            print("\(srtd[j] - srtd[i]) = \(srtd[j] - srtd[i])")
+            j = i + 1
+            i += 1
+            print("one")
+        } else if diff < k {
+            j += 1
+            print(j)
+        } else if diff > k {
+            i += 1
+            print(i)
+        }
+    }
+}
+
+twoPointers(arr: testPP, k: 2)
+//func aesEncrypt(key: String, iv: String) throws -> String {
+//    let data = self.data(using: .utf8)!
+//    let encrypted = try! AES(key: key, iv: iv, blockMode: .CBC, padding: PKCS7()).encrypt([UInt8](data))
+//    let encryptedData = Data(encrypted)
+//    return encryptedData.base64EncodedString()
+//}
+//
+//func aesDecrypt(key: String, iv: String) throws -> String {
+//    let data = Data(base64Encoded: self)!
+//    let decrypted = try! AES(key: key, iv: iv, blockMode: .CBC, padding: PKCS7()).decrypt([UInt8](data))
+//    let decryptedData = Data(decrypted)
+//    return String(bytes: decryptedData.bytes, encoding: .utf8) ?? "Could not decrypt"
+//}
