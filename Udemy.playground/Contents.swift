@@ -1295,3 +1295,103 @@ twoPointers(arr: testPP, k: 2)
 //    let decryptedData = Data(decrypted)
 //    return String(bytes: decryptedData.bytes, encoding: .utf8) ?? "Could not decrypt"
 //}
+
+extension Array where Element: Comparable {
+    func bSort() -> [Element] {
+        guard self.count > 0 else { return self }
+        var selfA = self
+        for i in 0..<selfA.count {
+            for j in i+1..<selfA.count {
+                if selfA[i] > selfA[j] {
+                    swap(&selfA[i], &selfA[j])
+                }
+            }
+        }
+        return selfA
+    }
+    
+    func iSort() -> [Element] {
+        guard self.count > 0 else { return self }
+        var iArr = self
+        
+        for i in 1..<iArr.count {
+            var cv = iArr[i]
+            var position = i
+            
+            while iArr[position - 1] > cv && position > 0 {
+                iArr[position] = iArr[position - 1]
+                position -= 1
+            }
+            iArr[position] = cv
+        }
+        return iArr
+    }
+}
+
+[1,3, 4, 2, 5, 1].bSort()
+[1,3, 4, 2, 5, 1].iSort()
+
+func isomorph(s1: Any, s2: Any) -> Bool {
+    let f1 = String(describing: s1)
+    let f2 = String(describing: s2)
+    
+    guard f1.characters.count == f2.characters.count else { return false }
+    
+    var map = [Character:Character]()
+    
+    var a1 = Array(f1.characters)
+    var a2 = Array(f2.characters)
+    
+    for (i, c) in a1.enumerated() {
+        let ot = a2[i]
+        if let cm = map[c] {
+            if cm != ot {
+                return false
+        }
+            } else {
+                if map.values.contains(ot) {
+                    return false
+                }
+                map[c] = ot
+            }
+        }
+    
+    return true
+}
+
+isomorph(s1: "clap", s2: "slap")
+
+func brackets(s: String) -> Bool {
+    
+    var stack: [Character] = []
+    var arr = Array(s.characters)
+    var open = "<({["
+    var close = ">)}]"
+    
+    for c in arr {
+        if open.contains(String(c)) {
+            stack.append(c)
+        }
+        if close.contains(String(c)) {
+            stack.popLast()
+        }
+    }
+    
+    return stack.count == 0
+}
+
+brackets(s: "<{}()[]>")
+
+func qSort(a: [Int]) -> [Int] {
+    if a.count <= 1 {
+        return a
+    }
+    
+    let pivot = a[0]
+    let less = a.filter { $0 < pivot }
+    let more = a.filter { $0 > pivot }
+    
+    return qSort(a: less) + Array([pivot]) + qSort(a: more)
+}
+
+qSort(a: [3, 5, 1, 4, 2, 9])
