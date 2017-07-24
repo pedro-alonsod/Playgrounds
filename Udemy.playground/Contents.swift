@@ -1641,3 +1641,15 @@ extension LinkedLizt {
 }
 
 LLTst.reverse()
+
+protocol Numeric2 {
+    init()
+    static func +(lhs: Self, rhs: Self) -> Self
+}
+extension Int: Numeric2 {}
+extension Float: Numeric2 {}
+extension Double: Numeric2 {}
+
+func sumArray<T: Numeric2>(a: [T]) -> T {
+    return a.reduce(T(), +)
+}
