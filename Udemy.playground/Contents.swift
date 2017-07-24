@@ -1395,3 +1395,249 @@ func qSort(a: [Int]) -> [Int] {
 }
 
 qSort(a: [3, 5, 1, 4, 2, 9])
+
+extension Collection where Iterator.Element == Int {
+    func median() -> Double? {
+        guard self.count > 0 else { return nil }
+        var aS = self.sorted()
+        var res: Double?
+        
+        if aS.count % 2 == 0 {
+            let i = aS.count / 2
+            let j = i - 1
+            res = Double((aS[i] + aS[j])) / 2
+        } else {
+            res = Double(aS[aS.count / 2])
+        }
+        
+        return res
+    }
+}
+
+extension Collection where Iterator.Element: Equatable {
+    
+    func indexOfT(search: Iterator.Element) -> Int? {
+        var out: Int? = nil
+        
+        for (i, c) in self.enumerated() {
+            if c == search {
+                out = i
+                break
+            }
+        }
+        
+        return out
+    }
+}
+
+[1, 2, 3].median()
+[1,2, 3, 4].median()
+[1, 2, 3, 4].indexOfT(search: 2)
+[1, 2, 3, 4].indexOfT(search: 5)
+
+class NodeLL<T> {
+    var data: T
+    var next: NodeLL<T>?
+    
+    init(data: T) {
+        self.data = data
+    }
+}
+
+class LinkedLizt<T> {
+    var head: NodeLL<T>?
+    
+    func addNode(data: T) {
+        
+        let nodeNew = NodeLL(data: data)
+        
+        if head == nil {
+            head = nodeNew
+        } else {
+            
+            var current = head
+            while current?.next != nil {
+                current = current?.next
+            }
+            current?.next = nodeNew
+        }
+    }
+    
+    func traverseLL() -> String {
+        
+        var current = head
+        var strOut = ""
+        while current != nil {
+            strOut += "\(current!.data) "
+            current = current?.next
+        }
+        return strOut
+    }
+}
+
+var LLTst: LinkedLizt<Character> = LinkedLizt()
+
+for c in "abcdefghijklmnopqrstuvwxyz".characters {
+    LLTst.addNode(data: c)
+}
+
+print(LLTst.traverseLL())
+
+extension LinkedLizt {
+    func middle() -> NodeLL<T>? {
+        guard head != nil else { return nil }
+        
+        var slow = head
+        var fast = head
+        
+        while fast != nil && fast?.next != nil {
+            fast = fast?.next?.next
+            slow = slow?.next
+        }
+        
+        return slow
+    }
+}
+
+LLTst.middle()?.data
+
+extension Collection {
+    func reMap<T>(_ tranform: (Iterator.Element) throws -> T) rethrows -> [T] {
+        var returnValue = [T]()
+        
+        for item in self {
+            returnValue.append(try tranform(item))
+        }
+        return returnValue
+    }
+}
+
+extension Collection where Iterator.Element: Comparable {
+    func reMin() -> Iterator.Element? {
+        guard self.count > 0 else { return nil }
+        
+        var outMin: Iterator.Element? = self.first
+        
+        for elem in self {
+            if elem < outMin! {
+                outMin = elem
+            }
+        }
+        
+        return outMin
+    }
+}
+[1, 2, 3].reMin()
+
+
+class Deque<T> {
+    var deck: [T] = []
+    var count: Int {
+        return deck.count
+    }
+    
+    func pushBack(data: T) {
+        deck.append(data)
+    }
+    
+    func pushFront(data: T) {
+        deck.insert(data, at: 0)
+    }
+    
+    func popBack() -> T? {
+        return deck.popLast()
+    }
+    
+    func popFront() -> T? {
+        return deck.removeFirst()
+    }
+}
+
+var numbers = Deque<Int>()
+numbers.pushBack(data: 5)
+numbers.pushBack(data: 8)
+numbers.pushBack(data: 3)
+numbers.count
+numbers.popFront()
+numbers.popBack()
+numbers.popFront()
+numbers.popBack()
+
+func sumEvenRepeats(num: Int...) -> Int {
+    var out: Int = 0
+    var numbersDict: [Int:Int] = [:]
+    
+    for n in num {
+        if numbersDict[n] == nil {
+            numbersDict[n] = 1
+        } else {
+            numbersDict[n]! += 1
+        }
+    }
+    
+    for elem in numbersDict {
+        if elem.value % 2 == 0 {
+            out += elem.key
+        }
+    }
+    
+    return out
+}
+
+sumEvenRepeats(num: 1, 2, 2, 3, 3, 4)
+sumEvenRepeats(num: 5, 5, 5, 12, 12)
+sumEvenRepeats(num: 1, 1, 2, 2, 3, 3, 4, 4)
+
+func  countLargestRange(a: [Int]) -> CountableRange<Int>? {
+    var bi = 0
+    var bj = 0
+    var bs = 0
+    var cs = 0
+    var i = 0
+    var j = 0
+    
+    
+    while i < a.count && j < a.count {
+        if a[j] > 0 {
+            cs += a[j]
+            j += 1
+            
+            if cs > bs {
+                bi = i
+                bj = j
+                bs = cs
+            }
+        } else {
+            i = j + 1
+            j += 1
+            cs = 0
+        }
+    }
+    
+    return (i..<j)
+}
+
+var cbr = countLargestRange(a: [0, 1, 1, -1, 2, 3, 1])
+var cr = [0, 1, 1, -1, 2, 3, 1]
+cr[cbr!]
+
+extension LinkedLizt {
+    
+    func reverse() {
+        var previous: NodeLL<T>? = nil
+        var next = head?.next
+        var current = head
+        
+        while current != nil {
+            next = current?.next
+            current?.next = previous
+            previous = current
+            current = next
+        }
+        head = previous
+        
+        print(self.traverseLL())
+    }
+}
+
+LLTst.reverse()
