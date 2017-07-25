@@ -1653,3 +1653,65 @@ extension Double: Numeric2 {}
 func sumArray<T: Numeric2>(a: [T]) -> T {
     return a.reduce(T(), +)
 }
+
+class BSTNode<T: Comparable> {
+    var data: T
+    var left: BSTNode<T>?
+    var right: BSTNode<T>?
+    
+    init(data: T) {
+        self.data = data
+    }
+}
+
+class BST<T: Comparable> {
+    var root: BSTNode<T>?
+    
+    init(array: [T]) {
+        for item in array {
+            var placed = false
+            if let rootNode = root {
+                var tracker = rootNode
+                
+                while placed == false {
+                    if item <= tracker.data {
+                        if tracker.left == nil {
+                            tracker.left = BSTNode(data: item)
+                            
+                            placed = true
+                        }
+                        
+                        tracker = tracker.left!
+                    } else {
+                        if tracker.right == nil {
+                            tracker.right = BSTNode(data: item)
+                            placed = true
+                        }
+                        tracker = tracker.right!
+                    }
+                }
+            } else {
+                root = BSTNode(data: item)
+            }
+        }
+    }
+    
+    func isBalanced() -> Bool {
+        func minDepth(node: BSTNode<T>?) -> Int {
+            guard let node = node else { return 0 }
+            let returnValue = 1 + min(minDepth(node: node.left), minDepth(node: node.right))
+            print("got min depth \(returnValue) for \(node.data)")
+            return returnValue
+        }
+        func maxDepth(node: BSTNode<T>?) -> Int {
+            guard let node = node else { return 0 }
+            let returnValue = 1 + max(maxDepth(node: node.left), maxDepth(node: node.right))
+            print("got max depth \(returnValue) for \(node.data)")
+            return returnValue
+        }
+        
+        guard let root = root else { return true }
+        let diff = maxDepth(node: root) - minDepth(node: root)
+        return diff <= 1
+    }
+}
