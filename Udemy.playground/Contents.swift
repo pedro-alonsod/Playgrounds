@@ -932,12 +932,13 @@ func permutation(str: String, c: String) {
         for i in 0..<lenght {
             let left = String(strArr[0..<i])
             let right = String(strArr[i+1..<lenght])
+            print("c + str: \(c + String(strArr[i])) left: \(left) right:\(right) i: \(i) lengh: \(lenght)  c: \(c) strArr[i]: \(strArr[i])")
             permutation(str: left + right, c: c + String(strArr[i]))
         }
     }
 }
 
-permutation(str: "wombat", c: "")
+permutation(str: "abc", c: "")
 
 func reverseWords(str: String) -> String {
     var arr = str.components(separatedBy: " ")
