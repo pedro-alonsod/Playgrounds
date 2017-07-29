@@ -938,7 +938,7 @@ func permutation(str: String, c: String) {
     }
 }
 
-permutation(str: "abc", c: "")
+permutation(str: "ab", c: "")
 
 func reverseWords(str: String) -> String {
     var arr = str.components(separatedBy: " ")
@@ -1247,6 +1247,7 @@ countKDiff(numbers: diffT, k: 1)
 //}
 func missingNum(arr: [Int]) -> [Int] {
         let s: Set<Int> = Set(arr)
+    
         let t = Set<Int>(1...100)
         
         return Array(t.subtracting(s))
@@ -1366,15 +1367,23 @@ func brackets(s: String) -> Bool {
     
     var stack: [Character] = []
     var arr = Array(s.characters)
+    print(stack)
+    print(arr)
     var open = "<({["
     var close = ">)}]"
     
     for c in arr {
+        print("char \(c)")
         if open.contains(String(c)) {
             stack.append(c)
-        }
-        if close.contains(String(c)) {
-            stack.popLast()
+            print("s \(stack)")
+        } else if close.contains(String(c)) {
+            print(c)
+            print("s \(stack)")
+            
+            if stack.popLast() == nil {
+                return false
+            }
         }
     }
     
