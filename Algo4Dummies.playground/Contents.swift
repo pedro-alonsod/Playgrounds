@@ -116,6 +116,7 @@ for elem in arrData {
         dictData[elem.name] = (elem.timeStamp, 1)
     } else {
         dictData[elem.name]!.1 += 1
+        dictData[elem.name]!.0 = elem.timeStamp
     }
 }
 
@@ -129,5 +130,44 @@ let arrSorted = dictData.sorted(by: {
 //next print top results
 
 for elem in 0...1 {
-    print(arrSorted[0].key)
+    print(arrSorted[elem].key)
 }
+print(arrSorted)
+
+// Third google question this time was onSite
+//[2, 5, 8, 6, 15, 7, 19, 21]
+//find the next biggest value e.g. 2 = 8, 8 = 8, 15 = 21
+
+var gArr = [2, 5, 8, 6, 15, 7, 19, 21]
+
+func nextHighest(arr: [Int]) {
+    var stack: [Int] = []
+    var prev: Int = arr[arr.count-1]
+    var current: Int
+    stack.append(prev)
+    
+    for i in stride(from: arr.count-2, to: -1, by: -1) {
+        print(arr[i])
+        current = arr[i]
+        if current > prev {
+            stack.append(current)
+        } else {
+            prev = current
+        }
+    }
+    print(stack)
+    
+    for elem in arr {
+        if elem == stack.last! {
+            print("current num: \(elem) next high: \(stack.last!)")
+            stack.removeLast()
+        } else {
+            print("current num: \(elem) next high: \(stack.last!)")
+        }
+    }
+}
+
+nextHighest(arr: gArr)
+
+//Something like that was the one i got stuck more remember Stack2PointersHashDictSortBreathFirstWithQReversePointersBST[]Array[String.characters]!! keep it in your heart those are the methods you should think about
+//Next problem is
