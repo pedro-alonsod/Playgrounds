@@ -171,3 +171,58 @@ nextHighest(arr: gArr)
 
 //Something like that was the one i got stuck more remember Stack2PointersHashDictSortBreathFirstWithQReversePointersBST[]Array[String.characters]!! keep it in your heart those are the methods you should think about
 //Next problem is
+
+//While I try to remember the problems lets try to implement ds
+
+class Stack<T> {
+    var s: [T] = []
+    
+    func push(data: T) {
+        s.append(data)
+    }
+    func pop() -> T? {
+        if s.count < 1 {
+            return nil
+        } else {
+            return s.removeLast()
+        }
+    }
+}
+
+var stack = Stack<Int>()
+stack.push(data: 2)
+stack.push(data: 3)
+stack.push(data: 5)
+print(stack.s)
+stack.pop()
+stack.pop()
+stack.pop()
+stack.pop()
+stack.pop()
+
+class Queue<T> {
+    var q: [T] = []
+    
+    func push(data: T) {
+        q.append(data)
+    }
+    func pop() -> T? {
+        if q.count < 1 {
+            return nil
+        } else {
+            return q.removeFirst()
+        }
+    }
+}
+
+var Q = Queue<Int>()
+
+Q.push(data: 1)
+Q.push(data: 2)
+Q.push(data: 3)
+print(Q.q)
+
+Q.pop()
+Q.pop()
+Q.pop()
+Q.pop()
