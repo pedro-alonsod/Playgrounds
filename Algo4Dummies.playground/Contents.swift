@@ -101,6 +101,33 @@ func recursiveDesc(view: UIView) {
 
 recursiveSetup()
 
-//Second Google Question
+//Second Google Question I remeber
+var data1 = (timeStamp: 1000, name: "jan")
+var data2 = (timeStamp: 1001, name: "jon")
+var data3 = (timeStamp: 1002, name: "jen")
+var data4 = (timeStamp: 1003, name: "jon")
+var data5 = (timeStamp: 1004, name: "jan")
 
+let arrData = [data1, data2, data3, data4, data5]
+var dictData: [String:(Int, Int)] = [:]
 
+for elem in arrData {
+    if dictData[elem.name] == nil {
+        dictData[elem.name] = (elem.timeStamp, 1)
+    } else {
+        dictData[elem.name]!.1 += 1
+    }
+}
+
+// here i have the unique names an the count how many times they appear
+//now sorte them high to low
+
+let arrSorted = dictData.sorted(by: {
+    $0.1.1 > $1.1.1
+})
+
+//next print top results
+
+for elem in 0...1 {
+    print(arrSorted[0].key)
+}
