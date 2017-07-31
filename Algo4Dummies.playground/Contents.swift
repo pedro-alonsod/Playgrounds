@@ -226,3 +226,17 @@ Q.pop()
 Q.pop()
 Q.pop()
 Q.pop()
+
+class BSTNode<T> {
+    var data: T
+    var left: BSTNode?
+    var right: BSTNode?
+    
+    init(data: T) {
+        self.data = data
+    }
+    
+    func printNode() -> String {
+        return "\(self.data)"
+    }
+}
