@@ -63,26 +63,25 @@ func fibLast(n: Int) -> Int {
 fibLast(n: 20)
 
 func binomial(n: Int, m: Int) -> Int {
-    var i: Int
-    var j: Int
-    var bc: [[Int]] = []
-    for i in 0..<n {
-        bc[i][0] = 1
-    }
-    for j in 1..<m {
-        bc[j][j] = 1
-    }
-    for i in 1..<n {
-        j = i
-        while j < i {
-            bc[i][j] = bc[i-1][j-1] + bc[i-1][j]
-            j += 1
-        }
-    }
-    return bc[n][m]
+    var bc: [[Int]] = [[Int]](repeating: [Int](repeatElement(2, count: m)), count: n)
+//    for i in 0..<n {
+//        bc[i][0] = 1
+//    }
+//    for j in 1..<m {
+//        bc[j][j] = 1
+//    }
+//    print(bc)
+//    for i in 1..<n {
+//        j = i
+//        while j < i {
+//            bc[i][j] = bc[i-1][j-1] + bc[i-1][j]
+//            j += 1
+//        }
+//    }
+    return 0
 }
 
-//binomial(n: 4, m: 2)
+//binomial(n: 4, m: 4)
 
 func editDist(a: [Character], b:[Character], m: Int, n: Int) -> Int {
     if m == 0 {
@@ -114,3 +113,5 @@ func iSort(a: inout [Int], n: Int) {
 
 var iSA = [5, 4, 3, 7, 8]
 iSort(a: &iSA, n: iSA.count)
+
+
