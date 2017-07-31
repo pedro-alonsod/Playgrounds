@@ -69,3 +69,38 @@ print(dictTuples)
 dictTuples.sorted(by: {
     $0.1.1 < $1.value.1
 })
+
+var view1 = UIView()
+var view2 = UIView()
+var view3 = UIView()
+var view4 = UIView()
+
+view1.addSubview(view2)
+view1.addSubview(view3)
+view3.addSubview(view4)
+var desc = ""
+
+// First Question I had with google implement a recursiveDescription in swift
+func recursiveSetup() {
+    recursiveDesc(view: view1)
+    print("\(desc)")
+}
+
+func recursiveDesc(view: UIView) {
+    desc += "\(view.description) \n"
+    
+    if view.subviews.count == 0 {
+        return
+    } else {
+        for elem in view.subviews {
+            desc += "  --- "
+            recursiveDesc(view: elem)
+        }
+    }
+}
+
+recursiveSetup()
+
+//Second Google Question
+
+
