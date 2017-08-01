@@ -469,6 +469,9 @@ func qSort(a: [Int]) -> [Int] {
     if a.count == 0 {
         return []
     }
+    if a.count == 1 {
+        return a
+    }
     
     var pivot = a[Int(arc4random_uniform(UInt32(a.count-1)))]
     var lesser = a.filter { $0 < pivot }

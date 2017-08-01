@@ -453,9 +453,14 @@ func qSort(arr: [Int]) -> [Int] {
     if arr.count == 0 {
         return []
     }
-    let pivot = arr[arr.count-1]
+    if arr.count == 1 {
+        return arr
+    }
+    let pivot = arr[0]
+    print("pivot: \(pivot)")
     let less = arr.filter({ $0 < pivot })
-    let more = arr.filter({ $0 > pivot })
+    var more = arr.filter({ $0 > pivot })
+    more.append(pivot)
     print(less, more, pivot)
     
     return qSort(arr: Array(less)) + [Int]([pivot]) + qSort(arr: Array(more))
