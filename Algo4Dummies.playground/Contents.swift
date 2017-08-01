@@ -240,3 +240,63 @@ class BSTNode<T> {
         return "\(self.data)"
     }
 }
+
+var tree = BSTNode<String>(data: "Root")
+var branchA = BSTNode<String>(data: "BranchA")
+var branchB = BSTNode<String>(data: "BranchB")
+tree.left = branchA
+tree.right = branchB
+var leafC = BSTNode<String>(data: "Leaf C")
+var leafD = BSTNode<String>(data: "Leaf D")
+var leafE = BSTNode<String>(data: "Leaf E")
+var leafF = BSTNode<String>(data: "Leaf F")
+branchA.left = leafC
+branchA.right = leafD
+branchB.left = leafE
+branchB.right = leafF
+
+func traverse(node: BSTNode<String>?) {
+    if node?.left != nil {
+        traverse(node: node!.left)
+    }
+    if node?.right != nil {
+        traverse(node: node!.right)
+    }
+    print(node!.data)
+}
+
+traverse(node: tree)
+
+var graph = ["A":["B", "F"],
+             "B":["A", "C"],
+             "C":["B", "D"],
+             "D":["C", "E"],
+             "E":["D", "F"],
+             "F":["E", "A"]]
+
+func findPath(grap: [String:[String]], start: String, end: String, path: inout [String]) -> [String]{
+    path += [start]
+    
+    if start == end {
+        print("ending \(path)")
+        return path
+    }
+    
+    for node in grap[start]! {
+        print("Checking node \(node)")
+        
+        if !path.contains(node) {
+            print("path so far \(path)")
+            
+            var newPath = findPath(grap: grap, start: node, end: end, path: &path)
+            
+            if newPath.count != 0 {
+                return newPath
+            }
+        }
+    }
+    
+    return []
+}
+var path: [String] = []
+findPath(grap: graph, start: "B", end: "E", path: &path)
