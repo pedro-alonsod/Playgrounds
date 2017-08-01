@@ -408,9 +408,9 @@ func mergeSort(arr: [Int]) -> [Int] {
         return arr
     }
     
-    var mid = arr.count/2
-    var left = Array(arr[0..<mid])
-    var right = Array(arr[mid..<arr.count])
+    let mid = arr.count/2
+    let left = mergeSort(arr: Array(arr[0..<mid]))
+    let right = mergeSort(arr: Array(arr[mid..<arr.count]))
     
     return merge(left: left, right: right)
 }
@@ -426,7 +426,7 @@ func merge(left: [Int], right: [Int]) -> [Int] {
     var result: [Int] = []
     var leftIdx = 0
     var rightIdx = 0
-    var total = left.count + right.count
+    let total = left.count + right.count
     
     while result.count < total {
         if left[leftIdx] < right[rightIdx] {
@@ -446,3 +446,20 @@ func merge(left: [Int], right: [Int]) -> [Int] {
 }
 
 mergeSort(arr: sArray)
+sArray
+
+// QuickSort
+func qSort(arr: [Int]) -> [Int] {
+    if arr.count == 0 {
+        return []
+    }
+    let pivot = arr[arr.count-1]
+    let less = arr.filter({ $0 < pivot })
+    let more = arr.filter({ $0 > pivot })
+    print(less, more, pivot)
+    
+    return qSort(arr: Array(less)) + [Int]([pivot]) + qSort(arr: Array(more))
+}
+
+qSort(arr: sArray)
+sArray
