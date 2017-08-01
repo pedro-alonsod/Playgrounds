@@ -436,7 +436,7 @@ func merge(left: [Int], right: [Int]) -> [Int] {
             result.append(right[rightIdx])
             rightIdx += 1
         }
-        
+        print(leftIdx, rightIdx, total)
         if leftIdx == left.count || rightIdx == right.count {
             
             result += (left.count == leftIdx) ? right:left
@@ -467,3 +467,5 @@ func qSort(arr: [Int]) -> [Int] {
 
 qSort(arr: sArray)
 sArray
+
+
