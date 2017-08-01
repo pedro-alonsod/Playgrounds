@@ -259,10 +259,11 @@ func traverse(node: BSTNode<String>?) {
     if node?.left != nil {
         traverse(node: node!.left)
     }
+    print(node!.data)
     if node?.right != nil {
         traverse(node: node!.right)
     }
-    print(node!.data)
+//    print(node!.data)
 }
 
 traverse(node: tree)
@@ -320,7 +321,7 @@ func binarySearchIter(arr: [Int], n: Int) -> Bool {
         if n > sorted[mid] {
             low = mid + 1
         } else {
-            high = mid
+            high = mid 
         }
     }
     
@@ -328,7 +329,7 @@ func binarySearchIter(arr: [Int], n: Int) -> Bool {
 }
 
 var bSearch = [2, 3, 56, 67, 67, 56, 40, 68, 99, 4, 40, 20, 50, 30, 50, 10]
-binarySearchIter(arr: bSearch, n: 22)
+binarySearchIter(arr: bSearch, n: 4)
 
 func binarySearch(arr: [Int], n: Int) -> Bool {
     var sorted = arr.sorted()
@@ -352,3 +353,96 @@ func binarySearch(arr: [Int], n: Int) -> Bool {
 }
 
 binarySearch(arr: bSearch, n: 4)
+var sArray = [2,5,6,7,8,9,3,4,2,6,4,4]
+//Selection sort
+func sSort(arr: [Int]) -> [Int] {
+    var copy = arr
+    
+    for scanIndex in 0..<copy.count {
+        
+        var minIndex = scanIndex
+        
+        for compIndex in scanIndex+1..<copy.count {
+            
+            if copy[compIndex] < copy[minIndex] {
+                
+                minIndex = compIndex
+            }
+            
+            if minIndex != scanIndex {
+                swap(&copy[minIndex], &copy[scanIndex])
+            }
+        }
+    }
+    return copy
+}
+
+print(sSort(arr: bSearch))
+print(bSearch)
+
+//InsertionSort
+func iSort(arr: [Int]) -> [Int] {
+    var copy = arr
+    
+    for index in 1..<copy.count {
+        var tmp = copy[index]
+        var minIndex = index
+        
+        while minIndex > 0 && tmp < copy[minIndex - 1] {
+            copy[minIndex] = copy[minIndex - 1]
+            minIndex -= 1
+        }
+        
+        copy[minIndex] = tmp
+        print(copy)
+    }
+    
+    return copy
+}
+
+iSort(arr: sArray)
+
+// MergeSort
+func mergeSort(arr: [Int]) -> [Int] {
+    if arr.count < 2 {
+        return arr
+    }
+    
+    var mid = arr.count/2
+    var left = Array(arr[0..<mid])
+    var right = Array(arr[mid..<arr.count])
+    
+    return merge(left: left, right: right)
+}
+
+func merge(left: [Int], right: [Int]) -> [Int] {
+    if left.count < 1 {
+        return left
+    }
+    if right.count < 1 {
+        return right
+    }
+    
+    var result: [Int] = []
+    var leftIdx = 0
+    var rightIdx = 0
+    var total = left.count + right.count
+    
+    while result.count < total {
+        if left[leftIdx] < right[rightIdx] {
+            result.append(left[leftIdx])
+            leftIdx += 1
+        } else {
+            result.append(right[rightIdx])
+            rightIdx += 1
+        }
+        
+        if leftIdx == left.count || rightIdx == right.count {
+            
+            result += (left.count == leftIdx) ? right:left
+        }
+    }
+    return result
+}
+
+mergeSort(arr: sArray)
