@@ -469,3 +469,70 @@ qSort(arr: sArray)
 sArray
 
 
+var hashTable = [Int?](repeating: nil, count: 15)
+func hashFunc(value: Int, tblSize: Int) -> Int {
+    return value % tblSize
+}
+for v in [2, 3, 4, 6, 5] {
+    hashTable[hashFunc(value: v, tblSize: hashTable.count)] = v
+}
+
+print(hashTable)
+print(hashTable[hashFunc(value: 6, tblSize: hashTable.count)])
+
+//To graphs
+class Vertex {
+    var data: String
+    var edges: [Edge]
+    
+    init(data: String) {
+        self.data = data
+        self.edges = []
+    }
+    
+    init() {
+        self.data = "E"
+        self.edges = []
+    }
+}
+
+class Edge {
+    var weight: Int
+    var neighbor: Vertex
+    
+    init(weight: Int, neighbor: Vertex) {
+        self.weight = weight
+        self.neighbor = neighbor
+    }
+    
+    init() {
+        self.weight = 0
+        self.neighbor = Vertex()
+    }
+}
+
+public class SwiftGraph {
+    
+    private var canvas: Array<Vertex>
+    public var isDirected: Bool
+    
+    init() {
+        canvas = Array<Vertex>()
+        isDirected = true
+    }
+    
+    //create a new vertex
+    func addVertex(key: String) -> Vertex {
+        
+        //set the key
+        var childVertex: Vertex = Vertex()
+        childVertex.data = key
+        
+        
+        //add the vertex to the graph canvas
+        canvas.append(childVertex)
+        
+        return childVertex
+    }
+    
+}
