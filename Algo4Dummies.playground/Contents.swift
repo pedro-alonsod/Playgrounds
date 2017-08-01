@@ -305,17 +305,20 @@ findPath(grap: graph, start: "B", end: "E", path: &path)
 func binarySearchIter(arr: [Int], n: Int) -> Bool {
     var sorted = arr.sorted()
     var low = 0
-    var high = sorted.count - 1
+    var high = sorted.count
     print(sorted)
-    while low < high {
+    while low != high {
+        
+        print(low, high)
         var mid = (low + high)/2
         
-        print(sorted[mid],mid)
+        print(sorted[mid],mid,low, high)
         if sorted[mid] == n {
             print("found \(sorted[mid])")
             return true
-        } else if n > sorted[mid] {
-            low = mid
+        }
+        if n > sorted[mid] {
+            low = mid + 1
         } else {
             high = mid
         }
@@ -325,4 +328,27 @@ func binarySearchIter(arr: [Int], n: Int) -> Bool {
 }
 
 var bSearch = [2, 3, 56, 67, 67, 56, 40, 68, 99, 4, 40, 20, 50, 30, 50, 10]
-binarySearchIter(arr: bSearch, n: 4)
+binarySearchIter(arr: bSearch, n: 22)
+
+func binarySearch(arr: [Int], n: Int) -> Bool {
+    var sorted = arr.sorted()
+    
+    var mid = arr.count-1
+    print(sorted[mid], mid)
+    print(sorted)
+    if sorted.count <= 1 {
+        return false
+    }
+    if sorted[mid] == n {
+        print("gotcha")
+        return true
+    } else if n < sorted[mid] {
+        return binarySearch(arr: Array(sorted[0..<mid]), n: n)
+    } else if n > sorted[mid] {
+        return binarySearch(arr: Array(sorted[mid..<sorted.count]), n: n)
+    }
+    return false
+    
+}
+
+binarySearch(arr: bSearch, n: 4)
