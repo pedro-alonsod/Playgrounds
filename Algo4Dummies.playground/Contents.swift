@@ -300,3 +300,29 @@ func findPath(grap: [String:[String]], start: String, end: String, path: inout [
 }
 var path: [String] = []
 findPath(grap: graph, start: "B", end: "E", path: &path)
+
+//Binary search iterative
+func binarySearchIter(arr: [Int], n: Int) -> Bool {
+    var sorted = arr.sorted()
+    var low = 0
+    var high = sorted.count - 1
+    print(sorted)
+    while low < high {
+        var mid = (low + high)/2
+        
+        print(sorted[mid],mid)
+        if sorted[mid] == n {
+            print("found \(sorted[mid])")
+            return true
+        } else if n > sorted[mid] {
+            low = mid
+        } else {
+            high = mid
+        }
+    }
+    
+    return false
+}
+
+var bSearch = [2, 3, 56, 67, 67, 56, 40, 68, 99, 4, 40, 20, 50, 30, 50, 10]
+binarySearchIter(arr: bSearch, n: 4)
