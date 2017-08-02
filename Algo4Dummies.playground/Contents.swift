@@ -579,3 +579,47 @@ func maxPalindrome(arr: [Int]) -> Int {
 
 maxPalindrome(arr: [1,2,4,1])
 
+var negArr = Array(-10 ... -1)
+var zeroTwo = Array(0 ... 2)
+var fourTen = Array(4 ... 10)
+
+var merge = Array(-5 ... 1)
+
+func mergeIntervals(arr1: [Int], arr2: [Int], arr3: [Int], newArr: [Int]) -> [Int] {
+    
+    var result: [Int] = []
+    
+    for i in arr1 {
+        if result.contains(i) {
+            
+        } else {
+            result.append(i)
+        }
+    }
+    
+    for i in arr2 {
+        if result.contains(i) {
+            
+        } else {
+            result.append(i)
+        }
+    }
+    for i in arr3 {
+        if result.contains(i) {
+            
+        } else {
+            result.append(i)
+        }
+    }
+    for i in newArr {
+        if result.contains(i) {
+            
+        } else {
+            result.append(i)
+        }
+    }
+    
+    return result
+}
+
+mergeIntervals(arr1: negArr, arr2: zeroTwo, arr3: fourTen, newArr: merge)
