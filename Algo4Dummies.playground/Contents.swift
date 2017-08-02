@@ -536,3 +536,12 @@ public class SwiftGraph {
     }
     
 }
+
+var message = "find you will pain only go you recordings security the into if"
+
+message.components(separatedBy: " ").reversed().joined(separator: " ")
+
+var idx = Int(arc4random_uniform(UInt32(bSearch.count - 0))) + 0
+bSearch[idx]
+
+
