@@ -456,13 +456,16 @@ func qSort(arr: [Int]) -> [Int] {
     if arr.count == 1 {
         return arr
     }
+    if arr.count == 2 {
+        return arr
+    }
     let pivot = arr[0]
     print("pivot: \(pivot)")
     var less = arr.filter({ $0 < pivot })
     var more = arr.filter({ $0 > pivot })
     print(less, more, pivot)
     
-    return qSort(arr: Array(less)) + [Int]([pivot]) + qSort(arr: Array(more))
+    return qSort(arr: less) + [Int]([pivot]) + qSort(arr: more)
 }
 
 qSort(arr: sArray)
@@ -543,5 +546,36 @@ message.components(separatedBy: " ").reversed().joined(separator: " ")
 
 var idx = Int(arc4random_uniform(UInt32(bSearch.count - 0))) + 0
 bSearch[idx]
+print(bSearch)
 
+func maxPalindrome(arr: [Int]) -> Int {
+    var maxLeght = 0
+    var oddPresent = false
+    var dictCounts: [Int:Int] = [:]
+    
+    for elem in arr {
+        
+        if dictCounts[elem] == nil {
+            dictCounts[elem] = 1
+        } else {
+            dictCounts[elem]! += 1
+        }
+    }
+    
+    for row in dictCounts {
+        if row.value % 2 == 0 {
+            maxLeght += 2
+        } else {
+            oddPresent = true
+        }
+    }
+    
+    if oddPresent == true {
+        maxLeght += 1
+    }
+    
+    return maxLeght
+}
+
+maxPalindrome(arr: [1,2,4,1])
 
