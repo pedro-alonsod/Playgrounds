@@ -761,3 +761,47 @@ func recursiveLinearSearch(arr: [Int], k: Int) -> [Int] {
 }
 
 recursiveLinearSearch(arr: bSearch, k: 100)
+
+func recursiveLS(arr: [Int], k: Int, i: Int) -> Int {
+    if i == arr.count - 1 {
+        print("not found")
+        return -1
+    }
+    if arr[i] == k {
+        print("found at index: \(i)")
+        return i
+    }
+    
+    return recursiveLS(arr: arr, k: k, i: i+1)
+}
+
+recursiveLS(arr: bSearch, k: 50, i: 0)
+recursiveLS(arr: bSearch, k: 100, i: 0)
+
+func gdc(m: Int, n: Int) -> Int {
+    var gdcRes: Int = -1
+    if n == 0 {
+       gdcRes = m
+    } else {
+       gdcRes = gdc(m: n, n: m%n)
+    }
+    return gdcRes
+}
+gdc(m: 18, n: 27)
+
+func minMax(arr: [Int], left: Int, right: Int) -> (Int,Int) {
+    var small = arr[left]
+    var big = arr[left]
+    
+    for k in left+1..<right {
+        if arr[k] > big {
+            big = arr[k]
+        }
+        if arr[k] < small {
+            small = arr[k]
+        }
+    }
+    return (small, big)
+}
+
+minMax(arr: bSearch, left: 0, right: bSearch.count-1)
