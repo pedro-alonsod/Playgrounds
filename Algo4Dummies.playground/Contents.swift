@@ -743,3 +743,21 @@ for i in 0..<bSearch.count {
 bSearch
 // if all differents is ok if repeated no weird with one 2 times repeates is ok hmm nope still uniques
 qSort(arr: bSearch)
+
+//recursiveLinearSearch
+func recursiveLinearSearch(arr: [Int], k: Int) -> [Int] {
+    if arr.count == 0 {
+        print("Not found")
+        return []
+    }
+    if arr.first! == k {
+        print("Found")
+        return arr
+    }
+    
+    print("Lookin at \(arr.first!)")
+    
+    return recursiveLinearSearch(arr: Array(arr.dropFirst()), k: k)
+}
+
+recursiveLinearSearch(arr: bSearch, k: 100)
