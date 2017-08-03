@@ -31,7 +31,7 @@ func perm(str: String, current: String) {
         }
     }
 }
-var ABC = "ABC"
+var ABC = "123"
 perm(str: ABC, current: "")
 
 print("***")
@@ -623,23 +623,7 @@ func mergeIntervals(arr1: [Int], arr2: [Int], arr3: [Int], newArr: [Int]) -> [In
 }
 
 mergeIntervals(arr1: negArr, arr2: zeroTwo, arr3: fourTen, newArr: merge)
-//int combinations(int n)
-//{
-//    if(n<=1) return 1;
-//    if(n==2) return 2;
-//    if(n==3) return 3;
-//    int sn_3 = 1;
-//    int sn_2 = 2;
-//    int sn_1 = 3;
-//    int s = 0;
-//    for(int i=3; i<=n; i++) {
-//        s = sn_3 + sn_2 + sn_1;
-//        sn_3 = sn_2;
-//        sn_2 = sn_1;
-//        sn_1 = s;
-//    }
-//}
-//return s;
+
 // fibonacciesque ******
 
 //**** Prent of btree in arrays (i-1)/2 if 0 based else i + (root - 1)] /
@@ -657,7 +641,105 @@ func parent(of: Int, inArr: [Int]) -> Int? {
         return nil
     }
     
-    //Apple problem sort them and do a for loop searching for the parent [String]
+    //Apple problem -sort them no need,- and do a for loop searching for the parent [String]
 }
 
 parent(of: 1, inArr: btree)
+
+//func countCombinations(n: Int) -> Int {
+//    if n == 1 {
+//        return 1
+//    }
+//    if n == 2 {
+//        return 2
+//    }
+//    if n == 3 {
+//        return 3
+//    }
+//    var s3 = 1
+//    var s2 = 2
+//    var s1 = 3
+//    var s = 0
+//    
+//    for i in 3...n {
+//        s = s1 + s2 + s3
+//        s3 = s2
+//        s2 = s1
+//        s1 = s
+//    }
+//    
+//    return s
+//}
+//I think wrong
+
+//def count_comb(n):
+//if n < 0:
+//return 0
+//
+//if n == 0:
+//return 1
+//
+//return count_comb(n-1) + count_comb(n-2) + count_comb(n-3)
+func countComb(n: Int) -> Int {
+    if n < 1 {
+        return 1
+    }
+    if n == 1 {
+        return 1
+    }
+    if n == 2 {
+        return 2
+    }
+    if n == 3 {
+        return 4
+    }
+    return countComb(n: n-1) + countComb(n: n-2) + countComb(n: n-3)
+}
+countComb(n: 10)
+//countCombinations(n: 10)
+
+func mirrorTree(node: BSTNode<Int>?) {
+    if node == nil {
+        return
+    } else {
+        mirrorTree(node: node?.left)
+        mirrorTree(node: node?.right)
+        
+        var tmp = node?.left
+        node?.left = node?.right
+        node?.right = tmp
+        
+    }
+}
+
+func editDistance(str1: String, str2: String, m: Int, n: Int) -> Int {
+    var str1Arr = Array(str1.characters)
+    var str2Arr = Array(str2.characters)
+    
+    if m == 0 {
+        return n
+    }
+    if n == 0 {
+        return m
+    }
+    if str1Arr[m-1] == str2Arr[n-1] {
+        return editDistance(str1: str1, str2: str2, m: m-1, n: n-1)
+    }
+    
+    return 1 + min(editDistance(str1: str1, str2: str2, m: m-1, n: n),
+                  editDistance(str1: str1, str2: str2, m: m, n: n-1),
+                  editDistance(str1: str1, str2: str2, m: m-1, n: n-1))
+}
+
+//Shuffle
+bSearch
+for i in 0..<bSearch.count {
+    var j = Int(arc4random_uniform(UInt32(bSearch.count - 0))) + 0
+    if i == j {
+        continue
+    }
+    swap(&bSearch[i], &bSearch[j])
+}
+bSearch
+// if all differents is ok if repeated no weird with one 2 times repeates is ok hmm nope still uniques
+qSort(arr: bSearch)
