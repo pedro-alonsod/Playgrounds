@@ -641,3 +641,23 @@ mergeIntervals(arr1: negArr, arr2: zeroTwo, arr3: fourTen, newArr: merge)
 //}
 //return s;
 // fibonacciesque ******
+
+//**** Prent of btree in arrays (i-1)/2 if 0 based else i + (root - 1)] /
+var btree = [20, 10, 30, 5, 45, 1, 50]
+
+btree.index(of: 10)
+
+func parent(of: Int, inArr: [Int]) -> Int? {
+    
+    if of > 0 {
+        var parentIdx = (inArr.index(of: of)! - 1)/2  //(i-1)/2
+    
+        return inArr[parentIdx]
+    } else {
+        return nil
+    }
+    
+    //Apple problem sort them and do a for loop searching for the parent [String]
+}
+
+parent(of: 1, inArr: btree)
