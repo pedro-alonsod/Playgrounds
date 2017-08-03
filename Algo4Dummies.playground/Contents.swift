@@ -623,3 +623,21 @@ func mergeIntervals(arr1: [Int], arr2: [Int], arr3: [Int], newArr: [Int]) -> [In
 }
 
 mergeIntervals(arr1: negArr, arr2: zeroTwo, arr3: fourTen, newArr: merge)
+//int combinations(int n)
+//{
+//    if(n<=1) return 1;
+//    if(n==2) return 2;
+//    if(n==3) return 3;
+//    int sn_3 = 1;
+//    int sn_2 = 2;
+//    int sn_1 = 3;
+//    int s = 0;
+//    for(int i=3; i<=n; i++) {
+//        s = sn_3 + sn_2 + sn_1;
+//        sn_3 = sn_2;
+//        sn_2 = sn_1;
+//        sn_1 = s;
+//    }
+//}
+//return s;
+// fibonacciesque ******
