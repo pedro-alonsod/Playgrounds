@@ -856,6 +856,40 @@ minMax(arr: bSearch, left: 0, right: bSearch.count-1)
 //    }
 //    
 //}
+//one maximun sever times dumbo not several maximums duh that makes no sense
+Float(arc4random()) /  Float(UInt32.max)
+arc4random() / UInt32.max
 
 
+func findMax(a: [Int]) -> Int {
+    var max = a[0]
+    var count = 1
+    var maxIdx = 0
+    
+    for i in 0..<a.count {
+        if a[i] == max {
+           count += 1
+        } else if a[i] > max {
+            count = 1
+            max = a[i]
+        }
+    }
+    
+    var ocurrence = Int(arc4random_uniform(UInt32(count))) % count + 1
+    var ocurr = 0
+    var out = 0
+    for i in 0..<a.count {
+        if a[i] == max {
+            ocurr += 1
+            if ocurr == ocurrence {
+                out = i
+            }
+        }
+    }
+    
+    return out
+}
 
+findMax(a: bSearch)
+bSearch[10]
+bSearch[9]
