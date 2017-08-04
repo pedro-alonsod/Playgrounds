@@ -856,7 +856,7 @@ minMax(arr: bSearch, left: 0, right: bSearch.count-1)
 //    }
 //    
 //}
-//one maximun sever times dumbo not several maximums duh that makes no sense
+//one maximun several times dumbo not several maximums duh that makes no sense
 Float(arc4random()) /  Float(UInt32.max)
 arc4random() / UInt32.max
 
@@ -879,5 +879,4 @@ func findMax(a: [Int]) -> Int {
     }
     return maxIndex
 }
-
-bSearch[findMax(a: bSearch)]
+findMax(a: bSearch)
