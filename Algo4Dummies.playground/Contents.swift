@@ -866,6 +866,7 @@ func findMax(a: [Int]) -> Int {
     var count = 1
     var maxIndex = -1
     
+    
     for i in 0..<a.count {
         print(i, a[i])
         if a[i] == maxNum {
@@ -879,4 +880,11 @@ func findMax(a: [Int]) -> Int {
     }
     return maxIndex
 }
-findMax(a: bSearch)
+var find = findMax(a: bSearch)
+while find == -1 {
+
+    find = findMax(a: bSearch)
+}
+bSearch[find]
+find
+
