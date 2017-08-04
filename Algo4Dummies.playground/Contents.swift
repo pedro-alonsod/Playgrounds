@@ -805,3 +805,57 @@ func minMax(arr: [Int], left: Int, right: Int) -> (Int,Int) {
 }
 
 minMax(arr: bSearch, left: 0, right: bSearch.count-1)
+
+/*
+ [1, 1, 1, 1, 1, 3, 2, 3, 2, 1]
+ 1/2 1/2
+ 
+ 
+ maxIndices = [...]
+ maximum
+ 
+ randIndex = random(0,  maxCount)
+ return maxIndices[randIndex]
+ 
+ 
+ 
+ return input[randIndex]
+ 
+ for idx in 0..<input.count {
+ 
+ if idx
+ 
+ }
+ 
+ 
+ */
+
+//no extra space
+//randIndex = 2
+//return input[randIndex]
+//var maxCount = 1
+//var prev = input[0]
+//var max = needs to be here
+//for num in 1..<input.count {
+//    if input[num] == max() {
+//        maxCount += 1
+//    }
+//}
+//
+//randIndex = arc4randomUniform(maxCount)
+//
+//var count = 0
+//
+//for idx in 0..<input.count {
+//    if idx == randIdx {
+//        count += 1
+//    }
+//    
+//    if count == randIdx {
+//        return input[randIdx]
+//    }
+//    
+//}
+
+
+
