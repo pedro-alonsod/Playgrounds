@@ -482,6 +482,8 @@ for v in [2, 3, 4, 6, 5] {
 
 print(hashTable)
 print(hashTable[hashFunc(value: 6, tblSize: hashTable.count)])
+print(hashTable.flatMap({ $0}))
+print("****************")
 
 //To graphs
 class Vertex {
@@ -863,7 +865,7 @@ arc4random() / UInt32.max
 
 func findMax(a: [Int]) -> Int {
     var maxNum = a.max()
-    var count = 1
+    var count = 0
     var maxIndex = -1
     
     
@@ -888,3 +890,62 @@ while find == -1 {
 bSearch[find]
 find
 
+func findMin(arr: [Int]) {
+    var out: Int
+    for i in 1..<arr.count {
+        for j in i+1..<arr.count {
+            if arr[i] < arr[j] {
+                out = arr[i]
+                print(out, arr[i])
+                if arr[j] < out {
+                    print("Have a min: \(arr[i])")
+                    out = arr[j]
+                }
+            }
+        }
+    }
+}
+findMin(arr: bSearch)
+
+func finMin2(a: [Int]) {
+    var tmpMin = a[0]
+    
+    for i in 1..<a.count {
+        if a[i] < tmpMin {
+            print("Min found: \(a[i])")
+            tmpMin = a[i]
+        }
+    }
+    print("min is: \(tmpMin)")
+}
+
+finMin2(a: bSearch)
+
+extension Int {
+    func times(closure: (_ count:Int)->Void) {
+        closure(self)
+    }
+}
+
+5.times(closure: {
+    count in
+    print("tsts count \(count)")
+})
+
+func reverseCustom(str: String) -> String {
+    var arrChar = Array(str.characters)
+    var i = 0
+    var j = arrChar.count - 1
+    
+    while i < j {
+        swap(&arrChar[i], &arrChar[j])
+        i += 1
+        j -= 1
+    }
+    return String(arrChar)
+}
+
+reverseCustom(str: reverseCustom(str: "laste"))
+
+String(Array("laste".characters).reversed())
+String("laste".characters.reversed())
