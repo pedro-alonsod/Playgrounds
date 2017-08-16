@@ -100,7 +100,7 @@ func recursiveDesc(view: UIView) {
 }
 
 recursiveSetup()
-
+recursiveDesc(view: view1)
 //Second Google Question I remeber
 var data1 = (timeStamp: 1000, name: "jan")
 var data2 = (timeStamp: 1001, name: "jon")
@@ -949,3 +949,52 @@ reverseCustom(str: reverseCustom(str: "laste"))
 
 String(Array("laste".characters).reversed())
 String("laste".characters.reversed())
+
+func isUnique(str: String) -> Bool {
+    var strArr = Array(str.characters)
+    var unique: [Character:Int] = [:]
+    
+    for elem in strArr {
+        if unique[elem] == nil {
+            unique[elem] = 1
+        } else {
+            unique[elem]! += 1
+        }
+    }
+//    print(unique)
+    
+    return unique.filter { $0.value  > 1 }.isEmpty
+}
+
+isUnique(str: "apbcdfgh")
+
+func chectPerm(str1: String, str2: String) -> Bool {
+    if str1.characters.count != str2.characters.count {
+        return false
+    }
+    if str1.characters.sorted() != str2.characters.sorted() {
+        return false
+    }
+    
+    return true
+}
+
+chectPerm(str1: "abcd", str2: "abdc")
+chectPerm(str1: "aaaaa", str2: "aaaab")
+
+
+func URLfy(str: String) -> String {
+    var strModified1 = str.trimmingCharacters(in: CharacterSet(charactersIn: " "))
+    print(strModified1)
+    let strModified2 = strModified1.replacingOccurrences(of: " ", with: "%20")
+    
+    return strModified2
+}
+URLfy(str: "Mr Jon Smit   ")
+
+func urlyfy(str: String) -> String {
+  
+    return String(arr)
+}
+
+urlyfy(str: "Mr jon smith       ")
