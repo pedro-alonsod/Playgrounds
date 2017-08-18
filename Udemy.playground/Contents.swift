@@ -1725,3 +1725,25 @@ class BST<T: Comparable> {
         return diff <= 1
     }
 }
+
+import QuartzCore
+
+public class BenchTimer {
+    public static func measureBlockk(closure: () -> Void) -> CFTimeInterval {
+        let runCount = 10
+        var executionTimes = Array<Double>(repeating: 0.0, count: runCount)
+        for i in 0..<runCount {
+            let startTime = CACurrentMediaTime()
+            closure()
+            let endTime = CACurrentMediaTime()
+            let execTime = endTime - startTime
+            executionTimes[i] = execTime
+        }
+        return (executionTimes.reduce(0, +)) / Double(runCount)
+    }
+}
+
+func startsWithZero(array: [Int]) -> Bool {
+    guard array.count != 0 else { return false }
+    return array.first! == 0 ? true:false
+}
