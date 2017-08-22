@@ -1749,11 +1749,118 @@ func startsWithZero(array: [Int]) -> Bool {
 }
 
 func sumNumbers(n: UInt) -> UInt {
-    var result = 0
+    var result: UInt = 0
     for i in 1...n {
         result += i
     }
     return result
 }
 
+func generateRandomArray(size: Int, maxValue: UInt32) -> [Int] {
+    guard size > 0 else { return [Int]() }
+    var result = [Int](repeating: 0, count: size)
+    for i in 0..<size {
+        result[0] = Int(arc4random_uniform(maxValue))
+    }
+    return result
+    
+}
+
+func sum(arr: [Int]) -> Int {
+    var result = 0
+    for i in 0..<arr.count {
+        result += arr[i]
+    }
+    return result
+}
+
 let step = 100
+
+let arr100 = generateRandomArray(size: 100, maxValue: UInt32.max)
+var execTime = BenchTimer.measureBlockk {
+    _ = sum(arr: arr100)
+}
+print("time: \(execTime)")
+
+let arr1000 = generateRandomArray(size: 1000, maxValue: UInt32.max)
+var execTime2 = BenchTimer.measureBlockk {
+    _ = sum(arr: arr1000)
+}
+print("time: \(execTime2)")
+//
+//let arr1000000 = generateRandomArray(size: 100000, maxValue: UInt32.max)
+//var execTime3 = BenchTimer.measureBlockk {
+//    _ = sum(arr: arr1000000)
+//}
+//print("time: \(execTime3)")
+
+func countOddEven(arr: [Int]) -> (even: UInt, odd: UInt) {
+    var even: UInt = 0
+    var odd: UInt = 0
+    
+    for elem in arr {
+        if elem % 2 == 0 {
+            even += 1
+        } else {
+            odd += 1
+        }
+    }
+    
+    return (even, odd)
+}
+
+//let arr100 = generateRandomArray(size: 100, maxValue: UInt32.max)
+var execTimeC = BenchTimer.measureBlockk {
+    _ = countOddEven(arr: arr100)
+}
+print("time: \(execTimeC)")
+
+//let arr1000 = generateRandomArray(size: 1000, maxValue: UInt32.max)
+var execTimeC2 = BenchTimer.measureBlockk {
+    _ = countOddEven(arr: arr1000)
+}
+print("time: \(execTimeC2)")
+
+public extension CFTimeInterval {
+    public var formattedString: String {
+        return self >= 1000 ? String(Int(self)) + "s"
+            : self >= 1 ? String(format: "%.3gs", self)
+            : self >= 1e-3 ? String(format: "%.3gms", self * 1e3)
+            : self >= 1e-6 ? String(format: "%.3gû(meu)s", self * 1e6)
+            : self < 1e-9 ? "0s"
+            : String(format: "%.3gns", self * 1e9)
+        
+    }
+}
+func mulTable(size: Int) -> [Int] {
+    var table = [Int]()
+    let array = [Int](1...size)
+    
+    for i in 0..<size {
+        for j in 0..<size {
+            let val = array[i] * array[j]
+            table.append(val)
+        }
+    }
+    return table
+}
+
+let mul10 = mulTable(size: 10)
+print(mul10)
+
+let sizes = [10, 20, 30]
+for i in 0..<sizes.count {
+    let size = sizes[i]
+    let execTimeMul = BenchTimer.measureBlockk {
+        _ = mulTable(size: size)
+    }
+    print("time: \(execTimeMul) for \(size)")
+}
+
+var execTime5: Double
+for i in 1...10 {
+    execTime5 = BenchTimer.measureBlockk {
+        _ = sumNumbers(n: UInt(i * step))
+    }
+    print("avg time for \(i*step) elems: \(execTime5.formattedString)")
+}
