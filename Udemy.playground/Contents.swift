@@ -1908,9 +1908,9 @@ func findTwoOptimize(arr: [Int], target: Int) -> (Int, Int)? {
     return nil
 }
 
-let sizeTwo = 5000
-let target = 100
-let maxValue = UInt32(60)
+let sizeTwo = 10
+let target = 4
+let maxValue = UInt32(4)
 
 let array = generateRandomArray(size: sizeTwo, maxValue: maxValue)
 
@@ -1925,3 +1925,52 @@ var execTimeTwoOptimize = BenchTimer.measureBlockk {
 }
 
 print("\ntwo sum avg size: \(sizeTwo) elements time: \(execTimeTwoOptimize.formattedString)")
+
+func equilibrium(numbers: [Int]) -> [Int]? {
+    guard numbers.count > 1 else { return nil }
+    
+    var indices: [Int] = []
+    
+    var left = 0
+    var right = 0
+    
+    let count = numbers.count
+   
+    for i in 0..<count {
+        left = 0
+        right = 0
+        
+        for j in i..<i {
+            left = left + numbers[j]
+        }
+        
+        for j in i+1..<count {
+            right = right + numbers[j]
+        }
+        
+        if left == right {
+            indices.append(i)
+        }
+    }
+    
+    return indices.isEmpty ? nil:indices
+}
+
+func equilibriumOptimized(numbers: [Int]) -> [Int]? {
+    var indices: [Int] = []
+    
+    var leftSum = 0
+    var sum = numbers.reduce(0, +)
+    
+    let count = numbers.count
+    
+    for i in 0..<count {
+        if leftSum == sum {
+            indices.append(i)
+        }
+        leftSum = leftSum + numbers[i]
+    }
+    
+    return indices.isEmpty ? nil:indices
+}
+
