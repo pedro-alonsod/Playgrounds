@@ -1864,3 +1864,64 @@ for i in 1...10 {
     }
     print("avg time for \(i*step) elems: \(execTime5.formattedString)")
 }
+
+func sumOptimize(n: UInt) -> UInt {
+    return n * (n + 1) / 2
+}
+var execTimeOpt: Double
+for i in 1...10 {
+    execTimeOpt = BenchTimer.measureBlockk {
+        _ = sumOptimize(n: UInt(i * step))
+    }
+    print("avg time for \(i*step) elems: \(execTimeOpt.formattedString)")
+}
+
+func findTwoSum(arr: [Int], target: Int) -> (Int, Int)? {
+    guard arr.count > 1 else { return nil }
+    
+    for i in 0..<arr.count {
+        let left = arr[i]
+        for j in (i + 1)..<arr.count {
+            let rigth = arr[j]
+            if left + rigth == target {
+                return (i, j)
+            }
+        }
+    }
+    return nil
+}
+
+func findTwoOptimize(arr: [Int], target: Int) -> (Int, Int)? {
+    guard arr.count > 1 else { return nil }
+    
+    var diffs: [Int:Int] = [:]
+    
+    for i in 0..<arr.count {
+        let left = arr[i]
+        let right = target - left
+        if let found = diffs[right] {
+            return (i, found)
+        } else {
+            diffs[left] = i
+        }
+    }
+    return nil
+}
+
+let sizeTwo = 5000
+let target = 100
+let maxValue = UInt32(60)
+
+let array = generateRandomArray(size: sizeTwo, maxValue: maxValue)
+
+var execTimeTwo = BenchTimer.measureBlockk {
+    _ = findTwoSum(arr: array, target: target)
+}
+
+print("\ntwo sum avg size: \(sizeTwo) elements time: \(execTimeTwo.formattedString)")
+
+var execTimeTwoOptimize = BenchTimer.measureBlockk {
+    _ = findTwoOptimize(arr: array, target: target)
+}
+
+print("\ntwo sum avg size: \(sizeTwo) elements time: \(execTimeTwoOptimize.formattedString)")
