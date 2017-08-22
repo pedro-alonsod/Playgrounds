@@ -1747,3 +1747,13 @@ func startsWithZero(array: [Int]) -> Bool {
     guard array.count != 0 else { return false }
     return array.first! == 0 ? true:false
 }
+
+func sumNumbers(n: UInt) -> UInt {
+    var result = 0
+    for i in 1...n {
+        result += i
+    }
+    return result
+}
+
+let step = 100
