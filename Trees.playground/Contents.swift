@@ -515,9 +515,11 @@ print(treeClass)
 var arr = [1, 2, 4, 5, 6, 7, 888]
 //arr[1..<3] = [100, 100, 100]
 //arr[1..<3] = [3]
-var ar = arr.enumerated().map({(offset: Int, element: Int) -> Int in
-
+var ar = arr.enumerated().map({(arg: (offset: Int, element: Int)) -> Int in
+    
     //print(offset)
+    
+    let (offset, element) = arg
     if offset > 1 && offset < 5 {
         print(offset)
         return element * 2
@@ -527,8 +529,10 @@ var ar = arr.enumerated().map({(offset: Int, element: Int) -> Int in
 })
 print(ar)
 ar.reserveCapacity(ar.count)
-ar.enumerated().forEach({ offset,element in
+ar.enumerated().forEach({ (arg) in
     
+    
+    let (offset, element) = arg
     if offset > 1 && offset < 5 {
         print(offset)
          element * 2
