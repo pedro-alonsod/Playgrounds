@@ -14,12 +14,13 @@ class TreeBST<T: Comparable> {
     
     var root: Node<T>?
     var out = ""
+    var count = 0
     
     func insert(data: T) {
         
         let newNode = Node<T>(data: data)
         print(newNode.data)
-        
+        count += 1
         if self.root == nil {
             self.root = newNode
         } else {
@@ -44,28 +45,29 @@ class TreeBST<T: Comparable> {
         }
     }
     
-    func printTree(root: Node<T>?) -> String {
+    func printTree(node: Node<T>?) -> String {
         out += "["
         
-        if root == nil {
+        
+        if node == nil {
             out += "]"
             return out
         }
+        out += "-\(node!.data)-"
         
-        self.printTree(root: root?.left)
-        self.printTree(root: root?.right)
-        out += "-\(root!.data)-"
+        self.printTree(node: node?.left)
+        self.printTree(node: node?.right)
         return out
     }
 }
 
 var testTree = TreeBST<Int>()
 testTree.insert(data: 10)
-testTree.printTree(root: testTree.root)
+testTree.printTree(node: testTree.root)
 testTree.insert(data: 20)
-testTree.printTree(root: testTree.root)
-testTree.insert(data: 30)
+testTree.printTree(node: testTree.root)
 testTree.insert(data: 5)
-testTree.insert(data: 1)
-print(testTree.printTree(root: testTree.root))
+
+print(testTree.printTree(node: testTree.root))
+testTree.count
 
