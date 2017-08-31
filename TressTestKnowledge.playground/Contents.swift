@@ -357,3 +357,9 @@ countHis(str: "xhixhix")
 countHis(str: "xxhixx")
 countHis(str: "hi")
 
+func converToY(str: String) -> String {
+    var copy = Array(str)
+    if copy.count == 0 {
+        
+    }
+}
