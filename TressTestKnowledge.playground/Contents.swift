@@ -170,6 +170,41 @@ class BSTTree<T: Comparable> {
             }
         }
     }
+    
+    func sizeOfTree() -> Int {
+        var size = 0
+        size = sizeHelper(node: root)
+        return size
+    }
+    func sizeHelper(node: NodeBST?) -> Int {
+        if node == nil {
+            return 0
+        } else {
+            return sizeHelper(node: node?.left) + 1 + sizeHelper(node: node?.right)
+        }
+    }
+    func heightOfTree() -> Int {
+        var h = 0
+        if root == nil {
+            return 0
+        } else {
+            h = heightHelper(node: root)
+        }
+        return h
+    }
+    func heightHelper(node: NodeBST?) -> Int {
+        if node == nil {
+            return 0
+        }
+        let leftH = heightHelper(node?.left)
+        let rightH = heightHelper(node?.right)
+        
+        if leftH > rightH {
+            return leftH + 1
+        } else {
+            return right + 1
+        }
+    }
 }
 
 var bstTest = BSTTree<Int>()
@@ -180,3 +215,26 @@ bstTest.insert(data: 5)
 bstTest.inOrder()
 print("*****")
 bstTest.levelOrder()
+
+//sum of nested lists
+//func sumList(list: [[Int]]?) -> Int {
+//    var res = 0
+//    if list == nil || list!.count == 0 {
+//        return res
+//    }
+//    res += helper(list: list, depth: 1)
+//    return res
+//}
+//func helper(list:[[Int]], depth: Int) -> Int {
+//    var res = 0
+//    for elem in list {
+//        if elem.isInteger() {
+//            res += elem.getInt() * depth
+//        } else {
+//            res += helper(list: elem.getList(), depth: depth + 1)
+//        }
+//        return res
+//    }
+//}
+
+
