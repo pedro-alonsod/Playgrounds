@@ -342,3 +342,18 @@ func countXs(str: String) -> Int {
 countXs(str: "xxhixx")
 countXs(str: "xhixhix")
 countXs(str: "hi")
+func countHis(str: String) -> Int {
+    var copy = Array(str)
+    if copy.count == 0 {
+        return 0
+    }
+    if copy.last! == "i" && copy[copy.count - 2] == "h" {
+        return 1 + countHis(str: String(copy.dropLast()))
+    }
+    return countHis(str: String(copy.dropLast()))
+}
+
+countHis(str: "xhixhix")
+countHis(str: "xxhixx")
+countHis(str: "hi")
+
