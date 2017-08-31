@@ -360,6 +360,12 @@ countHis(str: "hi")
 func converToY(str: String) -> String {
     var copy = Array(str)
     if copy.count == 0 {
-        
+        return ""
     }
+    if copy.last! == "x" {
+        return  converToY(str: String(copy.dropLast())) + "y"
+    }
+    
+    return String(copy.dropLast())
 }
+converToY(str: <#T##String#>)
