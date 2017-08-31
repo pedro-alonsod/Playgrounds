@@ -217,7 +217,7 @@ print("*****")
 bstTest.levelOrder()
 
 //sum of nested lists
-//func sumList(list: [[Int]]?) -> Int {
+//func sumList(list: List<T>?) -> Int {
 //    var res = 0
 //    if list == nil || list!.count == 0 {
 //        return res
