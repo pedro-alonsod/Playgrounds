@@ -176,7 +176,7 @@ class BSTTree<T: Comparable> {
         size = sizeHelper(node: root)
         return size
     }
-    func sizeHelper(node: NodeBST?) -> Int {
+    func sizeHelper(node: NodeBST<T>?) -> Int {
         if node == nil {
             return 0
         } else {
@@ -192,17 +192,17 @@ class BSTTree<T: Comparable> {
         }
         return h
     }
-    func heightHelper(node: NodeBST?) -> Int {
+    func heightHelper(node: NodeBST<T>?) -> Int {
         if node == nil {
             return 0
         }
-        let leftH = heightHelper(node?.left)
-        let rightH = heightHelper(node?.right)
+        let leftH = heightHelper(node: node?.left)
+        let rightH = heightHelper(node: node?.right)
         
         if leftH > rightH {
             return leftH + 1
         } else {
-            return right + 1
+            return rightH + 1
         }
     }
 }
@@ -237,4 +237,108 @@ bstTest.levelOrder()
 //    }
 //}
 
+// RECURSION
+func bunnyEars(n: Int) -> Int {
+    if n == 0 {
+        return 0
+    }
+    if n == 1 {
+        return 2
+    }
+    if n % 2 == 1 {
+        return 2 + bunnyEars(n: n - 1)
+    }
+    return 3 + bunnyEars(n: n - 1)
+}
 
+bunnyEars(n: 2)
+bunnyEars(n: 7)
+
+func triangle(n: Int) -> Int {
+    if n == 0 {
+        return 0
+    }
+    if n == 1 {
+        return 1
+    }
+    if n == 2 {
+        return 3
+    }
+    return n + triangle(n: n - 1)
+}
+
+triangle(n: 2)
+triangle(n: 7)
+
+func sumDigits(n: Int) -> Int {
+    if n < 10 {
+      return n
+    }
+    return ((n % 10) + sumDigits(n: n / 10))
+}
+
+sumDigits(n: 126)
+sumDigits(n: 49)
+sumDigits(n: 12)
+
+func count7s(n: Int) -> Int {
+    if n != 7 && n < 10 {
+        return 0
+    } else if n == 7 {
+        return 1
+    } else if n%10 == 7 {
+        return count7s(n: n/10) + 1
+    } else {
+        return count7s(n: n/10)
+    }
+}
+
+count7s(n: 717)
+count7s(n: 7)
+count7s(n: 123)
+
+func count8s(n : Int) -> Int {
+    if n == 0 {
+        return 0
+    }
+    if n%10 == 8 {
+        if ((n/10) % 10 == 8) {
+            return 2 + count8s(n: n/10)
+        }
+        return 1 + count8s(n: n/10)
+    }
+    return count8s(n: n/10)
+}
+
+count8s(n: 8)
+count8s(n: 818)
+count8s(n: 8818)
+
+func powerN(y: Int, n: Int) -> Int {
+    if n == 0 {
+        return 1
+    }
+    if n == 1 {
+        return y
+    }
+    
+    return y * powerN(y: y, n: n-1)
+}
+powerN(y: 3, n: 1)
+powerN(y: 3, n: 2)
+powerN(y: 3, n: 3)
+
+func countXs(str: String) -> Int {
+    var copy = Array(str.characters)
+    if copy.count == 0{
+        return 0
+    }
+    if copy.last! == "x" {
+        return 1 + countXs(str: String(copy.dropLast()))
+    }
+    return  countXs(str: String(copy.dropLast()) )
+}
+
+countXs(str: "xxhixx")
+countXs(str: "xhixhix")
+countXs(str: "hi")
