@@ -364,4 +364,5 @@ func converToY(str: String) -> String {
     if copy.count == 0 {
         
     }
+    return ""
 }
