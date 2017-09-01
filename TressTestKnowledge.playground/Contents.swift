@@ -176,7 +176,7 @@ class BSTTree<T: Comparable> {
         size = sizeHelper(node: root)
         return size
     }
-    func sizeHelper(node: NodeBST?) -> Int {
+    func sizeHelper(node: NodeBST<T>?) -> Int {
         if node == nil {
             return 0
         } else {
@@ -192,17 +192,17 @@ class BSTTree<T: Comparable> {
         }
         return h
     }
-    func heightHelper(node: NodeBST?) -> Int {
+    func heightHelper(node: NodeBST<T>?) -> Int {
         if node == nil {
             return 0
         }
-        let leftH = heightHelper(node?.left)
-        let rightH = heightHelper(node?.right)
+        let leftH = heightHelper(node: node?.left)
+        let rightH = heightHelper(node: node?.right)
         
         if leftH > rightH {
             return leftH + 1
         } else {
-            return right + 1
+            return rightH + 1
         }
     }
 }
@@ -215,6 +215,8 @@ bstTest.insert(data: 5)
 bstTest.inOrder()
 print("*****")
 bstTest.levelOrder()
+bstTest.sizeOfTree()
+bstTest.heightOfTree()
 
 //sum of nested lists
 //func sumList(list: List<T>?) -> Int {
