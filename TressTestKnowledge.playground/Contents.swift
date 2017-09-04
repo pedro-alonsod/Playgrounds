@@ -368,4 +368,4 @@ func converToY(str: String) -> String {
     
     return String(copy.dropLast())
 }
-converToY(str: <#T##String#>)
+converToY(str: "codey")
