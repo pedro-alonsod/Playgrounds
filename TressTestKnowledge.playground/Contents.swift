@@ -361,8 +361,119 @@ countHis(str: "hi")
 
 func converToY(str: String) -> String {
     var copy = Array(str)
+
     if copy.count == 0 {
-        
+        return String(copy)
     }
-    return ""
+    
+    var last = copy.last!
+    print(last)
+    if last == "x" {
+        return converToY(str: String(copy.dropLast())) + "y"
+    } else {
+        return converToY(str: String(copy.dropLast())) + String(describing: last)
+    }
 }
+
+converToY(str: "codex")
+converToY(str: "xixs")
+converToY(str: "xxxxsssssssxxxLlll")
+
+func noX(str: String) -> String {
+    var copy = Array(str)
+    
+    if copy.count == 0 {
+        return String(copy)
+    }
+    var last = copy.last!
+    if last == "x" {
+        return noX(str: String(copy.dropLast()))
+    } else {
+        return noX(str: String(copy.dropLast())) + String(describing: last)
+    }
+}
+
+noX(str: "xaxb")
+noX(str: "abc")
+noX(str: "xx")
+
+func arr6(arr: [Int], idx: Int) -> Bool {
+    if arr.count == 0 {
+        return true
+    }
+    if arr[idx] == 6  {
+        return false
+    } else {
+        return arr6(arr: Array(arr.dropFirst()), idx: idx)
+    }
+}
+
+arr6(arr: [1, 6, 4], idx: 0)
+arr6(arr: [1, 4], idx: 0)
+arr6(arr: [6], idx: 0)
+
+func arr11(arr: [Int], idx: Int) -> Int {
+    if idx == arr.count {
+        return 0
+    }
+    if arr[idx] == 11 {
+        return 1 + arr11(arr: arr, idx: idx+1)
+    } else {
+        return arr11(arr: arr, idx: idx+1)
+    }
+}
+
+arr11(arr: [1, 2, 11], idx: 0)
+arr11(arr: [11, 11], idx: 0)
+arr11(arr: [1, 2, 3, 4], idx: 0)
+
+func arr220(arr: [Int], idx: Int) -> Bool {
+    if idx == arr.count - 1  {
+        return false
+    }
+    if arr[idx] * 10 == arr[idx + 1] {
+        return true
+    }
+    return arr220(arr: arr, idx: idx+1)
+}
+
+arr220(arr: [1, 2, 20], idx: 0)
+arr220(arr: [3, 30], idx: 0)
+arr220(arr: [1, 2, 3, 4], idx: 0)
+
+func allStar(str: String) -> String {
+    let star = "*"
+    let copy = Array(str)
+    
+    if copy.count == 0 {
+        return String(copy)
+    }
+    
+    return allStar(str: String(copy.dropLast())) + String(copy.last!) + star
+}
+allStar(str: "hello")
+allStar(str: "abc")
+allStar(str: "ab")
+
+func pairStar(str: String) -> String {
+    let star = "*"
+    let copy = Array(str)
+    
+    if copy.count < 2 {
+        return String(copy)
+    }
+    print(copy[0], copy[1])
+    if copy[0] == copy[1] {
+        print(copy[0], copy[1], "here")
+        return String(copy.last!) + star + pairStar(str: String(copy.dropLast()))
+    }
+    return pairStar(str: String(copy.dropLast())) + String(copy.last!)
+}
+pairStar(str: "hello")
+pairStar(str: "xxyy")
+pairStar(str: "aaaa")
+//s--no
+//    x--yes
+//        i--no
+//            x--yes
+
