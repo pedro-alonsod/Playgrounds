@@ -474,6 +474,12 @@ func pairStar(str: String) -> String {
 pairStar(str: "hello")
 pairStar(str: "xxyy")
 pairStar(str: "aaaa")
+
+func changePi(str: String) -> String {
+    let pi = "3.14"
+    
+    return pi
+}
 //s--no
 //    x--yes
 //        i--no
