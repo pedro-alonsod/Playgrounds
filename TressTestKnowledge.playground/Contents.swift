@@ -480,6 +480,15 @@ func changePi(str: String) -> String {
     
     return pi
 }
+
+func binomialCoef(n: Int, m: Int) -> Int {
+    var i = 0
+    var j = 0
+    var bc: [[Int]] = [Int](repeatElement([Int](repeatElement(-1, count: m)), count: n))
+    print(bc)
+    return 0
+}
+binomialCoef(n: 3, m: 2)
 //s--no
 //    x--yes
 //        i--no
