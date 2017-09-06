@@ -206,3 +206,6 @@ graphDijks["start"]!["a"] = 6 //if is nil we need the ? or ! to multigraphs
 graphDijks["start"]!["b"] = 2
 graphDijks
 print(graphDijks, graphDijks["start"]!) // cant print keys dunno why
+
+// MARK: Greedy
+
