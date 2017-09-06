@@ -201,7 +201,7 @@ if q.isEmpty {
 }
 
 var graphDijks: [String:[String: Int]] = [:]
-graphDijks["start"] = [:] // INitialize first hash
+graphDijks["start"] = [:] // Initialize first hash
 graphDijks["start"]!["a"] = 6 //if is nil we need the ? or ! to multigraphs
 graphDijks["start"]!["b"] = 2
 graphDijks
@@ -209,3 +209,4 @@ print(graphDijks, graphDijks["start"]!) // cant print keys dunno why
 
 // MARK: Greedy
 
+var testMatrix = Array<Int>(repeatElement(Array<Int>(repeating: 2, count: 20), count: 20))
