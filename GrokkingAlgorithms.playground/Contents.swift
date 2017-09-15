@@ -209,4 +209,182 @@ print(graphDijks, graphDijks["start"]!) // cant print keys dunno why
 
 // MARK: Greedy
 
-var testMatrix = Array<Int>(repeatElement(Array<Int>(repeating: 2, count: 20), count: 20))
+//var testMatrix = Array<Int>(repeatElement(Array<Int>(repeating: 2, count: 20), count: 20))
+var statesNeeded: Set<String> =  ["mt", "wa", "or", "id", "nv", "ut", "ca", "az"]
+var stations: [String:Set<String>] = [:]
+stations["kone"] = ["id", "nv", "ut"]
+stations["ktwo"] = ["wa", "id", "mt"]
+stations["kthree"] = ["or", "nv", "wa"]
+stations["kfour"] = ["nv", "ut"]
+stations["kfive"] = ["ca", "az"]
+
+var finalStations: Set<String> = []
+var bestStation: Set<String>? = []
+var statesCovered: Set<String> = []
+for (var station, var statesCovered) in stations {
+    var covered: Set<String> = statesNeeded.union(statesCovered)
+    if covered.count > statesCovered.count {
+        bestStation!.insert(station)
+        statesCovered = covered
+    }
+}
+//finalStations.insert(bestStation!)
+bestStation!
+
+//DP
+//func LCS(S: String, T: String, n: Int, m: Int) -> Int {
+//    var arrS = Array(S)
+//    var arrT = Array(T)
+//    if m == 0 || n == 0 {
+//        return 0
+//    }
+//    if n == arrrST.count && arrST.cont == m {
+//        return arrST[n-1][m-1]
+//    }
+//    if S[n] == T[m] {
+//        result = 1 + LCS(S: S, T: T, n: n-1, m: m-1)
+//    } else {
+//        result = max(LCS(S: S, T: T, n: n-1, m: m), LCS(S: S, T: T, n: n, m: m-1))
+//    }
+//    arrST[n][m] = result
+//    return result
+//}
+
+func addR(n: Int, m: Int) -> Int {
+    if m == 0 {
+        return n
+    } else {
+        return addR(n: n, m: m-1)
+    }
+}
+
+addR(n: 3, m: 4)
+//Gayle Strings
+func isUnique(str: String) -> Bool {
+    var arr = Array(str)
+    var uniqueCount: [Character:Int] = [:]
+    
+    for ch in str {
+        if uniqueCount[ch] == nil {
+            uniqueCount[ch] = 1
+        } else {
+            uniqueCount[ch]! += 1
+        }
+    }
+    
+    return uniqueCount.filter { $0.value > 1 }.count == 0
+    
+}
+
+isUnique(str: "aaassssddd")
+isUnique(str: "abs")
+
+func checkPermutations(str1: String, str2: String) -> Bool {
+ 
+    guard str1.count == str2.count else { return false }
+    let srtStr1 = str1.sorted()
+    let srtStr2 = str2.sorted()
+    
+    return srtStr1 == srtStr2
+}
+
+checkPermutations(str1: "adb", str2: "bda")
+checkPermutations(str1: "ace", str2: "acr")
+checkPermutations(str1: "Asd", str2: "Asdd")
+
+func URLfy(str: String) -> String {
+    return str.trimmingCharacters(in: CharacterSet(charactersIn: " ")).replacingOccurrences(of: " ", with: "%20")
+}
+
+URLfy(str: " Mr. John smith      ")
+
+//Gayle LinkedLists
+class NodeG<T:Hashable> {
+    var data: T
+    var next: NodeG<T>?
+    
+    init(data: T) {
+        self.data = data
+        self.next = nil
+    }
+}
+
+class LinkedListG<T: Hashable> {
+    var head: NodeG<T>?
+    
+    func insert(data: T) {
+        let newNode = NodeG<T>(data: data)
+        
+        if head == nil {
+            head = newNode
+        } else {
+            newNode.next = head
+            head = newNode
+        }
+    }
+    
+    func removeDups() {
+        var uniques: [T:NodeG<T>] = [:]
+        
+        var current = head
+        while current != nil {
+            if uniques[current!.data] == nil {
+                uniques[current!.data] = current!
+            } else {
+                current = nil
+            }
+            current = current?.next
+        }
+        
+        print(uniques)
+        
+        var temp = uniques.first!.value
+        uniques.dropFirst()
+        
+        while !uniques.isEmpty {
+            temp.next = uniques.first!.value
+            temp = temp.next!
+            uniques.dropFirst()
+            print(uniques)
+        }
+        
+    }
+}
+
+extension NodeG: CustomStringConvertible {
+    var description: String {
+        let desc = "\(self.data)"
+        return desc
+    }
+}
+
+extension LinkedListG: CustomStringConvertible {
+    var description: String {
+        var desc = "["
+        
+        var current = self.head
+        
+        while current != nil {
+            desc += "\(current!.description) -> "
+            current = current?.next
+        }
+        
+        desc += "nil]"
+        
+        return desc
+    }
+}
+
+var llist = LinkedListG<Int>()
+llist.insert(data: 1)
+llist.insert(data: 2)
+llist.insert(data: 2)
+llist.insert(data: 3)
+llist.insert(data: 4)
+llist.insert(data: 2)
+print(llist)
+
+llist.removeDups()
+print(llist)
+
+
