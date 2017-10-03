@@ -149,7 +149,7 @@ func nextHighest(arr: [Int]) {
     for i in stride(from: arr.count-2, to: -1, by: -1) {
         print(arr[i])
         current = arr[i]
-        if current > prev {
+        if current >= prev {
             stack.append(current)
         } else {
             prev = current
@@ -370,7 +370,7 @@ func sSort(arr: [Int]) -> [Int] {
             }
             
             if minIndex != scanIndex {
-                swap(&copy[minIndex], &copy[scanIndex])
+                copy.swapAt(minIndex, scanIndex)
             }
         }
     }
@@ -740,7 +740,7 @@ for i in 0..<bSearch.count {
     if i == j {
         continue
     }
-    swap(&bSearch[i], &bSearch[j])
+    bSearch.swapAt(i, j)
 }
 bSearch
 // if all differents is ok if repeated no weird with one 2 times repeates is ok hmm nope still uniques
@@ -938,7 +938,7 @@ func reverseCustom(str: String) -> String {
     var j = arrChar.count - 1
     
     while i < j {
-        swap(&arrChar[i], &arrChar[j])
+        arrChar.swapAt(i, j)
         i += 1
         j -= 1
     }
@@ -994,7 +994,7 @@ URLfy(str: "Mr Jon Smit   ")
 
 func urlyfy(str: String) -> String {
   
-    return String(arr)
+    return String(describing: arr)
 }
 
 urlyfy(str: "Mr jon smith       ")

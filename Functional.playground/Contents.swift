@@ -482,6 +482,16 @@ enum LinkedList<Element: Equatable> {
                 return next.reduce(combine(initial, data), combine: combine)
         }
     }
+    
+    //Satck
+    func pop() -> (element: Element, linkedList: LinkedList)? {
+        switch self {
+        case .node(let data, let next):
+            return (data, next)
+        case .end:
+            return nil
+        }
+    }
 }
 
 
@@ -511,6 +521,85 @@ let mappedLL = functionalLL.map { $0 * 2 }
 print(mappedLL)
 
 let filteredFunctionalLL = fourth.filter { $0 % 2 == 1}
-print(filteredFunctionalLL)
+print(filteredFunctionalLL, "tst")
 
-let reduceFourth = fourth.reduce(0, combine: +)
+let reduceFourth = functionalLL.reduce(0, combine: +)
+if let (element, lL) = fourth.pop() {
+    print(element)
+    let newList = lL.pop()
+    print(newList)
+}
+
+enum LazyList<Element: Equatable> {
+    case end
+    case node(data: Element, next: ()-> LazyList<Element>)
+    
+    var size: Int {
+        switch self {
+        case .end:
+            return 0
+        case .node(_, let next):
+            return 1 + next().size
+        }
+    }
+    var elements: [Element] {
+        switch self {
+        case .end:
+            return []
+        case .node(let data, let next):
+            return [data] + next().elements
+        }
+    }
+    
+    var isEmpty: Bool {
+        switch self {
+        case .end:
+            return true
+        case .node(_, _):
+            return false
+        }
+    }
+    
+    // empty
+    static func empty() -> LazyList<Element> {
+        return .end
+    }
+    
+    //insert
+    func cons(_ element: Element) -> LazyList<Element> {
+        return .node(data: element, next: { self })
+    }
+    
+    func removeLast() -> (element: Element, linkedList: LazyList)? {
+        switch self {
+            case .node(let data, let next):
+                return (data, next())
+            case .end:
+                return nil
+            }
+        }
+
+    static func contais(key: Element, list: LazyList<Element>) -> Bool {
+        switch list {
+        case .end:
+            return false
+        case .node(let data, let next):
+            if key == data {
+                return true
+            } else {
+                return contais(key: key, list: next())
+            }
+        }
+    }
+
+}
+
+infix operator <||: AdditionPrecedence
+func <|| <T>(lhs: T, rhs: @autoclosure @escaping () -> LazyList<T>) -> LazyList<T>{
+    return .node(data: lhs, next: rhs)
+    
+}
+
+let lazyList = LazyList<Int>.end.cons(3).cons(2).cons(1)
+print("*****")
+print(lazyList, "lazy")
