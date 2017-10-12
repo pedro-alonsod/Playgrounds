@@ -1,7 +1,10 @@
 import UIKit
 
 let A: [Int] = [0, 1, 2, 3, 4, 0, 1, 2]
+let Z: [Int:Character] = [0:"a", 2:"d", 5:"d", 4:"z"]
+Z.keys.max()!
 
+//Z
 func countingSort(A: [Int]) -> [Int] {
     var c = [Int](repeating: 0, count: A.max()!+1)
     var B = [Int](repeating: 0, count: A.count)
