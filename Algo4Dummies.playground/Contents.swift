@@ -82,18 +82,18 @@ var desc = ""
 
 // First Question I had with google implement a recursiveDescription in swift
 func recursiveSetup() {
+    desc += "\(view1.description) \n"
     recursiveDesc(view: view1)
     print("\(desc)")
 }
 
 func recursiveDesc(view: UIView) {
-    desc += "\(view.description) \n"
     
     if view.subviews.count == 0 {
         return
     } else {
         for elem in view.subviews {
-            desc += "  --- "
+            desc += "  --- \(view.description) \n"
             recursiveDesc(view: elem)
         }
     }
