@@ -1023,3 +1023,53 @@ binarySearchR(a: arrTestMin, s: 9)
 
 var c: Character = "A"
 //String(c).unicodeScalars.filter { $0.isASCII }.map { print($0 + 1) }
+let an: [Int] = [0]
+let m: [Int] = [1]
+
+func winner(andrea: [Int], maria: [Int], s: String) -> String {
+    var numA = 0
+    var numM = 0
+    var win = "Tie"
+    
+    if andrea.count == 0 && maria.count == 0 {
+        return "Tie"
+    } else if andrea.count == 0 && maria.count > 0 {
+        return "Maria"
+    } else if andrea.count > 0 && maria.count == 0 {
+        return "Andrea"
+    }
+    
+    for i in 0..<andrea.count {
+        if s == "Odd" {
+            if i % 2 == 1 {
+                numA += andrea[i] + maria[i]
+            }
+        } else {
+            if i % 2 == 0 {
+                numA += andrea[i] - maria[i]
+            }
+        }
+    }
+    print(maria)
+    for i in 0..<maria.count {
+        if s == "Odd" {
+            if i % 2 == 1 {
+                numM += maria[i] - andrea[i]
+            }
+        } else {
+            if i % 2 == 0 {
+                numM += maria[i] - andrea[i]
+            }
+        }
+    }
+    print(numM, numA)
+    
+    if numA > numM {
+        win = "Andrea"
+    } else if numM > numA {
+        win = "Maria"
+    }
+    
+    return win
+}
+ winner(andrea: an, maria: m, s: "Even")

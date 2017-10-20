@@ -1,0 +1,563 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2E8845171F97C36B00C48858 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8845161F97C36B00C48858 /* AppDelegate.swift */; };
+		2E8845191F97C36B00C48858 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8845181F97C36B00C48858 /* ViewController.swift */; };
+		2E88451C1F97C36B00C48858 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E88451A1F97C36B00C48858 /* Main.storyboard */; };
+		2E88451E1F97C36B00C48858 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E88451D1F97C36B00C48858 /* Assets.xcassets */; };
+		2E8845211F97C36B00C48858 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E88451F1F97C36B00C48858 /* LaunchScreen.storyboard */; };
+		2E88452C1F97C36B00C48858 /* AstoTorchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E88452B1F97C36B00C48858 /* AstoTorchTests.swift */; };
+		2E8845371F97C36B00C48858 /* AstoTorchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8845361F97C36B00C48858 /* AstoTorchUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2E8845281F97C36B00C48858 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2E88450B1F97C36B00C48858 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2E8845121F97C36B00C48858;
+			remoteInfo = AstoTorch;
+		};
+		2E8845331F97C36B00C48858 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2E88450B1F97C36B00C48858 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2E8845121F97C36B00C48858;
+			remoteInfo = AstoTorch;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2E8845131F97C36B00C48858 /* AstoTorch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AstoTorch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2E8845161F97C36B00C48858 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2E8845181F97C36B00C48858 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2E88451B1F97C36B00C48858 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2E88451D1F97C36B00C48858 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2E8845201F97C36B00C48858 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2E8845221F97C36B00C48858 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2E8845271F97C36B00C48858 /* AstoTorchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AstoTorchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2E88452B1F97C36B00C48858 /* AstoTorchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstoTorchTests.swift; sourceTree = "<group>"; };
+		2E88452D1F97C36B00C48858 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2E8845321F97C36B00C48858 /* AstoTorchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AstoTorchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2E8845361F97C36B00C48858 /* AstoTorchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstoTorchUITests.swift; sourceTree = "<group>"; };
+		2E8845381F97C36B00C48858 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2E8845101F97C36B00C48858 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2E8845241F97C36B00C48858 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2E88452F1F97C36B00C48858 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2E88450A1F97C36B00C48858 = {
+			isa = PBXGroup;
+			children = (
+				2E8845151F97C36B00C48858 /* AstoTorch */,
+				2E88452A1F97C36B00C48858 /* AstoTorchTests */,
+				2E8845351F97C36B00C48858 /* AstoTorchUITests */,
+				2E8845141F97C36B00C48858 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2E8845141F97C36B00C48858 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2E8845131F97C36B00C48858 /* AstoTorch.app */,
+				2E8845271F97C36B00C48858 /* AstoTorchTests.xctest */,
+				2E8845321F97C36B00C48858 /* AstoTorchUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2E8845151F97C36B00C48858 /* AstoTorch */ = {
+			isa = PBXGroup;
+			children = (
+				2E8845161F97C36B00C48858 /* AppDelegate.swift */,
+				2E8845181F97C36B00C48858 /* ViewController.swift */,
+				2E88451A1F97C36B00C48858 /* Main.storyboard */,
+				2E88451D1F97C36B00C48858 /* Assets.xcassets */,
+				2E88451F1F97C36B00C48858 /* LaunchScreen.storyboard */,
+				2E8845221F97C36B00C48858 /* Info.plist */,
+			);
+			path = AstoTorch;
+			sourceTree = "<group>";
+		};
+		2E88452A1F97C36B00C48858 /* AstoTorchTests */ = {
+			isa = PBXGroup;
+			children = (
+				2E88452B1F97C36B00C48858 /* AstoTorchTests.swift */,
+				2E88452D1F97C36B00C48858 /* Info.plist */,
+			);
+			path = AstoTorchTests;
+			sourceTree = "<group>";
+		};
+		2E8845351F97C36B00C48858 /* AstoTorchUITests */ = {
+			isa = PBXGroup;
+			children = (
+				2E8845361F97C36B00C48858 /* AstoTorchUITests.swift */,
+				2E8845381F97C36B00C48858 /* Info.plist */,
+			);
+			path = AstoTorchUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2E8845121F97C36B00C48858 /* AstoTorch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2E88453B1F97C36B00C48858 /* Build configuration list for PBXNativeTarget "AstoTorch" */;
+			buildPhases = (
+				2E88450F1F97C36B00C48858 /* Sources */,
+				2E8845101F97C36B00C48858 /* Frameworks */,
+				2E8845111F97C36B00C48858 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AstoTorch;
+			productName = AstoTorch;
+			productReference = 2E8845131F97C36B00C48858 /* AstoTorch.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2E8845261F97C36B00C48858 /* AstoTorchTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2E88453E1F97C36B00C48858 /* Build configuration list for PBXNativeTarget "AstoTorchTests" */;
+			buildPhases = (
+				2E8845231F97C36B00C48858 /* Sources */,
+				2E8845241F97C36B00C48858 /* Frameworks */,
+				2E8845251F97C36B00C48858 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2E8845291F97C36B00C48858 /* PBXTargetDependency */,
+			);
+			name = AstoTorchTests;
+			productName = AstoTorchTests;
+			productReference = 2E8845271F97C36B00C48858 /* AstoTorchTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		2E8845311F97C36B00C48858 /* AstoTorchUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2E8845411F97C36B00C48858 /* Build configuration list for PBXNativeTarget "AstoTorchUITests" */;
+			buildPhases = (
+				2E88452E1F97C36B00C48858 /* Sources */,
+				2E88452F1F97C36B00C48858 /* Frameworks */,
+				2E8845301F97C36B00C48858 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2E8845341F97C36B00C48858 /* PBXTargetDependency */,
+			);
+			name = AstoTorchUITests;
+			productName = AstoTorchUITests;
+			productReference = 2E8845321F97C36B00C48858 /* AstoTorchUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2E88450B1F97C36B00C48858 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0900;
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = "Pedro Alonso";
+				TargetAttributes = {
+					2E8845121F97C36B00C48858 = {
+						CreatedOnToolsVersion = 9.0.1;
+						ProvisioningStyle = Automatic;
+					};
+					2E8845261F97C36B00C48858 = {
+						CreatedOnToolsVersion = 9.0.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 2E8845121F97C36B00C48858;
+					};
+					2E8845311F97C36B00C48858 = {
+						CreatedOnToolsVersion = 9.0.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 2E8845121F97C36B00C48858;
+					};
+				};
+			};
+			buildConfigurationList = 2E88450E1F97C36B00C48858 /* Build configuration list for PBXProject "AstoTorch" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2E88450A1F97C36B00C48858;
+			productRefGroup = 2E8845141F97C36B00C48858 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2E8845121F97C36B00C48858 /* AstoTorch */,
+				2E8845261F97C36B00C48858 /* AstoTorchTests */,
+				2E8845311F97C36B00C48858 /* AstoTorchUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2E8845111F97C36B00C48858 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2E8845211F97C36B00C48858 /* LaunchScreen.storyboard in Resources */,
+				2E88451E1F97C36B00C48858 /* Assets.xcassets in Resources */,
+				2E88451C1F97C36B00C48858 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2E8845251F97C36B00C48858 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2E8845301F97C36B00C48858 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2E88450F1F97C36B00C48858 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2E8845191F97C36B00C48858 /* ViewController.swift in Sources */,
+				2E8845171F97C36B00C48858 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2E8845231F97C36B00C48858 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2E88452C1F97C36B00C48858 /* AstoTorchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2E88452E1F97C36B00C48858 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2E8845371F97C36B00C48858 /* AstoTorchUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2E8845291F97C36B00C48858 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2E8845121F97C36B00C48858 /* AstoTorch */;
+			targetProxy = 2E8845281F97C36B00C48858 /* PBXContainerItemProxy */;
+		};
+		2E8845341F97C36B00C48858 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2E8845121F97C36B00C48858 /* AstoTorch */;
+			targetProxy = 2E8845331F97C36B00C48858 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		2E88451A1F97C36B00C48858 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2E88451B1F97C36B00C48858 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		2E88451F1F97C36B00C48858 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2E8845201F97C36B00C48858 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2E8845391F97C36B00C48858 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		2E88453A1F97C36B00C48858 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2E88453C1F97C36B00C48858 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8DLM47CZ8G;
+				INFOPLIST_FILE = AstoTorch/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.pedroalonso.AstroTorch123.AstoTorch;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2E88453D1F97C36B00C48858 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8DLM47CZ8G;
+				INFOPLIST_FILE = AstoTorch/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.pedroalonso.AstroTorch123.AstoTorch;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		2E88453F1F97C36B00C48858 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8DLM47CZ8G;
+				INFOPLIST_FILE = AstoTorchTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.pedroalonso.AstroTorch123.AstoTorchTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AstoTorch.app/AstoTorch";
+			};
+			name = Debug;
+		};
+		2E8845401F97C36B00C48858 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8DLM47CZ8G;
+				INFOPLIST_FILE = AstoTorchTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.pedroalonso.AstroTorch123.AstoTorchTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AstoTorch.app/AstoTorch";
+			};
+			name = Release;
+		};
+		2E8845421F97C36B00C48858 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8DLM47CZ8G;
+				INFOPLIST_FILE = AstoTorchUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.pedroalonso.AstroTorch123.AstoTorchUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = AstoTorch;
+			};
+			name = Debug;
+		};
+		2E8845431F97C36B00C48858 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8DLM47CZ8G;
+				INFOPLIST_FILE = AstoTorchUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.pedroalonso.AstroTorch123.AstoTorchUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = AstoTorch;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2E88450E1F97C36B00C48858 /* Build configuration list for PBXProject "AstoTorch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2E8845391F97C36B00C48858 /* Debug */,
+				2E88453A1F97C36B00C48858 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2E88453B1F97C36B00C48858 /* Build configuration list for PBXNativeTarget "AstoTorch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2E88453C1F97C36B00C48858 /* Debug */,
+				2E88453D1F97C36B00C48858 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2E88453E1F97C36B00C48858 /* Build configuration list for PBXNativeTarget "AstoTorchTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2E88453F1F97C36B00C48858 /* Debug */,
+				2E8845401F97C36B00C48858 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2E8845411F97C36B00C48858 /* Build configuration list for PBXNativeTarget "AstoTorchUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2E8845421F97C36B00C48858 /* Debug */,
+				2E8845431F97C36B00C48858 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2E88450B1F97C36B00C48858 /* Project object */;
+}
