@@ -198,7 +198,7 @@ class UnArrCon {
     
     init(size: Int) {
         self.a = Array(repeating: 0, count: size)
-        self.nElem += 1
+        self.nElem = 0
     }
     
     func insert(elem: Int) {
@@ -211,19 +211,13 @@ class UnArrCon {
         if findE == -1 {
             return false
         } else {
-            if findE == nElem - 1 {
-                self.a[nElem-1] = 0
-                nElem -= 1
-                return true
-            } else {
+                self.a[findE] = 0
                 for i in findE..<nElem-1 {
                     self.a[i] = self.a[i+1]
-                    self.a[i+1] = 0
-                    
                 }
+//                self.a[nElem-1] = 0
                 self.nElem -= 1
                 return true
-            }
         }
     }
     
@@ -232,21 +226,35 @@ class UnArrCon {
         for i in 0..<nElem {
             if self.a[i] == num {
                 found = i
+                break
             }
         }
         return found
     }
 }
 
-var arrT: UnArrCon = UnArrCon(size: 10)
+var arrT: UnArrCon = UnArrCon(size: 11)
 arrT.insert(elem: 2)
 arrT.insert(elem: 3)
 arrT.insert(elem: 4)
 arrT.insert(elem: 10)
 arrT.insert(elem: 1)
+arrT.insert(elem: 2)
+arrT.insert(elem: 3)
+arrT.insert(elem: 4)
+arrT.insert(elem: 30)
+//print(arrT.a)
+arrT.insert(elem: 4)
+arrT.insert(elem: 40)
+print(arrT.a)
 arrT.nElem
-arrT.delete(num: 1)
+arrT.delete(num: 40)
+print(arrT.a)
+arrT.delete(num: 2)
+print(arrT.a)
+arrT.delete(num: 40)
 arrT.a
 arrT.find(num: 10)
 arrT.find(num: 20)
+print(arrT.a)
 
