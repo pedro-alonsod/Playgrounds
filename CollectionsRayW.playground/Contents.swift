@@ -89,3 +89,30 @@ range.raandomProtocol
 closedRange.raandomProtocol
 range.raandomProtocol
 closedRange.raandomProtocol
+
+extension RandomAccessCollection where Index == Int {
+    var randomElem: Iterator.Element {
+        precondition(!isEmpty)
+        let randomOffset: IndexDistance = numericCast(startIndex + (endIndex - startIndex).randomUniform)
+        let index = self.index(startIndex, offsetBy: randomOffset)
+        return self[index]
+    }
+}
+
+range.randomElem
+[1,3, 4, 3, 6, 4, 7].randomElem
+Array("abcde").randomElem
+
+extension RandomAccessCollection {
+    var randomElemCountGet: Iterator.Element {
+        precondition(!isEmpty)
+        let count: Int = numericCast(self.count)
+        let randomDistance: IndexDistance = numericCast(count.randomUniform)
+        let index = self.index(startIndex, offsetBy: randomDistance)
+        return self[index]
+    }
+}
+range.randomElemCountGet
+[1,3, 4, 3, 6, 4, 7].randomElemCountGet
+Array("abcde").randomElemCountGet
+closedRange.randomElemCountGet
