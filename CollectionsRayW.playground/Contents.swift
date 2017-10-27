@@ -116,3 +116,6 @@ range.randomElemCountGet
 [1,3, 4, 3, 6, 4, 7].randomElemCountGet
 Array("abcde").randomElemCountGet
 closedRange.randomElemCountGet
+
+//Object cyclesoxama
+
