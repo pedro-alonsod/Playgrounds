@@ -166,7 +166,7 @@ func chunk(arr: [Int], n: Int) -> [[Int]] {
         
     }
     out.append(c)
-    
+    //Remember for leavesthe last things out
     return out
 }
 chunk(arr: [1,2,3,4], n: 2)
