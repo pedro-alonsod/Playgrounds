@@ -998,3 +998,51 @@ func urlyfy(str: String) -> String {
 }
 
 urlyfy(str: "Mr jon smith       ")
+
+func catalan(n: Int) -> Int {
+    if n == 0  {
+        return 1
+    }
+    var count  = 0
+    
+    for i in 1...n {
+        count += catalan(n: i-1) * catalan(n: n-i)
+    }
+    return count
+}
+
+catalan(n: 10)
+print("too slow  20")
+
+func catalanDPSet(n: Int) -> Double {
+    var dp: [Double] = Array(repeating: 0, count: n+1)
+    dp[0] = 1
+    dp[1] = 1
+    
+    catalanDP(n: n, dp: &dp)
+    return dp[n]
+}
+func catalanDP(n: Int, dp: inout [Double]) -> Double {
+    
+    if n == 0 {
+        return dp[0]
+    }
+    var count: Double = 0
+    if dp[n]  != 0  {
+        print("dp now here \(n)")
+        return dp[n]
+    } else {
+        for i in 1...n {
+            print("dp not  here  \(n)")
+            count += catalanDP(n: i-1, dp: &dp) * catalanDP(n: n-i, dp: &dp)
+            
+        }
+        dp[n] = count
+    }
+    
+    return dp[n]
+}
+
+catalanDPSet(n: 10)
+Double.greatestFiniteMagnitude
+//Double(1195979838586045349211959798385860453492)

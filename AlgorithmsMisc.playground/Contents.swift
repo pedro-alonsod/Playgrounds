@@ -1073,3 +1073,16 @@ func winner(andrea: [Int], maria: [Int], s: String) -> String {
     return win
 }
  winner(andrea: an, maria: m, s: "Even")
+
+func catalan(n: Int) -> Int {
+    if n == 0 {
+        return 1
+    }
+    var count = 0
+    for i in 1...n {
+        count += catalan(n: i - 1) * catalan(n: n - i)
+    }
+    return count
+}
+
+catalan(n: 3)

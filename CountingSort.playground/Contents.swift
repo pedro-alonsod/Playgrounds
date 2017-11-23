@@ -134,7 +134,7 @@ checkCount(message: "done send", endCount: 9)
 result
 
 var myStrings: String?
-print(myStrings)
+print(myStrings ?? " ")
 
 if let myStrValue = myStrings {
     print(myStrValue)
@@ -207,7 +207,7 @@ class UnArrCon {
     }
     
     func delete(num: Int) -> Bool {
-        var findE = self.find(num: num)
+        let findE = self.find(num: num)
         if findE == -1 {
             return false
         } else {
@@ -257,4 +257,20 @@ arrT.a
 arrT.find(num: 10)
 arrT.find(num: 20)
 print(arrT.a)
+
+func catalan(n: Int) -> Int {
+    if n == 0 {
+//        print("in n = 1")
+        return 1
+    }
+    var count = 0
+    for i in 1...n {
+        print(("i - 1 \(i-1) n-1 \(n-1)"))
+        count += catalan(n: i - 1) * catalan(n: n - i)
+    }
+    print(count)
+    return count
+}
+
+catalan(n: 2)
 
