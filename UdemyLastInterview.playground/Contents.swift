@@ -149,3 +149,28 @@ func fizzBuzz(n: Int) {
 
 fizzBuzz(n: 15)
 fizzBuzz(n: 100)
+
+func chunk(arr: [Int], n: Int) -> [[Int]] {
+    var out: [[Int]] = []
+    guard n <= arr.count else { return [] }
+    var i = 0
+    var c: [Int] = []
+    for elem in arr {
+        if i == n {
+            i = 0
+            out.append(c)
+            c = []
+        }
+        c.append(elem)
+        i += 1
+        
+    }
+    out.append(c)
+    
+    return out
+}
+chunk(arr: [1,2,3,4], n: 2)
+chunk(arr: [1,2,3,4,5], n: 2)
+chunk(arr: [1,2,3,4,5,6,7,8,9,9,9,0,1,1,2,3], n: 3)
+chunk(arr: [2,3], n: 2)
+
