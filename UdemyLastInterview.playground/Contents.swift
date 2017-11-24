@@ -222,3 +222,74 @@ func stepsRec(n: Int, i: Int = 1) {
 print("******")
 stepsRec(n: 4)
 
+func piramid(n: Int) {
+    let hash = "#"
+    let space = "s"
+    let count = 2*n-1
+//    var nOfH = 1
+    print(count)
+    
+    for i in 1...n {
+        var nOfS = floor(Double(count-i)/2)-1
+        print(count, i, nOfS)
+        var nOfH = i*2-1
+        if i == n {
+            print(String(repeating: space, count: 0)+String(repeating: hash, count: count)+String(repeating: space, count: 0))
+        } else {
+            print(String(repeating: space, count: Int(nOfS))+String(repeating: hash, count: nOfH)+String(repeating: space, count: Int(nOfS)))
+        }
+    }
+}
+piramid(n: 3)
+piramid(n: 4)
+ // n = 3
+//  #
+// ###
+//#####
+
+//n = 4
+//   #
+//  ###
+// #####
+//#######
+
+//n = 2
+// #
+//###
+
+func drawP(n: Int) {
+    var out = ""
+    
+    for i in 0..<n {
+        for j in 0..<n-i {
+            out += " "
+        }
+        
+        for k in 0...i {
+            out += "* "
+        }
+        
+        print(out)
+        out = ""
+    }
+}
+//public static void drawPyramidPattern() { for (int i = 0; i < 5; i++) { for (int j = 0; j < 5 - i; j++) { System.out.print(" "); } for (int k = 0; k <= i; k++) { System.out.print("* "); } System.out.println(); } }
+//
+//Read more: http://www.java67.com/2015/10/how-to-print-pyramid-pattern-in-java-example.html#ixzz4zNyH8ftf
+drawP(n: 3)
+drawP(n: 5)
+
+func vowel(str: String) -> Int {
+    let vowels = "aeiou"
+    var count = 0
+    
+    for c in str {
+        if vowels.contains(String(c)) {
+            count += 1
+        }
+    }
+    return count
+}
+
+vowel(str: "Hi there!")
+vowel(str: "Why do you ask?")
