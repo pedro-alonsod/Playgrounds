@@ -174,3 +174,12 @@ chunk(arr: [1,2,3,4,5], n: 2)
 chunk(arr: [1,2,3,4,5,6,7,8,9,9,9,0,1,1,2,3], n: 3)
 chunk(arr: [2,3], n: 2)
 
+func anagrams(str1: String, str2: String) -> Bool {
+    //remember to delete white and simbols lowerCsae
+    //then
+    return str1.lowercased().sorted() == str2.lowercased().sorted()
+}
+
+anagrams(str1: "railsafety", str2: "fairytales")
+anagrams(str1: "hithere", str2: "byethere")
+anagrams(str1: "railSafety", str2: "FairyTales")
