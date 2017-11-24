@@ -211,3 +211,14 @@ func capitalize(str: String) -> String {
         
         return String(out)
 }
+
+func stepsRec(n: Int, i: Int) {
+    if n == 0 {
+        return
+    }
+    print(String(repeating: "#", count: i)+String(repeating: " ", count: n-1))
+    stepsRec(n: n-1, i: i+1)
+}
+
+stepsRec(n: 4, i: 1)
+
