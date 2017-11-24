@@ -183,3 +183,31 @@ func anagrams(str1: String, str2: String) -> Bool {
 anagrams(str1: "railsafety", str2: "fairytales")
 anagrams(str1: "hithere", str2: "byethere")
 anagrams(str1: "railSafety", str2: "FairyTales")
+
+
+func steps(n: Int) {
+    let hash = "#"
+    let space = " "
+    var out = ""
+    
+    for i in 1...n {
+        print(String(repeating: hash, count: i)+String(repeating: space, count: n-i))
+    }
+}
+
+steps(n: 2)
+steps(n: 15)
+steps(n: 4)
+
+func capitalize(str: String) -> String {
+    var out = Array(str)
+    out[0] = Character(String(out[0]).uppercased())
+        //need to check contains for ¿
+        for i in 0..<out.count-1 {
+        if out[i] == " " && out[i+1] != " " {
+        out[i+1] = Character(String(out[i+1]).uppercased())
+        }
+        }
+        
+        return String(out)
+}
