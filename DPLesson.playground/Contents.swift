@@ -404,7 +404,7 @@ func logestStream(str: String) -> (Character, Int) {
 
 logestStream(str: "aaaaabbbbbbcccccccdddddddddddd")
 
-//List = [1, 2, [1, 2], 1, [1, 2, [1, 2]]]
+//List = [1, 2, [1, 2], 1, [1, 2, [1, 2]]], [1, [4, [6]]]
 //func sumListLevel(l: List) -> Int {
 //    if l.subLists == 0 {
 //        var out = 0
@@ -418,19 +418,16 @@ logestStream(str: "aaaaabbbbbbcccccccdddddddddddd")
 //}
 //
 //func sumSubListLevelHelper(l: List, level: Int) -> Int {
-//    if l.subLists == 0 {
-//        var out = 0
-//        for e in l {
-//            out += (l.getInt() * level)
+//    var out = 0
+//    for elem in l {
+//        if let n = l.getInt() {
+//            out += (n * level)
+//        } else {
+//            out += sumSubListLevelHelper(l: elem.getList(), level: level + 1)
 //        }
-//        return out
-//    } else {
-//        var out = 0
-//        for list in l.subLists {
-//            out += sumSubListLevelHelper(l: list, level: level + 1)
-//        }
-//        return out
 //    }
+//    return out
 //}
+
 
 
