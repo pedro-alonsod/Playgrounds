@@ -385,6 +385,9 @@ func randomArray(A: inout [Int]) {
 
 print(v)
 print(randomArray(A: &v), v)
+print(randomArray(A: &v), v)
+print(randomArray(A: &v), v)
+print(randomArray(A: &v), v)
 
 func logestStream(str: String) -> (Character, Int) {
     var dict: [Character: Int] = [:]
