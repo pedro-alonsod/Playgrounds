@@ -502,11 +502,11 @@ factorial(n: 4)
 
 func towersOfHanoi(topN: Int, source: String, inter: String, destination: String) -> () {
     if topN == 1 {
-        print("first")
+        print("first hanoi")
     } else {
         towersOfHanoi(topN: topN-1, source: source, inter: destination, destination: inter)
         
-        print("second recursive")
+        print("second recursive hanoi from \(source) to \(inter) using \(destination)")
         
         towersOfHanoi(topN: topN-1, source: inter, inter: source, destination: destination)
     }
@@ -897,7 +897,7 @@ func findMinN(arr: [Int]) -> Int {
 }
 
 var arrTestMin = [5, 6, 7, 2 ,6 ,1, 6, 7, 0, 4]
-
+var sts = arrTestMin.sorted()
 findMinN2(arr: arrTestMin)
 findMinN(arr: arrTestMin)
 
@@ -1086,3 +1086,26 @@ func catalan(n: Int) -> Int {
 }
 
 catalan(n: 3)
+
+var mat = [[-1, 2, 3], [4, 5, -6], [7, 8, 9]]
+//not like this complexer!!!
+func matPath(M: [[Int]],  i: Int, j: Int) -> Int {
+    if i == 3 ||  j == 3 {
+        return 1
+    } else {
+        print(M[i][j], "*", i, j, "mat mult")
+        return M[i][j] * max(matPath(M: M, i: i+1, j: j), matPath(M: M, i: i, j: j+1))
+    }
+}
+
+
+matPath(M: mat, i: 0, j: 0)
+
+func floorTiling(n: Int) -> Int {
+    if n == 0 || n == 1 {
+        return 1
+    }
+    return floorTiling(n: n-1) + floorTiling(n: n-2)
+}
+
+floorTiling(n: 5)

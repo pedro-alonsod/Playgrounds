@@ -283,7 +283,7 @@ func vowel(str: String) -> Int {
     let vowels = "aeiou"
     var count = 0
     
-    for c in str {
+    for c in str.lowercased() {
         if vowels.contains(String(c)) {
             count += 1
         }

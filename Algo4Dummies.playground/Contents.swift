@@ -354,6 +354,9 @@ func binarySearch(arr: [Int], n: Int) -> Bool {
 
 binarySearch(arr: bSearch, n: 4)
 var sArray = [2,5,6,7,8,9,3,4,2,6,4,4]
+sArray.removeLast()
+sArray
+`
 //Selection sort
 func sSort(arr: [Int]) -> [Int] {
     var copy = arr
